@@ -1,0 +1,4 @@
+import {describe,expect,it} from 'vitest'
+import {mapping,resolveGhostUrl,sanitiseHtml} from '../scripts/ghost/core'
+const post=(title:string,slug='test')=>({id:'1',uuid:'u',title,slug,status:'published',type:'post' as const,html:'',plaintext:'',lexical:'',custom_excerpt:null,feature_image:null,published_at:null,updated_at:null,canonical_url:null,featured:false})
+describe('Ghost migration',()=>{it('removes executable legacy content',()=>expect(sanitiseHtml('<p onclick="x()">Safe</p><script>alert(1)</script>')).toBe('<p>Safe</p>'));it('resolves Ghost placeholders',()=>expect(resolveGhostUrl('__GHOST_URL__/content/images/a.jpg')).toBe('https://blog.theredditrepreneur.com/content/images/a.jpg'));it('maps Scorecards',()=>expect(mapping(post('The Redditrepreneur Community Intelligence Scorecard: Gymshark')).proposed_content_type).toBe('scorecard'));it('flags uncertain mappings',()=>expect(mapping(post('An opinion')).manual_review).toBe(true))})

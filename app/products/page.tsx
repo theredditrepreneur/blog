@@ -1,0 +1,4 @@
+import {PolicyPage} from '@/components/policy-page'
+import {site} from '@/lib/site'
+export const metadata={title:'Products'}
+export default function Page(){return <PolicyPage eyebrow="Products" title="Community Intelligence Products" intro="Tools, research and services for organisations that want to understand online communities more clearly."><h2>Community Intelligence Platform</h2><p>Explore community conversations, competitors and market signals through The Redditrepreneur platform.</p><p><a className="button" href={site.app}>Explore the Platform</a></p><h2>Community Intelligence Audit</h2><p>A focused analysis of the conversations shaping your brand, category and competitive position.</p><p><a className="button" href={site.audit}>Learn About the Audit</a></p><h2>Research and resources</h2><p>Browse the latest research, frameworks, Scorecards and glossary through this publication.</p></PolicyPage>}

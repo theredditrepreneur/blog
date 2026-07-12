@@ -1,0 +1,17 @@
+node_modules/
+.next/
+.vercel/
+.sanity/
+public/pagefind/
+coverage/
+reports/generated/
+.env
+.env.local
+.env.*.local
+!.env.example
+*.log
+*.tsbuildinfo
+migration-assets/
+source-assets/
+Thumbs.db
+.DS_Store

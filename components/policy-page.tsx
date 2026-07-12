@@ -1,0 +1,1 @@
+export function PolicyPage({eyebrow,title,intro,children}:{eyebrow:string,title:string,intro:string,children:React.ReactNode}){return <><header className="page-hero shell"><div className="eyebrow">{eyebrow}</div><h1>{title}</h1><p>{intro}</p></header><div className="policy shell">{children}</div></>}

@@ -1,0 +1,49 @@
+{
+  "name": "redditrepreneur-research-platform",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node ./node_modules/next/dist/bin/next dev",
+    "build": "node ./node_modules/next/dist/bin/next build",
+    "start": "node ./node_modules/next/dist/bin/next start",
+    "lint": "node ./node_modules/eslint/bin/eslint.js .",
+    "typecheck": "node ./node_modules/typescript/bin/tsc --noEmit",
+    "test": "node ./node_modules/vitest/vitest.mjs run",
+    "ghost:audit": "node ./node_modules/tsx/dist/cli.mjs scripts/ghost/audit.ts",
+    "ghost:dry-run": "node ./node_modules/tsx/dist/cli.mjs scripts/ghost/import.ts --dry-run",
+    "ghost:import": "node ./node_modules/tsx/dist/cli.mjs scripts/ghost/import.ts",
+    "ghost:verify": "node ./node_modules/tsx/dist/cli.mjs scripts/ghost/verify.ts",
+    "ghost:images": "node ./node_modules/tsx/dist/cli.mjs scripts/ghost/images.ts",
+    "search:index": "node ./node_modules/pagefind/lib/runner/bin.cjs --site .next/server/app --output-path public/pagefind"
+  },
+  "dependencies": {
+    "@portabletext/react": "latest",
+    "@sanity/client": "latest",
+    "@sanity/image-url": "latest",
+    "@sanity/vision": "latest",
+    "isomorphic-dompurify": "latest",
+    "next": "latest",
+    "next-sanity": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "reading-time": "latest",
+    "sanity": "latest",
+    "schema-dts": "latest",
+    "zod": "latest"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "latest",
+    "@eslint/eslintrc": "latest",
+    "@playwright/test": "latest",
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "eslint": "latest",
+    "eslint-config-next": "latest",
+    "pagefind": "latest",
+    "tsx": "latest",
+    "typescript": "latest",
+    "vitest": "latest"
+  }
+}
