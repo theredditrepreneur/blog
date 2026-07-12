@@ -3,6 +3,7 @@ import {Header} from '@/components/header'
 import {Footer} from '@/components/footer'
 import {site} from '@/lib/site'
 import './globals.css'
+import './polish.css'
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url), title: {default: site.name, template: `%s | ${site.shortName}`}, description: site.description,
