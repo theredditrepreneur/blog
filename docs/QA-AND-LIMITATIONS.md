@@ -22,4 +22,13 @@
 - Complete real Chrome, Safari and Firefox checks on the hosted preview.
 - Run Lighthouse and automated WCAG checks on the hosted preview.
 
-Production remains blocked until Sanity, GitHub and Vercel authentication is completed and the preview is approved.
+## Connected development services
+
+- Sanity project: `zoust8g9`, dataset: `development`.
+- Sanity development import: 30 documents, 27 attached cover images and the approved founder image.
+- Sanity schema validation: no error-level failures.
+- Protected Vercel preview: `https://reddit-research-platform-i9j5rb263-the-redditrepreneur.vercel.app`.
+- Hosted homepage, `robots.txt` and `rss.xml` return HTTP 200 through authenticated preview verification.
+- Vercel applies `X-Robots-Tag: noindex` to the protected preview.
+
+Production remains blocked until editorial review, legal approval, preview approval and explicit domain-cutover approval.

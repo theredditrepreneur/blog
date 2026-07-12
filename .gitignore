@@ -15,3 +15,5 @@ migration-assets/
 source-assets/
 Thumbs.db
 .DS_Store
+.vercel
+.env*
