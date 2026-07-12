@@ -26,10 +26,28 @@ const curated: ContentItem[] = [
 
 const labels:Record<string,ContentType>={article:'Article',researchReport:'Research',scorecard:'Scorecard',caseStudy:'Case Study',framework:'Framework',benchmark:'Benchmark',weekly:'Weekly',indexIssue:'Index',page:'Article',newsBrief:'Article'}
 const curatedBySlug=new Map(curated.map(x=>[x.slug,x]))
+const excerptDrafts:Record<string,string>={
+  'spacex-and-the-hype-hangover':'What SpaceX reveals about the gap between intense community anticipation, lived experience and the trust left behind when hype begins to fade.',
+  'why-british-people-are-flocking-to-paris-for-fete-de-la-musique':'How shared experience, community storytelling and social proof are turning a Paris music festival into a powerful cross-border cultural draw.',
+  'the-world-cup-is-the-greatest-community-event-on-earth':'Why the World Cup demonstrates the extraordinary power of shared identity, ritual and participation to unite communities at global scale.',
+  'apple-the-trust-vs-excitement-gap':'An analysis of the gap between Apple’s enduring community trust and the changing level of excitement surrounding its products and announcements.',
+  'the-rise-of-tiktok-shop-how-communities-are-creating-a-new-era-of-commerce':'How TikTok Shop shows communities moving from product discovery and validation to participation in a new form of community-led commerce.',
+  'the-interpretation-economy-why-authority-belongs-to-those-who-help-others-understand-reality':'Why authority increasingly belongs to people and communities that make complex events understandable, useful and relevant to others.',
+  'reddit-just-launched-community-intelligence-tools-heres-what-they-cant-do':'What Reddit’s new intelligence tools reveal about the value of community data, and where software still requires human context and interpretation.',
+  'metas-ai-search-is-another-signal-that-community-intelligence-is-becoming-essential':'Why Meta’s move into AI search strengthens the case for understanding the community conversations that influence discovery and trust.',
+  'gen-z-isnt-leaving-search-theyre-redefining-it':'How Gen Z is reshaping search through communities, creators and trusted interpretation rather than abandoning search altogether.',
+  'community-intelligence-weekly-reddits-new-community-intelligence-tools-gen-zs-search-shift-and-the-rise-of-community-commerce':'This week: Reddit’s intelligence tools, Gen Z’s changing discovery behaviour and the rise of commerce shaped by community trust.',
+  'google-just-brought-communities-into-ai-search-heres-why-it-matters':'Why Google’s integration of community perspectives into AI search changes how brands earn visibility, authority and trust.',
+  'gta-6-the-weight-of-expectation':'What the anticipation surrounding GTA 6 reveals about Expectation Gravity, community identity and the pressure placed on a cultural release.',
+  'the-community-intelligence-convergence-of-meta-reddit-and-google':'How Meta, Reddit and Google are converging around community signals, and what that shift means for discovery and brand intelligence.',
+  'why-cernuccis-pop-up-was-more-valuable-than-the-sales':'Why Cernucci’s pop-up created value beyond transactions by strengthening belonging, cultural visibility and community validation.',
+  'the-post-gummysearch-playbook':'What the end of GummySearch signals about the next era of Reddit research, community evidence and competitive intelligence.',
+  'the-death-of-social-listening-why-brands-are-switching-to-community-intelligence':'Why brands need context, belief and trusted community interpretation in addition to conventional mention and sentiment monitoring.',
+}
 const removeWordHyphens=(value:string)=>value.replace(/([A-Za-z])-([A-Za-z])/g,'$1 $2')
 export const content:ContentItem[]=(migrated as Array<{title:string;slug:string;type:string;excerpt:string;date:string;topic:string}>).filter(x=>x.type!=='page').map(x=>{
   const item=(curatedBySlug.get(x.slug)||{...x,type:labels[x.type]||'Article'}) as ContentItem
-  return {...item,title:removeWordHyphens(item.title),excerpt:removeWordHyphens(item.excerpt),topic:item.topic?removeWordHyphens(item.topic):undefined}
+  return {...item,title:removeWordHyphens(item.title),excerpt:removeWordHyphens(excerptDrafts[item.slug]||item.excerpt),topic:item.topic?removeWordHyphens(item.topic):undefined}
 }).sort((a,b)=>b.date.localeCompare(a.date))
 
 export const frameworks = ['Community Gravity', 'Market Gravity', 'Trust Collapse', 'Narrative Compression', 'Belief Correction', 'Mission Premium', 'Hype Hangover', 'Expectation Gravity', 'Community Intelligence Stack', 'Share of Consensus']
