@@ -12,9 +12,12 @@ export type ContentItem = {
 
 import migrated from '@/data/migrated-content.json'
 
+export const latestWeeklySlug='community-intelligence-weekly-the-death-of-social-listening-b2b-saas-community-intelligence-benchmarks-and-more'
+export const latestWeeklyLegacySlug='community-intelligence-weekly-3'
+
 const curated: ContentItem[] = [
   {title: 'The Barclays Bank Community Intelligence Scorecard', slug: 'the-barclays-bank-community-intelligence-scorecard-says-expectations-are-even-higher-than-trust', type: 'Scorecard', excerpt: 'A structured analysis of how expectations, trust and community authority shape perceptions of Barclays Bank.', date: '2026-07-12', topic: 'Brand Intelligence'},
-  {title: 'Community Intelligence Weekly: The Death Of Social Listening, B2B SaaS Community Intelligence Benchmarks and More', slug: 'community-intelligence-weekly-3', type: 'Weekly', excerpt: 'This week: why social listening is giving way to Community Intelligence, new B2B SaaS benchmarks and the signals reshaping how brands understand communities.', date: '2026-07-08', topic: 'Community Strategy', image: '/community-intelligence-weekly.jpg'},
+  {title: 'Community Intelligence Weekly: The Death Of Social Listening, B2B SaaS Community Intelligence Benchmarks and More', slug: latestWeeklySlug, type: 'Weekly', excerpt: 'This week: why social listening is giving way to Community Intelligence, new B2B SaaS benchmarks and the signals reshaping how brands understand communities.', date: '2026-07-08', topic: 'Community Strategy', image: '/community-intelligence-weekly.jpg'},
   {title: 'What Streamer University Teaches Us About Community Intelligence', slug: 'what-streamer-university-teaches-us-about-community-intelligence', type: 'Case Study', excerpt: 'What a creator-led institution reveals about belonging, authority and community-led growth.', date: '2026-07-08', topic: 'Creator Economy'},
   {title: 'The Redditrepreneur Community Intelligence Scorecard: Gymshark', slug: 'the-redditrepreneur-community-intelligence-scorecard-gymshark', type: 'Scorecard', excerpt: 'How Gymshark performs across the five dimensions of Community Intelligence.', date: '2026-07-06', topic: 'Consumer Brands'},
   {title: 'The 2026 B2B SaaS Community Intelligence Benchmarks', slug: 'the-2026-b2b-saas-community-intelligence-benchmarks-tracking-share-of-consensus', type: 'Benchmark', excerpt: 'Tracking Share of Consensus and the community signals influencing B2B SaaS discovery.', date: '2026-07-03', topic: 'B2B SaaS'},
@@ -25,7 +28,7 @@ const curated: ContentItem[] = [
 ]
 
 const labels:Record<string,ContentType>={article:'Article',researchReport:'Research',scorecard:'Scorecard',caseStudy:'Case Study',framework:'Framework',benchmark:'Benchmark',weekly:'Weekly',indexIssue:'Index',page:'Article',newsBrief:'Article'}
-const curatedBySlug=new Map(curated.map(x=>[x.slug,x]))
+const curatedBySlug=new Map(curated.map(x=>[x.slug===latestWeeklySlug?latestWeeklyLegacySlug:x.slug,x]))
 const excerptDrafts:Record<string,string>={
   'spacex-and-the-hype-hangover':'What SpaceX reveals about the gap between intense community anticipation, lived experience and the trust left behind when hype begins to fade.',
   'why-british-people-are-flocking-to-paris-for-fete-de-la-musique':'How shared experience, community storytelling and social proof are turning a Paris music festival into a powerful cross-border cultural draw.',

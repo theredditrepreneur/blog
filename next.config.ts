@@ -26,6 +26,7 @@ const nextConfig: NextConfig = {
       {source:'/tag/case-studies',destination:'/case-studies',permanent:true},
       {source:'/tag/community-intelligence-weekly',destination:'/community-intelligence-weekly',permanent:true},
       {source:'/weekly',destination:'/community-intelligence-weekly',permanent:true},
+      {source:'/community-intelligence-weekly-3',destination:'/community-intelligence-weekly-the-death-of-social-listening-b2b-saas-community-intelligence-benchmarks-and-more',permanent:true},
     ]
   },
 }
