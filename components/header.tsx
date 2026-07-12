@@ -15,13 +15,14 @@ export function Header() {
       <div className="header-actions">
         <Link href="/search" aria-label="Search">Search</Link>
         <a href={site.main}>Main website</a>
+        <a href={site.app}>Platform</a>
         <a className="button small" href={site.newsletter}>Subscribe</a>
       </div>
       <details className="mobile-menu">
         <summary aria-label="Open navigation">Menu</summary>
         <nav aria-label="Mobile navigation">
           {nav.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}
-          <Link href="/search">Search</Link><a href={site.main}>Main website</a><a href={site.newsletter}>Subscribe</a>
+          <Link href="/search">Search</Link><a href={site.main}>Main website</a><a href={site.app}>Platform</a><a href={site.newsletter}>Subscribe</a>
         </nav>
       </details>
     </div>

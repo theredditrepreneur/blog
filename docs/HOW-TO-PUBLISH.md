@@ -2,44 +2,65 @@
 
 ## Before you begin
 
-Open the Sanity Studio and sign in. Choose the document type that describes the work; do not put every publication into Article.
+Open Sanity Studio and choose the document type that accurately describes the work. Do not place every publication in Article.
 
 ## Create an article
 
-Choose **Article**, enter the headline and generate the slug. Add a concise excerpt, author, publication date, topics, cover image and body. Select a primary CTA and related content where useful.
+Choose **Article**. Add the headline, slug, deliberate excerpt, author, publication date, topics, cover image, body, contextual CTA and related content.
 
 ## Create a Scorecard
 
-Choose **Community Intelligence Scorecard**. Enter the brand, overall score, tier, methodology version and confidence. Complete exactly five dimensions: Community Presence, Community Trust, Share of Consensus, Insight Responsiveness and Community Authority. Add the interpretation, evidence, key insight, recommendations and limitations. Editorial scores are not live SaaS results.
+Choose **Community Intelligence Scorecard**. Enter the verified brand, score, tier, methodology version, confidence, research period and limitations. Complete Community Presence, Community Trust, Share of Consensus, Insight Responsiveness and Community Authority. Never infer or silently alter a historical score.
 
-## Create a Framework
+## Create a case study
 
-Choose **Framework**. Add the approved canonical definition, why it matters, how it works, an example and when to use it. Keep **Created by The Redditrepreneur** selected only for an original approved framework.
+Choose **Case Study**. Explain what happened, the community dynamics, the Community Intelligence lesson, the applicable framework and the business implication. State important limitations.
+
+## Create a framework
+
+Choose **Framework**. Add the approved canonical definition, why it matters, how it works, an example and when to use it. Keep **Created by The Redditrepreneur** selected only for an original framework. If the canonical page is on the Knowledge Base, link to it and avoid publishing an identical full copy without an approved canonical strategy.
 
 ## Create a glossary term
 
-Choose **Glossary Entry**. Add one concise answer followed by the full definition, why it matters, example, related terms, frameworks and further reading. Search for an existing entry before creating one.
+Choose **Glossary Entry**. Search for an existing entry first. Add a concise definition, full definition, why it matters, example, related terms, related frameworks and further reading.
 
-## Create a Weekly issue
+## Create a Community Intelligence Weekly issue
 
-Choose **Community Intelligence Weekly**. Confirm the next issue number, date and cover. Complete Headlines, Deep Dive, Community Intelligence Insight, Research Radar, Opportunity of the Week and What I’m Watching.
+Choose **Community Intelligence Weekly**. Add the historical issue number, date, cover and summary. Complete Introduction, This Week’s Headlines, Deep Dive, Community Intelligence Insight, Research Radar, Opportunity of the Week and What I’m Watching. Do not fill a missing issue number or renumber an existing issue.
 
-## Images and alt text
+## Covers and alt text
 
-Upload the original image and enable the crop hotspot if needed. Alt text should describe the meaningful visual content, not repeat the filename or add keywords. Use an empty alt only for a genuinely decorative image. Never upscale a small source or replace an approved logo/founder image.
+Upload the original cover, set its crop hotspot and add meaningful alt text. Describe the useful visual information rather than the filename. Use empty alt only for genuinely decorative imagery. Never replace the approved logo or alter the founder’s likeness.
 
-## Relationships and SEO
+## Excerpts
 
-Select manual related content when there is an intentional reading journey. Add an SEO title only when the display headline is unsuitable for search. Keep it concise. Write an accurate meta description that states what the reader will learn; do not fabricate findings.
+Write a complete editorial summary. It must not end mid-sentence, repeat the headline, include an editor’s note or copy an arbitrary opening fragment. Keep it clear enough to explain why the piece matters.
 
-## Preview, schedule and publish
+## SEO and related content
 
-Save the document as a draft and use Preview. Check desktop and mobile layout, links, images, tables, sources and CTA. Use Sanity’s scheduling feature when available to the project plan, or publish manually at the agreed time. Publishing triggers the public-site refresh.
+Add an accurate SEO description and use the normal route as canonical unless an approved external canonical applies. Manual related-content selections override automatic recommendations. Choose relationships that share a topic, framework, glossary term, brand or clear editorial reading journey.
 
-## Corrections and unpublishing
+## Preview and publish
 
-For a material correction, update the content, set the updated date and add a visible correction note. Do not silently change a historical score, quotation, conclusion or publication date. Unpublish only after checking redirects and related links.
+Save as a draft and open the preview. Check desktop and mobile layout, headings, links, covers, tables, sources, CTA and related content. Preview URLs must remain `noindex, nofollow`. Schedule through Sanity only when scheduling is available; otherwise publish at the agreed time after approval.
 
-## Redirects and homepage features
+## Corrections, unpublishing and redirects
 
-Record every changed public path in the redirect map and test it before release. Never redirect unrelated content to the homepage. To feature a publication, enable **Featured** and confirm only the intended item is selected for the homepage position.
+For a material correction, preserve the original publication date, set the updated date and add a visible correction note where appropriate. Do not silently change scores, quotations or conclusions. Before unpublishing, check incoming links and add a relevant permanent redirect when a true replacement exists. Never redirect unrelated missing content to the homepage.
+
+## Homepage and navigation
+
+Use **Site Settings** to manage the featured story, selected homepage collections, newsletter URL, service URLs and navigation. The newest publication may be selected automatically only when that is the approved editorial rule.
+
+## Final checklist
+
+1. Correct content type and slug.
+2. Complete excerpt, author and dates.
+3. Cover and alt text.
+4. Structured template fields.
+5. Topics, frameworks and related content.
+6. SEO description and canonical.
+7. Contextual CTA.
+8. Desktop and mobile preview.
+9. Links, headings, tables and sources tested.
+10. Editorial approval before publishing.

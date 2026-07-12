@@ -1,3 +1,3 @@
 import {CollectionPage} from '@/components/collection-page'
-export const metadata={title:'Frameworks'}
-export default function Page(){return <CollectionPage eyebrow="Original thinking" title="Frameworks" intro="Canonical models created by The Redditrepreneur to explain how community influence, trust, belief and consensus move." types={['Framework']}/>}
+export const metadata={title:'Community Intelligence Frameworks',description:'Explore original Community Intelligence frameworks explaining how community influence, trust, belief and consensus move.',alternates:{canonical:'/frameworks'}}
+export default function Page(){return <CollectionPage eyebrow="Original thinking" title="Frameworks" intro="Canonical models created by The Redditrepreneur to explain how community influence, trust, belief and consensus move." types={['Framework']} explainerHref="https://research.theredditrepreneur.com" explainerLabel="Visit the Community Intelligence Knowledge Base" collectionNote="The Knowledge Base remains the canonical home for definitions not yet published in full on this platform."/>}

@@ -1,3 +1,3 @@
 import {CollectionPage} from '@/components/collection-page'
-export const metadata={title:'Case Studies'}
-export default function Page(){return <CollectionPage eyebrow="Applied intelligence" title="Case Studies" intro="What brands, products and cultural events reveal about community behaviour, trust and competitive advantage." types={['Case Study']}/>}
+export const metadata={title:'Community Intelligence Case Studies',description:'Case studies showing how community behaviour, trust and authority shape brands, products and cultural events.',alternates:{canonical:'/case-studies'}}
+export default function Page(){return <CollectionPage eyebrow="Applied intelligence" title="Case Studies" intro="What brands, products and cultural events reveal about community behaviour, trust and competitive advantage." types={['Case Study']} collectionNote="Each case study explains what happened, the Community Intelligence lesson and the framework that makes the pattern useful."/>}

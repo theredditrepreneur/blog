@@ -1,0 +1,41 @@
+export type GlossaryTerm={term:string;definition:string;topic:string;related:string[]}
+
+const glossarySource:Array<[string,string,string,string[]]>=[
+['AI Citation','A reference or link used by an AI system to identify the source supporting an answer.','AI Search',['AI Search','Community Authority']],
+['AI Search','The use of generative or answer-based systems to discover, compare and understand information.','AI Search',['AI Citation','Community Discovery']],
+['Belief Correction','The process through which credible evidence or trusted interpretation changes an established community belief.','Frameworks',['Narrative Compression','Trust Collapse']],
+['Brand Monitoring','The structured observation of brand mentions, themes and changes across relevant channels.','Brands',['Brand Perception','Social Monitoring']],
+['Brand Perception','The collection of beliefs, expectations and associations people hold about a brand.','Brands',['Community Trust','Brand Monitoring']],
+['Community Authority','The degree to which a community is trusted to interpret information and guide decisions.','Measurement',['Community Trust','Community Influence']],
+['Community Commerce','Commercial discovery and decision-making shaped by community discussion, validation and recommendation.','Commerce',['Community Validation','Share of Consensus']],
+['Community Discovery','The process of finding products, ideas or information through trusted community participation and content.','Discovery',['AI Search','Community Influence']],
+['Community Gravity','The force that attracts people to a community, encourages contribution and increases the value of returning.','Frameworks',['Market Gravity','Community Health']],
+['Community Health','The quality and sustainability of participation, trust, safety and value within a community.','Communities',['Community Trust','Community Presence']],
+['Community Influence','The capacity of community conversations to affect beliefs, behaviour and market outcomes.','Communities',['Community Authority','Community Signals']],
+['Community Intelligence','The practice of analysing authentic online conversations to uncover the beliefs, behaviours and signals influencing markets.','Core',['Community Signals','Community Intelligence Platform']],
+['Community Intelligence Audit','A focused assessment of the community forces shaping a brand, competitor or market.','Services',['Community Intelligence Scorecard','Brand Perception']],
+['Community Intelligence Platform','Software that helps organisations explore, organise and interpret relevant community conversations.','Platform',['Community Intelligence','Community Signals']],
+['Community Intelligence Score','An editorial measure summarising performance across declared Community Intelligence dimensions and evidence.','Measurement',['Community Intelligence Scorecard','Community Presence']],
+['Community Intelligence Scorecard','The Redditrepreneur framework for assessing Community Presence, Community Trust, Share of Consensus, Insight Responsiveness and Community Authority.','Measurement',['Community Intelligence Score','Share of Consensus']],
+['Community Intelligence Weekly','The Redditrepreneur publication tracking the signals, research and opportunities shaping community-led markets.','Publication',['Community Signals','Market Research']],
+['Community Presence','The strength and relevance of a brand or subject within the communities that matter to its market.','Measurement',['Community Authority','Community Trust']],
+['Community Signals','Observable patterns in conversation, behaviour, language and recommendation that indicate meaningful change.','Core',['Community Intelligence','Community Influence']],
+['Community Trust','The confidence people place in a community, its contributors and the information exchanged within it.','Measurement',['Community Authority','Trust Collapse']],
+['Community Validation','The reinforcement of a choice, belief or identity through credible community approval and shared experience.','Communities',['Community Commerce','Share of Consensus']],
+['Expectation Gravity','The force created when accumulated expectations pull interpretation of an experience towards a predicted outcome.','Frameworks',['Hype Hangover','Brand Perception']],
+['Hype Hangover','The loss of trust or enthusiasm that follows when intense anticipation is not matched by the experience delivered.','Frameworks',['Expectation Gravity','Trust Collapse']],
+['Insight Responsiveness','The ability to recognise, interpret and act appropriately on meaningful community insight.','Measurement',['Community Signals','Community Intelligence Scorecard']],
+['Market Gravity','The force through which attention, credibility and participation accumulate around a market position or category.','Frameworks',['Community Gravity','Community Influence']],
+['Market Research','The systematic study of customers, competitors and markets to support decisions.','Research',['Voice of Customer','Community Intelligence']],
+['Mission Premium','The additional trust or preference a community may grant when a brand’s mission is credible, relevant and consistently demonstrated.','Frameworks',['Community Trust','Brand Perception']],
+['Narrative Compression','The reduction of complex events into a simple, repeatable community story that shapes interpretation.','Frameworks',['Belief Correction','Community Signals']],
+['Share of Consensus','A measure of how strongly a brand or idea appears within trusted community recommendations.','Measurement',['Share of Voice','Community Validation']],
+['Share of Voice','The proportion of relevant conversation associated with a brand compared with alternatives.','Measurement',['Share of Consensus','Brand Monitoring']],
+['Social Listening','The collection and analysis of online conversation to identify mentions, sentiment and themes.','Research',['Social Monitoring','Community Intelligence']],
+['Social Monitoring','The observation of social channels for mentions, messages and emerging activity.','Research',['Social Listening','Brand Monitoring']],
+['Trust Collapse','A rapid loss of confidence that occurs when evidence, experience or inconsistency undermines an accepted belief.','Frameworks',['Community Trust','Belief Correction']],
+['Voice of Customer','Research that captures customer needs, experiences, language and expectations to inform decisions.','Research',['Market Research','Community Intelligence']],
+]
+export const glossaryTerms:GlossaryTerm[]=glossarySource.map(([term,definition,topic,related])=>({term,definition,topic,related}))
+
+export const glossarySlug=(term:string)=>term.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')
