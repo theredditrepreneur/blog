@@ -26,3 +26,9 @@
 .search-options{display:flex;gap:20px;flex-wrap:wrap;margin:25px 0}.search-options label{display:grid;gap:6px;font-weight:800}.search-options select{min-width:180px;min-height:46px;padding:8px;border:1px solid var(--navy);background:white;font:inherit}.results-heading{font:500 2rem var(--font-serif),serif;color:var(--navy);margin-top:45px}.search-results h3{font:500 1.8rem var(--font-serif),serif;margin:0}.search-results mark{background:#ffe0d2;color:inherit}.newsletter-links{display:flex;gap:18px;flex-wrap:wrap;margin-top:20px}.newsletter-links a{color:white;font-weight:800}.newsletter label span{font-weight:400;color:#c9d4df}.newsletter small a{color:white}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 .weekly-image{width:100%;height:auto;box-shadow:18px 18px 0 var(--navy)}
+.featured-card{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);max-width:1080px;margin-inline:auto}
+.featured-card .card-art{height:340px;min-height:0;align-self:center;background:white}
+.featured-card .card-art img{object-fit:contain}
+.featured-card .card-copy{padding:38px}
+.featured-card h3{font-size:clamp(1.9rem,3.2vw,2.75rem)}
+@media(max-width:700px){.featured-card{grid-template-columns:1fr}.featured-card .card-art{height:220px;min-height:0}.featured-card .card-copy{padding:26px}}
