@@ -1,0 +1,2 @@
+import {PolicyPage} from '@/components/policy-page'
+export default function Page(){return <PolicyPage eyebrow="Legal" title="Cookie Policy" intro="The current cookie position for the research platform."><p>Analytics are disabled by default through <code>NEXT_PUBLIC_POSTHOG_ENABLED=false</code>. When disabled, the platform does not load PostHog or set its analytics cookies.</p><p>Any future optional analytics must be consent-controlled where required. This operational summary requires legal review before production launch.</p></PolicyPage>}

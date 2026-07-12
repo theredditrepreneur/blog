@@ -1,0 +1,5 @@
+import Image from 'next/image'
+import {ContentCard} from '@/components/cards'
+import {content} from '@/lib/content'
+export const metadata={title:'Tonte Bo Douglas'}
+export default function Page(){return <><header className="author-hero shell"><Image src="/tonte-bo-douglas.jpg" width={360} height={360} alt="Tonte Bo Douglas" priority/><div><div className="eyebrow">Founder and author</div><h1>Tonte Bo Douglas</h1><p className="dek">Founder of The Redditrepreneur. Community Intelligence researcher and strategist.</p><p>Tonte studies how authentic online conversations shape customer trust, product discovery, brand perception and market behaviour. His work turns complex community signals into practical frameworks and strategic decisions.</p><div className="actions"><a className="text-link" href="https://www.linkedin.com/company/the-redditrepreneur/">LinkedIn</a><a className="text-link" href="https://x.com/Redditrepreneur">X</a></div></div></header><section className="section shell"><div className="section-heading"><h2>Latest work</h2></div><div className="card-grid">{content.slice(0,6).map(x=><ContentCard item={x} key={x.slug}/>)}</div></section></>}

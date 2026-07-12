@@ -1,0 +1,5 @@
+current_url,new_url,action,redirect,canonical,migration_status,manual_review_required
+https://blog.theredditrepreneur.com/about/,https://blog.theredditrepreneur.com/about/,preserve,,self,planned,false
+https://blog.theredditrepreneur.com/glossary/,https://blog.theredditrepreneur.com/glossary/,preserve,,self,planned,false
+https://blog.theredditrepreneur.com/products/,https://blog.theredditrepreneur.com/products/,preserve,,self,planned,false
+https://blog.theredditrepreneur.com/rss/,https://blog.theredditrepreneur.com/rss.xml,redirect,301,/rss.xml,planned,false
