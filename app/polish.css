@@ -1,6 +1,6 @@
 .card-art{position:relative;overflow:hidden;text-decoration:none}
-.card-art.has-image{padding:0;background:var(--surface)}
-.card-art img{object-fit:cover}
+.card-art.has-image{height:auto;aspect-ratio:16/9;padding:0;background:white}
+.card-art img{object-fit:contain}
 .article-image{width:min(920px,calc(100% - 40px))}
 .article-image img{max-height:540px;object-fit:contain;background:var(--surface)}
 .share-shell{max-width:900px}
