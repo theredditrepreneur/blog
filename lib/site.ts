@@ -11,7 +11,7 @@ export const site = {
 }
 
 export const nav = [
-  ['Research', '/research'], ['Scorecards', '/scorecards'], ['Case Studies', '/case-studies'],
+  ['Home', '/'], ['Research', '/research'], ['Scorecards', '/scorecards'], ['Case Studies', '/case-studies'],
   ['Frameworks', '/frameworks'], ['Benchmarks', '/benchmarks'], ['Glossary', '/glossary'],
   ['Weekly', '/community-intelligence-weekly'],
 ] as const

@@ -26,7 +26,11 @@ const curated: ContentItem[] = [
 
 const labels:Record<string,ContentType>={article:'Article',researchReport:'Research',scorecard:'Scorecard',caseStudy:'Case Study',framework:'Framework',benchmark:'Benchmark',weekly:'Weekly',indexIssue:'Index',page:'Article',newsBrief:'Article'}
 const curatedBySlug=new Map(curated.map(x=>[x.slug,x]))
-export const content:ContentItem[]=(migrated as Array<{title:string;slug:string;type:string;excerpt:string;date:string;topic:string}>).filter(x=>x.type!=='page').map(x=>curatedBySlug.get(x.slug)||{...x,type:labels[x.type]||'Article'}).sort((a,b)=>b.date.localeCompare(a.date))
+const removeWordHyphens=(value:string)=>value.replace(/([A-Za-z])-([A-Za-z])/g,'$1 $2')
+export const content:ContentItem[]=(migrated as Array<{title:string;slug:string;type:string;excerpt:string;date:string;topic:string}>).filter(x=>x.type!=='page').map(x=>{
+  const item=(curatedBySlug.get(x.slug)||{...x,type:labels[x.type]||'Article'}) as ContentItem
+  return {...item,title:removeWordHyphens(item.title),excerpt:removeWordHyphens(item.excerpt),topic:item.topic?removeWordHyphens(item.topic):undefined}
+}).sort((a,b)=>b.date.localeCompare(a.date))
 
 export const frameworks = ['Community Gravity', 'Market Gravity', 'Trust Collapse', 'Narrative Compression', 'Belief Correction', 'Mission Premium', 'Hype Hangover', 'Expectation Gravity', 'Community Intelligence Stack', 'Share of Consensus']
 export const topics = ['AI Search', 'Brand Intelligence', 'Customer Insights', 'Community Strategy', 'Reddit', 'Creator Economy', 'B2B SaaS', 'Consumer Brands']
