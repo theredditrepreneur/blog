@@ -26,6 +26,11 @@ const nextConfig: NextConfig = {
       {source:'/tag/case-studies',destination:'/case-studies',permanent:true},
       {source:'/tag/community-intelligence-weekly',destination:'/community-intelligence-weekly',permanent:true},
       {source:'/weekly',destination:'/community-intelligence-weekly',permanent:true},
+      {source:'/researchs',destination:'/research',permanent:true},
+      {source:'/weeklys',destination:'/community-intelligence-weekly',permanent:true},
+      {source:'/case-studys',destination:'/case-studies',permanent:true},
+      {source:'/articles',destination:'/research',permanent:true},
+      {source:'/indexs',destination:'/community-intelligence-index',permanent:true},
       {source:'/community-intelligence-weekly-3',destination:'/community-intelligence-weekly-the-death-of-social-listening-b2b-saas-community-intelligence-benchmarks-and-more',permanent:true},
     ]
   },
