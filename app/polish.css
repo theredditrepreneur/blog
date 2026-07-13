@@ -59,7 +59,8 @@
 }
 .article-subtitle{font:500 clamp(1.7rem,3vw,2.5rem)/1.2 var(--font-serif),Georgia,serif;color:var(--navy);margin:-8px 0 22px}
 .editors-note{background:#fff3ec;border-left:5px solid var(--orange);padding:24px;font-family:var(--font-sans);font-size:1rem;line-height:1.65}
-.formula-callout{margin:42px 0;padding:36px;background:var(--navy);color:white;border-left:7px solid var(--orange);font-family:var(--font-sans)}
+.article-layout .prose aside{position:static;top:auto;align-self:auto}
+.formula-callout{display:block;margin:42px 0;padding:36px;background:var(--navy);color:white;border-top:0;border-left:7px solid var(--orange);font-size:inherit;font-family:var(--font-sans)}
 .formula-callout h3{font:600 clamp(1.8rem,3vw,2.5rem)/1.1 var(--font-serif),Georgia,serif;margin:0 0 10px;color:white}
 .formula-callout>p{margin:0 0 22px;color:#dce6ef}
 .formula-callout ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 24px;list-style:none;padding:0;margin:0}
