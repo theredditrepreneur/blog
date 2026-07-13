@@ -4,9 +4,9 @@ import {describe,expect,it} from 'vitest'
 import {headOfCommunityIntelligenceBody,headOfCommunityIntelligenceDraft} from '../lib/drafts/head-of-community-intelligence'
 import migrated from '../data/migrated-content.json'
 
-describe('Head of Community Intelligence article draft',()=>{
-  it('has a unique slug and remains explicitly marked as a draft',()=>{
-    expect(headOfCommunityIntelligenceDraft.draft).toBe(true)
+describe('Head of Community Intelligence article',()=>{
+  it('has a unique slug and is marked for publication',()=>{
+    expect(headOfCommunityIntelligenceDraft.draft).toBe(false)
     expect(headOfCommunityIntelligenceDraft.readingMinutes).toBe(5)
     expect(headOfCommunityIntelligenceDraft.slug).toBe('why-every-company-will-eventually-hire-a-head-of-community-intelligence')
     expect(migrated.some(item=>item.slug===headOfCommunityIntelligenceDraft.slug)).toBe(false)

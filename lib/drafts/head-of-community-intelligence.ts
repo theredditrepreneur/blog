@@ -11,7 +11,7 @@ export const headOfCommunityIntelligenceDraft:ContentItem={
   imageAlt:'Why Every Company Will Eventually Hire a Head of Community Intelligence article cover from The Redditrepreneur',
   seoTitle:'Why Companies Will Hire a Head of Community Intelligence',
   metaDescription:'Discover why Head of Community Intelligence will become a vital leadership role as online communities increasingly shape customer trust, product decisions, brand perception and AI search.',
-  draft:true,
+  draft:false,
   readingMinutes:5,
 }
 
