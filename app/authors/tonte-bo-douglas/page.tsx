@@ -1,6 +1,19 @@
 import Image from 'next/image'
 import {ContentCard} from '@/components/cards'
 import {content} from '@/lib/content'
+import {withCoverImages} from '@/lib/covers'
 import {site} from '@/lib/site'
+
 export const metadata={title:'Tonte Bo Douglas — Founder and Community Intelligence Researcher',description:'Tonte Bo Douglas is the founder of The Redditrepreneur and a Community Intelligence researcher and strategist.',alternates:{canonical:'/authors/tonte-bo-douglas'}}
-export default function Page(){const groups=[['Latest articles',content.filter(x=>!['Scorecard','Framework','Weekly'].includes(x.type)).slice(0,3)],['Scorecards',content.filter(x=>x.type==='Scorecard')],['Frameworks',content.filter(x=>x.type==='Framework')],['Community Intelligence Weekly',content.filter(x=>x.type==='Weekly')]] as const;return <><header className="author-hero shell"><Image src="/tonte-bo-douglas.jpg" width={360} height={360} alt="Tonte Bo Douglas" priority/><div><div className="eyebrow">Founder and author</div><h1>Tonte Bo Douglas</h1><p className="dek">Founder of The Redditrepreneur. Community Intelligence researcher and strategist.</p><p>Tonte studies how authentic online conversations shape customer trust, product discovery, brand perception and market behaviour. His work turns complex community signals into practical frameworks and strategic decisions.</p><p><strong>Areas of expertise:</strong> Community Intelligence, community research, brand perception, AI search, Reddit, trust and digital culture.</p><div className="actions"><a className="text-link" href={site.main}>Main website</a><a className="text-link" href={site.app}>Platform</a><a className="text-link" href="https://www.linkedin.com/company/the-redditrepreneur/">LinkedIn</a><a className="text-link" href="https://x.com/Redditrepreneur">X</a><a className="text-link" href="https://www.youtube.com/@theredditrepreneur">YouTube</a><a className="text-link" href="https://www.tiktok.com/@redditrepreneur">TikTok</a></div></div></header>{groups.map(([title,items])=>items.length?<section className="section shell" key={title}><div className="section-heading"><h2>{title}</h2></div><div className="card-grid">{items.map(x=><ContentCard item={x} key={x.slug}/>)}</div></section>:null)}</>}
+
+export default async function Page(){
+  const illustrated=await withCoverImages(content)
+  const groups=[
+    ['Latest articles',illustrated.filter(x=>!['Scorecard','Framework','Weekly'].includes(x.type)).slice(0,3)],
+    ['Scorecards',illustrated.filter(x=>x.type==='Scorecard')],
+    ['Frameworks',illustrated.filter(x=>x.type==='Framework')],
+    ['Community Intelligence Weekly',illustrated.filter(x=>x.type==='Weekly')],
+  ] as const
+
+  return <><header className="author-hero shell"><Image src="/tonte-bo-douglas.jpg" width={360} height={360} alt="Tonte Bo Douglas" priority/><div><div className="eyebrow">Founder and author</div><h1>Tonte Bo Douglas</h1><p className="dek">Founder of The Redditrepreneur. Community Intelligence researcher and strategist.</p><p>Tonte studies how authentic online conversations shape customer trust, product discovery, brand perception and market behaviour. His work turns complex community signals into practical frameworks and strategic decisions.</p><p><strong>Areas of expertise:</strong> Community Intelligence, community research, brand perception, AI search, Reddit, trust and digital culture.</p><div className="actions"><a className="text-link" href={site.main}>Main website</a><a className="text-link" href={site.app}>Platform</a><a className="text-link" href="https://www.linkedin.com/company/the-redditrepreneur/">LinkedIn</a><a className="text-link" href="https://x.com/Redditrepreneur">X</a><a className="text-link" href="https://www.youtube.com/@theredditrepreneur">YouTube</a><a className="text-link" href="https://www.tiktok.com/@redditrepreneur">TikTok</a></div></div></header>{groups.map(([title,items])=>items.length?<section className="section shell" key={title}><div className="section-heading"><h2>{title}</h2></div><div className="card-grid">{items.map(x=><ContentCard item={x} key={x.slug}/>)}</div></section>:null)}</>
+}
