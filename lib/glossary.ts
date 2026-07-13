@@ -1,6 +1,7 @@
 export type GlossaryTerm={term:string;definition:string;topic:string;related:string[]}
 
 const glossarySource:Array<[string,string,string,string[]]>=[
+['AI Authority Formula',"The AI Authority Formula is The Redditrepreneur's framework for understanding the public evidence that influences whether AI systems recommend a brand.",'AI Search',['AI Search','Community Intelligence','Community Trust']],
 ['AI Citation','A reference or link used by an AI system to identify the source supporting an answer.','AI Search',['AI Search','Community Authority']],
 ['AI Search','The use of generative or answer-based systems to discover, compare and understand information.','AI Search',['AI Citation','Community Discovery']],
 ['Belief Correction','The process through which credible evidence or trusted interpretation changes an established community belief.','Frameworks',['Narrative Compression','Trust Collapse']],

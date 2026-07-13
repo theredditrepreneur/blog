@@ -8,6 +8,7 @@ export const site = {
   research: process.env.NEXT_PUBLIC_RESEARCH_URL || 'https://research.theredditrepreneur.com',
   newsletter: process.env.NEXT_PUBLIC_NEWSLETTER_URL || 'https://theredditrepreneur.substack.com/',
   audit: 'https://www.theredditrepreneur.com/services/community-intelligence-audit',
+  aiAuthorityAudit: 'https://www.theredditrepreneur.com/services/ai-authority-audit',
 }
 
 export const nav = [

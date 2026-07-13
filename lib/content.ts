@@ -7,6 +7,7 @@ export type ContentItem = {
   excerpt: string
   date: string
   image?: string
+  imageAlt?: string
   topic?: string
 }
 
@@ -16,6 +17,7 @@ export const latestWeeklySlug='community-intelligence-weekly-the-death-of-social
 export const latestWeeklyLegacySlug='community-intelligence-weekly-3'
 
 const curated: ContentItem[] = [
+  {title:'The AI Authority Formula',slug:'the-ai-authority-formula',type:'Article',excerpt:'AI does not invent trust. It interprets the public evidence surrounding a brand. The AI Authority Formula explains the six signals that shape whether AI systems recommend one company and ignore another.',date:'2026-07-13',topic:'AI Search',image:'/ai-authority-formula-cover.webp',imageAlt:'The AI Authority Formula showing Community Trust, Evidence Quality, Recommendation Frequency, Third Party Validation, Content Credibility and Expert Consensus'},
   {title: 'The Barclays Bank Community Intelligence Scorecard', slug: 'the-barclays-bank-community-intelligence-scorecard-says-expectations-are-even-higher-than-trust', type: 'Scorecard', excerpt: 'A structured analysis of how expectations, trust and community authority shape perceptions of Barclays Bank.', date: '2026-07-12', topic: 'Brand Intelligence'},
   {title: 'Community Intelligence Weekly: The Death Of Social Listening, B2B SaaS Community Intelligence Benchmarks and More', slug: latestWeeklySlug, type: 'Weekly', excerpt: 'This week: why social listening is giving way to Community Intelligence, new B2B SaaS benchmarks and the signals reshaping how brands understand communities.', date: '2026-07-08', topic: 'Community Strategy', image: '/community-intelligence-weekly.jpg'},
   {title: 'What Streamer University Teaches Us About Community Intelligence', slug: 'what-streamer-university-teaches-us-about-community-intelligence', type: 'Case Study', excerpt: 'What a creator-led institution reveals about belonging, authority and community-led growth.', date: '2026-07-08', topic: 'Creator Economy'},
@@ -48,10 +50,13 @@ const excerptDrafts:Record<string,string>={
   'the-death-of-social-listening-why-brands-are-switching-to-community-intelligence':'Why brands need context, belief and trusted community interpretation in addition to conventional mention and sentiment monitoring.',
 }
 const removeWordHyphens=(value:string)=>value.replace(/([A-Za-z])-([A-Za-z])/g,'$1 $2')
-export const content:ContentItem[]=(migrated as Array<{title:string;slug:string;type:string;excerpt:string;date:string;topic:string}>).filter(x=>x.type!=='page').map(x=>{
+const migratedItems=(migrated as Array<{title:string;slug:string;type:string;excerpt:string;date:string;topic:string}>).filter(x=>x.type!=='page').map(x=>{
   const item=(curatedBySlug.get(x.slug)||{...x,type:labels[x.type]||'Article'}) as ContentItem
   return {...item,title:removeWordHyphens(item.title),excerpt:removeWordHyphens(excerptDrafts[item.slug]||item.excerpt),topic:item.topic?removeWordHyphens(item.topic):undefined}
-}).sort((a,b)=>b.date.localeCompare(a.date))
+})
+const migratedSlugs=new Set((migrated as Array<{slug:string}>).map(item=>item.slug))
+const curatedExtras=curated.filter(item=>!migratedSlugs.has(item.slug===latestWeeklySlug?latestWeeklyLegacySlug:item.slug))
+export const content:ContentItem[]=[...migratedItems,...curatedExtras].sort((a,b)=>b.date.localeCompare(a.date))
 
 export const frameworks = ['Community Gravity', 'Market Gravity', 'Trust Collapse', 'Narrative Compression', 'Belief Correction', 'Mission Premium', 'Hype Hangover', 'Expectation Gravity', 'Community Intelligence Stack', 'Share of Consensus']
 export const topics = ['AI Search', 'Brand Intelligence', 'Customer Insights', 'Community Strategy', 'Reddit', 'Creator Economy', 'B2B SaaS', 'Consumer Brands']
