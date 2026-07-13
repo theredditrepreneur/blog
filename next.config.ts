@@ -19,7 +19,15 @@ const nextConfig: NextConfig = {
     }]
   },
   async redirects() {
-    return [{source: '/rss/', destination: '/rss.xml', permanent: true}]
+    return [
+      {source:'/rss/',destination:'/rss.xml',permanent:true},
+      {source:'/tag/frameworks',destination:'/frameworks',permanent:true},
+      {source:'/tag/reports',destination:'/research',permanent:true},
+      {source:'/tag/case-studies',destination:'/case-studies',permanent:true},
+      {source:'/tag/community-intelligence-weekly',destination:'/community-intelligence-weekly',permanent:true},
+      {source:'/weekly',destination:'/community-intelligence-weekly',permanent:true},
+      {source:'/community-intelligence-weekly-3',destination:'/community-intelligence-weekly-the-death-of-social-listening-b2b-saas-community-intelligence-benchmarks-and-more',permanent:true},
+    ]
   },
 }
 

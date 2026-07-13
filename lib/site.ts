@@ -7,7 +7,7 @@ export const site = {
   app: process.env.NEXT_PUBLIC_APP_URL || 'https://app.theredditrepreneur.com',
   research: process.env.NEXT_PUBLIC_RESEARCH_URL || 'https://research.theredditrepreneur.com',
   newsletter: process.env.NEXT_PUBLIC_NEWSLETTER_URL || 'https://theredditrepreneur.substack.com/',
-  audit: 'https://buy.stripe.com/28E4gA6PD5j6fbvgrbefC00',
+  audit: 'https://www.theredditrepreneur.com/services/community-intelligence-audit',
 }
 
 export const nav = [

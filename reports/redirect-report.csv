@@ -1,0 +1,8 @@
+old_url,new_url,status_code,reason,test_result
+/rss/,/rss.xml,308,Preserve legacy feed route,passed
+/tag/frameworks,/frameworks,308,Canonical frameworks archive,passed
+/tag/reports,/research,308,Canonical research archive,configured
+/tag/case-studies,/case-studies,308,Canonical case studies archive,configured
+/tag/community-intelligence-weekly,/community-intelligence-weekly,308,Canonical Weekly archive,configured
+/weekly,/community-intelligence-weekly,308,Preferred Weekly route,passed
+/about/,/about,308,Trailing-slash normalisation,passed

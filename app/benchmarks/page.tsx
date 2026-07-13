@@ -1,3 +1,3 @@
 import {CollectionPage} from '@/components/collection-page'
-export const metadata={title:'Benchmarks'}
-export default function Page(){return <CollectionPage eyebrow="Evidence" title="Benchmarks" intro="Comparable Community Intelligence measures with transparent samples, research periods, methodology and limitations." types={['Benchmark']}/>}
+export const metadata={title:'Community Intelligence Benchmarks',description:'Benchmark reports measuring community signals across declared periods, samples and methodologies.',alternates:{canonical:'/benchmarks'}}
+export default function Page(){return <CollectionPage eyebrow="Evidence" title="Benchmarks" intro="Benchmark reports identify comparable patterns in community presence, trust, discovery and consensus across a declared measurement period and sample." types={['Benchmark']} explainerHref="/research-methodology" explainerLabel="Read the research methodology" collectionNote="Every benchmark should disclose its measurement period, sample, methodology, key findings and limitations."/>}
