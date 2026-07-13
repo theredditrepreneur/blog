@@ -9,9 +9,14 @@ export type ContentItem = {
   image?: string
   imageAlt?: string
   topic?: string
+  seoTitle?: string
+  metaDescription?: string
+  draft?: boolean
+  readingMinutes?: number
 }
 
 import migrated from '@/data/migrated-content.json'
+import {headOfCommunityIntelligenceDraft} from '@/lib/drafts/head-of-community-intelligence'
 
 export const latestWeeklySlug='community-intelligence-weekly-the-death-of-social-listening-b2b-saas-community-intelligence-benchmarks-and-more'
 export const latestWeeklyLegacySlug='community-intelligence-weekly-3'
@@ -57,6 +62,8 @@ const migratedItems=(migrated as Array<{title:string;slug:string;type:string;exc
 const migratedSlugs=new Set((migrated as Array<{slug:string}>).map(item=>item.slug))
 const curatedExtras=curated.filter(item=>!migratedSlugs.has(item.slug===latestWeeklySlug?latestWeeklyLegacySlug:item.slug))
 export const content:ContentItem[]=[...migratedItems,...curatedExtras].sort((a,b)=>b.date.localeCompare(a.date))
+export const draftContent:ContentItem[]=[headOfCommunityIntelligenceDraft]
+export const allContent:ContentItem[]=[...content,...draftContent]
 
 export const frameworks = ['Community Gravity', 'Market Gravity', 'Trust Collapse', 'Narrative Compression', 'Belief Correction', 'Mission Premium', 'Hype Hangover', 'Expectation Gravity', 'Community Intelligence Stack', 'Share of Consensus']
 export const topics = ['AI Search', 'Brand Intelligence', 'Customer Insights', 'Community Strategy', 'Reddit', 'Creator Economy', 'B2B SaaS', 'Consumer Brands']
