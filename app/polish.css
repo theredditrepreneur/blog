@@ -12,7 +12,7 @@
 .share-status{grid-column:1/-1;margin:0;color:var(--muted);font-size:.85rem;min-height:1.4em}
 @media(max-width:700px){.article-image{width:calc(100% - 28px)}.share-post{grid-template-columns:1fr}.share-actions{justify-content:flex-start}.share-actions a,.share-actions button{flex:1 1 auto;text-align:center}}
 .filter-row button{cursor:pointer;min-height:46px}
-.result-count{color:var(--muted);font-size:.85rem;margin:-20px 0 28px}
+.result-count{color:var(--muted);font-size:.85rem;margin-top:-20px;margin-bottom:28px}
 .empty-state{border:1px solid var(--line);background:var(--surface);padding:34px}
 .empty-state h3{margin:0 0 8px;color:var(--navy)}
 .card-meta{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:var(--muted);font-size:.78rem;margin-bottom:14px}
@@ -72,3 +72,8 @@
 @media(max-width:700px){.formula-callout{padding:26px 22px}.formula-callout ul{grid-template-columns:1fr}.article-subtitle{font-size:1.55rem}}
 @media(min-width:701px) and (max-width:1050px){.article-layout{grid-template-columns:180px minmax(0,1fr);gap:40px}.prose blockquote{margin:2em 0;padding-left:25px}}
 @media(max-width:700px){.scorecard-summary{grid-template-columns:1fr}.score-total{min-height:260px;padding:30px}.scorecard-summary-copy{padding:30px}.scorecard-summary-copy dl{grid-template-columns:1fr}.scorecard-summary-copy h2{font-size:2.5rem}}
+
+/* Give editorial sections a calmer desktop gutter while retaining compact mobile spacing. */
+.shell{width:min(1120px,calc(100% - 40px))}
+footer{padding-inline:max(24px,calc((100% - 1120px)/2))}
+@media(max-width:700px){.shell{width:min(100% - 28px,1120px)}}
