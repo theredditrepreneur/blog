@@ -11,7 +11,7 @@ export const bookingComScorecardDraft:ContentItem={
   imageAlt:'Booking.com Community Intelligence Scorecard showing an overall score of 84 out of 100 from The Redditrepreneur',
   seoTitle:'Booking.com Community Intelligence Scorecard | The Redditrepreneur',
   metaDescription:'Booking.com scored 84/100 in The Redditrepreneur Community Intelligence Scorecard. Explore its strengths in trust and recommendation, plus opportunities around support, cancellations and pricing transparency.',
-  draft:true,
+  draft:false,
   readingMinutes:10,
   scorecard:{
     brandName:'Booking.com',
