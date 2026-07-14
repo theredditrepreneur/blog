@@ -4,9 +4,9 @@ import {describe,expect,it} from 'vitest'
 import {bookingComScorecardBody,bookingComScorecardDraft,bookingComScorecardRelated} from '../lib/drafts/booking-com-scorecard'
 import migrated from '../data/migrated-content.json'
 
-describe('Booking.com Community Intelligence Scorecard draft',()=>{
-  it('has a unique slug and remains explicitly marked as a draft',()=>{
-    expect(bookingComScorecardDraft.draft).toBe(true)
+describe('Booking.com Community Intelligence Scorecard',()=>{
+  it('has a unique slug and is marked for publication',()=>{
+    expect(bookingComScorecardDraft.draft).toBe(false)
     expect(bookingComScorecardDraft.slug).toBe('booking-com-community-intelligence-scorecard')
     expect(migrated.some(item=>item.slug===bookingComScorecardDraft.slug)).toBe(false)
   })
