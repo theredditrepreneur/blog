@@ -22,12 +22,18 @@ export type ContentItem = {
   slug: string
   type: ContentType
   excerpt: string
+  subtitle?: string
   date: string
   image?: string
   imageAlt?: string
+  imageWidth?: number
+  imageHeight?: number
   topic?: string
   seoTitle?: string
   metaDescription?: string
+  socialTitle?: string
+  socialDescription?: string
+  tags?: string[]
   draft?: boolean
   readingMinutes?: number
   scorecard?: ScorecardData
@@ -36,6 +42,7 @@ export type ContentItem = {
 import migrated from '@/data/migrated-content.json'
 import {headOfCommunityIntelligenceDraft} from '@/lib/drafts/head-of-community-intelligence'
 import {bookingComScorecardDraft} from '@/lib/drafts/booking-com-scorecard'
+import {redditAiSlopArticle} from '@/lib/articles/reddit-ai-slop'
 
 export const latestWeeklySlug='community-intelligence-weekly-the-death-of-social-listening-b2b-saas-community-intelligence-benchmarks-and-more'
 export const latestWeeklyLegacySlug='community-intelligence-weekly-3'
@@ -80,7 +87,7 @@ const migratedItems=(migrated as Array<{title:string;slug:string;type:string;exc
 })
 const migratedSlugs=new Set((migrated as Array<{slug:string}>).map(item=>item.slug))
 const curatedExtras=curated.filter(item=>!migratedSlugs.has(item.slug===latestWeeklySlug?latestWeeklyLegacySlug:item.slug))
-export const content:ContentItem[]=[...migratedItems,...curatedExtras,headOfCommunityIntelligenceDraft,bookingComScorecardDraft].sort((a,b)=>b.date.localeCompare(a.date))
+export const content:ContentItem[]=[...migratedItems,...curatedExtras,redditAiSlopArticle,headOfCommunityIntelligenceDraft,bookingComScorecardDraft].sort((a,b)=>b.date.localeCompare(a.date))
 export const draftContent:ContentItem[]=[]
 export const allContent:ContentItem[]=[...content,...draftContent]
 

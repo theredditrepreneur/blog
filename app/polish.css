@@ -73,6 +73,18 @@
 @media(min-width:701px) and (max-width:1050px){.article-layout{grid-template-columns:180px minmax(0,1fr);gap:40px}.prose blockquote{margin:2em 0;padding-left:25px}}
 @media(max-width:700px){.scorecard-summary{grid-template-columns:1fr}.score-total{min-height:260px;padding:30px}.scorecard-summary-copy{padding:30px}.scorecard-summary-copy dl{grid-template-columns:1fr}.scorecard-summary-copy h2{font-size:2.5rem}}
 
+.participation-callout{display:block;margin:42px 0;padding:30px 34px;background:var(--navy);color:white;border-top:0;border-left:7px solid var(--orange);font-family:var(--font-sans)}
+.participation-callout h3{margin:0 0 10px;color:white;font:600 clamp(1.55rem,3vw,2.15rem)/1.15 var(--font-serif),Georgia,serif}
+.participation-callout p{margin:0;color:#dce6ef;font-weight:800}
+.subtle-service-link{border-left:4px solid var(--orange);padding-left:18px;font-family:var(--font-sans);font-size:1rem}
+.reddit-authenticity-cta{display:block;border-top:0;border-left:7px solid var(--orange);background:var(--navy);color:white;padding:36px;margin:54px 0;font-family:var(--font-sans)}
+.reddit-authenticity-cta .eyebrow{color:var(--orange);margin-bottom:12px}
+.reddit-authenticity-cta h3{color:white;font-size:clamp(1.9rem,3.5vw,2.6rem);line-height:1.08}
+.reddit-authenticity-cta p{color:#dce6ef}
+.reddit-authenticity-cta .button{display:inline-block;margin-top:8px}
+.reddit-authenticity-cta small{display:block;margin-top:22px;color:#b8c7d6;font-size:.78rem;line-height:1.5}
+@media(max-width:700px){.participation-callout,.reddit-authenticity-cta{padding:26px 22px;margin-block:36px}}
+
 /* Give editorial sections a calmer desktop gutter while retaining compact mobile spacing. */
 .shell{width:min(1120px,calc(100% - 40px))}
 footer{padding-inline:max(24px,calc((100% - 1120px)/2))}

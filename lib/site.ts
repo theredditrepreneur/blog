@@ -9,6 +9,7 @@ export const site = {
   newsletter: process.env.NEXT_PUBLIC_NEWSLETTER_URL || 'https://theredditrepreneur.substack.com/',
   audit: 'https://www.theredditrepreneur.com/services/community-intelligence-audit',
   aiAuthorityAudit: 'https://www.theredditrepreneur.com/services/ai-authority-audit',
+  redditAuthenticityAudit: 'https://www.theredditrepreneur.com/services/reddit-authenticity-risk-audit',
 }
 
 export const nav = [
