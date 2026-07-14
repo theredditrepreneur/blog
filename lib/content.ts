@@ -1,5 +1,22 @@
 export type ContentType = 'Research' | 'Scorecard' | 'Case Study' | 'Framework' | 'Benchmark' | 'Weekly' | 'Index' | 'Article'
 
+export type ScorecardDimension = {
+  name: string
+  score: number
+  interpretation: string
+}
+
+export type ScorecardData = {
+  brandName: string
+  overallScore: number
+  grade: string
+  tier: string
+  dimensions: ScorecardDimension[]
+  keyInsight: string
+  primaryStrength: string
+  primaryRisk: string
+}
+
 export type ContentItem = {
   title: string
   slug: string
@@ -13,10 +30,12 @@ export type ContentItem = {
   metaDescription?: string
   draft?: boolean
   readingMinutes?: number
+  scorecard?: ScorecardData
 }
 
 import migrated from '@/data/migrated-content.json'
 import {headOfCommunityIntelligenceDraft} from '@/lib/drafts/head-of-community-intelligence'
+import {bookingComScorecardDraft} from '@/lib/drafts/booking-com-scorecard'
 
 export const latestWeeklySlug='community-intelligence-weekly-the-death-of-social-listening-b2b-saas-community-intelligence-benchmarks-and-more'
 export const latestWeeklyLegacySlug='community-intelligence-weekly-3'
@@ -62,7 +81,7 @@ const migratedItems=(migrated as Array<{title:string;slug:string;type:string;exc
 const migratedSlugs=new Set((migrated as Array<{slug:string}>).map(item=>item.slug))
 const curatedExtras=curated.filter(item=>!migratedSlugs.has(item.slug===latestWeeklySlug?latestWeeklyLegacySlug:item.slug))
 export const content:ContentItem[]=[...migratedItems,...curatedExtras,headOfCommunityIntelligenceDraft].sort((a,b)=>b.date.localeCompare(a.date))
-export const draftContent:ContentItem[]=[]
+export const draftContent:ContentItem[]=[bookingComScorecardDraft]
 export const allContent:ContentItem[]=[...content,...draftContent]
 
 export const frameworks = ['Community Gravity', 'Market Gravity', 'Trust Collapse', 'Narrative Compression', 'Belief Correction', 'Mission Premium', 'Hype Hangover', 'Expectation Gravity', 'Community Intelligence Stack', 'Share of Consensus']
