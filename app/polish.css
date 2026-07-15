@@ -85,6 +85,27 @@
 .reddit-authenticity-cta small{display:block;margin-top:22px;color:#b8c7d6;font-size:.78rem;line-height:1.5}
 @media(max-width:700px){.participation-callout,.reddit-authenticity-cta{padding:26px 22px;margin-block:36px}}
 
+.evidence-framework-callout{display:block;margin:42px 0;padding:36px;background:var(--navy);color:white;border-top:0;border-left:7px solid var(--orange);font-family:var(--font-sans)}
+.evidence-framework-callout h3{margin:0 0 24px;color:white;font:600 clamp(1.8rem,3vw,2.5rem)/1.1 var(--font-serif),Georgia,serif}
+.evidence-framework-callout dl{display:grid;gap:0;margin:0}
+.evidence-framework-callout dl>div{border-top:1px solid #31516f;padding:18px 0}
+.evidence-framework-callout dt{color:white;font-weight:900}
+.evidence-framework-callout dd{margin:5px 0 0;color:#dce6ef;line-height:1.55}
+.evidence-type-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:34px 0 48px;font-family:var(--font-sans)}
+.evidence-type-grid section{border:1px solid var(--line);border-top:5px solid var(--orange);padding:24px;background:var(--surface)}
+.evidence-type-grid h3{margin:0 0 16px;color:var(--navy);font:600 1.35rem/1.15 var(--font-serif),Georgia,serif}
+.evidence-type-grid ul{margin:0;padding-left:20px;font-size:.92rem;line-height:1.65}
+.ai-evidence-cta{display:block;border-top:0;border-left:7px solid var(--orange);background:var(--navy);color:white;padding:36px;margin:30px 0 24px;font-family:var(--font-sans)}
+.ai-evidence-cta .eyebrow{color:var(--orange);margin-bottom:14px}
+.ai-evidence-cta .cta-lead{font:500 clamp(1.45rem,3vw,2rem)/1.25 var(--font-serif),Georgia,serif;color:white}
+.ai-evidence-cta p{color:#dce6ef}
+.ai-evidence-cta .button{display:inline-block;margin-top:8px}
+.evidence-service-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0 0 36px;font-family:var(--font-sans)}
+.evidence-service-links a{display:flex;flex-direction:column;gap:7px;border:1px solid var(--line);padding:18px;text-decoration:none;background:white}
+.evidence-service-links strong{color:var(--navy);line-height:1.25}
+.evidence-service-links span{color:var(--muted);font-size:.82rem;line-height:1.45}
+@media(max-width:760px){.evidence-type-grid,.evidence-service-links{grid-template-columns:1fr}.evidence-framework-callout,.ai-evidence-cta{padding:26px 22px}.evidence-type-grid section{padding:20px}}
+
 /* Give editorial sections a calmer desktop gutter while retaining compact mobile spacing. */
 .shell{width:min(1120px,calc(100% - 40px))}
 footer{padding-inline:max(24px,calc((100% - 1120px)/2))}
