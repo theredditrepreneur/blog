@@ -106,6 +106,14 @@
 .evidence-service-links span{color:var(--muted);font-size:.82rem;line-height:1.45}
 @media(max-width:760px){.evidence-type-grid,.evidence-service-links{grid-template-columns:1fr}.evidence-framework-callout,.ai-evidence-cta{padding:26px 22px}.evidence-type-grid section{padding:20px}}
 
+.narrative-comparison{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:34px 0 44px;font-family:var(--font-sans)}
+.narrative-comparison section{border:1px solid var(--line);border-top:5px solid var(--orange);padding:26px;background:var(--surface)}
+.narrative-comparison h3{margin:0 0 18px;color:var(--navy);font:600 1.65rem/1.1 var(--font-serif),Georgia,serif}
+.narrative-comparison p{font-size:.95rem;line-height:1.55;margin:.8em 0}
+.france-framework-cta{border-top:6px solid var(--orange);background:var(--navy);color:white}
+.france-framework-cta h3{color:white}.france-framework-cta p{color:#dce6ef}.france-framework-cta .text-link{color:white}
+@media(max-width:700px){.narrative-comparison{grid-template-columns:1fr}.narrative-comparison section{padding:22px}}
+
 /* Give editorial sections a calmer desktop gutter while retaining compact mobile spacing. */
 .shell{width:min(1120px,calc(100% - 40px))}
 footer{padding-inline:max(24px,calc((100% - 1120px)/2))}
