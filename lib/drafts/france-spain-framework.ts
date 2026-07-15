@@ -16,7 +16,7 @@ export const franceSpainFrameworkDraft:ContentItem={
   metaDescription:'France’s World Cup defeat created a Hype Hangover, while Spain’s victory forced a Belief Correction. Explore what the semi final revealed about expectations, evidence and community narratives.',
   socialTitle:'France Had a Hype Hangover. Spain Forced a Belief Correction.',
   socialDescription:'One World Cup semi final produced two contrasting shifts in community perception: a Hype Hangover for France and a Belief Correction for Spain.',
-  draft:true,
+  draft:false,
   readingMinutes:9,
 }
 

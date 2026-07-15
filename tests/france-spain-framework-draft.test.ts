@@ -4,9 +4,9 @@ import {describe,expect,it} from 'vitest'
 import {franceSpainFrameworkBody,franceSpainFrameworkDraft,franceSpainFrameworkRelated} from '../lib/drafts/france-spain-framework'
 import migrated from '../data/migrated-content.json'
 
-describe('France and Spain framework article draft',()=>{
-  it('uses the unique requested slug and remains a draft',()=>{
-    expect(franceSpainFrameworkDraft.draft).toBe(true)
+describe('France and Spain framework article',()=>{
+  it('uses the unique requested slug and is marked for publication',()=>{
+    expect(franceSpainFrameworkDraft.draft).toBe(false)
     expect(franceSpainFrameworkDraft.date).toBe('2026-07-15')
     expect(franceSpainFrameworkDraft.slug).toBe('france-hype-hangover-spain-belief-correction')
     expect(migrated.some(item=>item.slug===franceSpainFrameworkDraft.slug)).toBe(false)
