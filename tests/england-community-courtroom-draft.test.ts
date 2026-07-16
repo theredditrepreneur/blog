@@ -4,15 +4,15 @@ import {describe,expect,it} from 'vitest'
 import {englandCommunityCourtroomBody,englandCommunityCourtroomDraft,englandCommunityCourtroomRelated} from '../lib/drafts/england-community-courtroom'
 import migrated from '../data/migrated-content.json'
 
-describe('England Community Courtroom article draft',()=>{
-  it('uses the unique requested slug and remains unpublished',()=>{
-    expect(englandCommunityCourtroomDraft.draft).toBe(true)
+describe('England Community Courtroom article',()=>{
+  it('uses the unique requested slug and is marked for publication',()=>{
+    expect(englandCommunityCourtroomDraft.draft).toBe(false)
     expect(englandCommunityCourtroomDraft.date).toBe('2026-07-16')
     expect(englandCommunityCourtroomDraft.slug).toBe('england-lost-the-match-community-courtroom')
     expect(migrated.some(item=>item.slug===englandCommunityCourtroomDraft.slug)).toBe(false)
     const registry=fs.readFileSync(path.resolve('lib/content.ts'),'utf8')
-    expect(registry).toContain('export const draftContent:ContentItem[]=[englandCommunityCourtroomDraft]')
-    expect(registry).not.toMatch(/export const content:ContentItem\[\]=\[[^\n]*englandCommunityCourtroomDraft/)
+    expect(registry).toContain('export const draftContent:ContentItem[]=[]')
+    expect(registry).toMatch(/export const content:ContentItem\[\]=\[[^\n]*englandCommunityCourtroomDraft/)
   })
 
   it('preserves the supplied heading structure',()=>{

@@ -17,7 +17,7 @@ export const englandCommunityCourtroomDraft:ContentItem={
   metaDescription:"England's World Cup semi final defeat perfectly demonstrates The Community Courtroom framework. Discover how online communities assign blame, create narratives and simplify complex events.",
   socialTitle:'England Lost the Match. Then the Community Courtroom Put Everyone on Trial.',
   socialDescription:'How Thomas Tuchel, England’s players and Lionel Messi all became defendants in the same public trial.',
-  draft:true,
+  draft:false,
   readingMinutes:7,
 }
 
