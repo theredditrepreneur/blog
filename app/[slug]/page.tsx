@@ -8,6 +8,7 @@ import {bookingComScorecardBody,bookingComScorecardDraft} from '@/lib/drafts/boo
 import {redditAiSlopArticle,redditAiSlopBody} from '@/lib/articles/reddit-ai-slop'
 import {aiEvidenceLayerArticle,aiEvidenceLayerBody} from '@/lib/articles/ai-evidence-layer'
 import {franceSpainFrameworkBody,franceSpainFrameworkDraft} from '@/lib/drafts/france-spain-framework'
+import {englandCommunityCourtroomBody,englandCommunityCourtroomDraft} from '@/lib/drafts/england-community-courtroom'
 import {client} from '@/sanity/lib/client'
 import {site} from '@/lib/site'
 
@@ -17,6 +18,7 @@ const localBodies:Record<string,string>={
   [redditAiSlopArticle.slug]:redditAiSlopBody,
   [aiEvidenceLayerArticle.slug]:aiEvidenceLayerBody,
   [franceSpainFrameworkDraft.slug]:franceSpainFrameworkBody,
+  [englandCommunityCourtroomDraft.slug]:englandCommunityCourtroomBody,
 }
 
 export function generateStaticParams(){return allContent.map(({slug})=>({slug}))}
