@@ -2,13 +2,14 @@ import {notFound} from 'next/navigation'
 import {ArticlePage} from '@/components/article-page'
 import {ScorecardPage} from '@/components/scorecard-page'
 import {FrameworkPage} from '@/components/framework-page'
-import {allContent,latestWeeklyLegacySlug,latestWeeklySlug} from '@/lib/content'
+import {allContent,latestWeeklyLegacySlug,previousWeeklySlug} from '@/lib/content'
 import {headOfCommunityIntelligenceBody,headOfCommunityIntelligenceDraft} from '@/lib/drafts/head-of-community-intelligence'
 import {bookingComScorecardBody,bookingComScorecardDraft} from '@/lib/drafts/booking-com-scorecard'
 import {redditAiSlopArticle,redditAiSlopBody} from '@/lib/articles/reddit-ai-slop'
 import {aiEvidenceLayerArticle,aiEvidenceLayerBody} from '@/lib/articles/ai-evidence-layer'
 import {franceSpainFrameworkBody,franceSpainFrameworkDraft} from '@/lib/drafts/france-spain-framework'
 import {englandCommunityCourtroomBody,englandCommunityCourtroomDraft} from '@/lib/drafts/england-community-courtroom'
+import {communityIntelligenceWeeklyPlatformLiveBody,communityIntelligenceWeeklyPlatformLiveDraft} from '@/lib/drafts/community-intelligence-weekly-platform-live'
 import {client} from '@/sanity/lib/client'
 import {site} from '@/lib/site'
 
@@ -19,6 +20,7 @@ const localBodies:Record<string,string>={
   [aiEvidenceLayerArticle.slug]:aiEvidenceLayerBody,
   [franceSpainFrameworkDraft.slug]:franceSpainFrameworkBody,
   [englandCommunityCourtroomDraft.slug]:englandCommunityCourtroomBody,
+  [communityIntelligenceWeeklyPlatformLiveDraft.slug]:communityIntelligenceWeeklyPlatformLiveBody,
 }
 
 export function generateStaticParams(){return allContent.map(({slug})=>({slug}))}
@@ -50,7 +52,7 @@ export default async function Page({params}:{params:Promise<{slug:string}>}){
   const item=allContent.find(candidate=>candidate.slug===slug)
   if(!item)notFound()
 
-  const cmsSlug=slug===latestWeeklySlug?latestWeeklyLegacySlug:slug
+  const cmsSlug=slug===previousWeeklySlug?latestWeeklyLegacySlug:slug
   const cmsSlugs=slug===cmsSlug?[slug]:[slug,cmsSlug]
   let cms:{bodyHtml?:string,coverImageUrl?:string,updatedAt?:string}|null=null
   if(!item.draft){

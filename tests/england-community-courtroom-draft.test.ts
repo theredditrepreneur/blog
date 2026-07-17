@@ -11,7 +11,7 @@ describe('England Community Courtroom article',()=>{
     expect(englandCommunityCourtroomDraft.slug).toBe('england-lost-the-match-community-courtroom')
     expect(migrated.some(item=>item.slug===englandCommunityCourtroomDraft.slug)).toBe(false)
     const registry=fs.readFileSync(path.resolve('lib/content.ts'),'utf8')
-    expect(registry).toContain('export const draftContent:ContentItem[]=[]')
+    expect(registry).not.toMatch(/export const draftContent:ContentItem\[\]=\[[^\n]*englandCommunityCourtroomDraft/)
     expect(registry).toMatch(/export const content:ContentItem\[\]=\[[^\n]*englandCommunityCourtroomDraft/)
   })
 

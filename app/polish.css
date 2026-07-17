@@ -115,6 +115,11 @@
 .community-courtroom-cta{border-top:6px solid var(--orange);background:var(--navy);color:white}
 .community-courtroom-cta h3{color:white}.community-courtroom-cta p{color:#dce6ef}.community-courtroom-cta .text-link,.community-courtroom-cta .cta-links a{color:white}
 .community-courtroom-cta .cta-links{border-top:1px solid #31516f;margin-top:24px;padding-top:18px;font-size:.9rem}
+.weekly-platform-cta{border-top:6px solid var(--orange);background:var(--navy);color:white}
+.weekly-platform-cta h3{color:white}.weekly-platform-cta p{color:#dce6ef}.weekly-platform-cta .text-link{color:white}
+.legacy-content .weekly-inline-cover{margin:1.25rem 0 2rem}
+.legacy-content .weekly-inline-cover img{width:100%;aspect-ratio:16/9;object-fit:cover;border:1px solid var(--line);background:#fff}
+.legacy-content .weekly-inline-cover a{display:block}
 @media(max-width:700px){.narrative-comparison{grid-template-columns:1fr}.narrative-comparison section{padding:22px}}
 
 /* Give editorial sections a calmer desktop gutter while retaining compact mobile spacing. */
