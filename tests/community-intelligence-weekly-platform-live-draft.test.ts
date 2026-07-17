@@ -62,6 +62,14 @@ describe('Community Intelligence Weekly platform launch draft',()=>{
     ])
   })
 
+  it('shows the relevant existing blog covers within the matching sections',()=>{
+    expect(communityIntelligenceWeeklyPlatformLiveBody).toContain('/england-community-courtroom.png')
+    expect(communityIntelligenceWeeklyPlatformLiveBody).toContain('/booking-com-community-intelligence-scorecard.webp')
+    expect(communityIntelligenceWeeklyPlatformLiveBody).toContain('/barclays-community-intelligence-scorecard.webp')
+    expect((communityIntelligenceWeeklyPlatformLiveBody.match(/class="weekly-inline-cover"/g)||[])).toHaveLength(3)
+    expect(fs.existsSync(path.resolve('public/barclays-community-intelligence-scorecard.webp'))).toBe(true)
+  })
+
   it('ships the optimised 16 by 9 cover asset',()=>{
     expect(communityIntelligenceWeeklyPlatformLiveDraft.image).toBe('/community-intelligence-weekly-platform-live.png')
     expect(communityIntelligenceWeeklyPlatformLiveDraft.imageWidth).toBe(1280)

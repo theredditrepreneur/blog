@@ -79,6 +79,10 @@ export const communityIntelligenceWeeklyPlatformLiveBody=`
 <h2>Framework Spotlight</h2>
 
 <h3>The Community Courtroom</h3>
+<figure class="weekly-inline-cover">
+  <a href="/england-lost-the-match-community-courtroom"><img src="/england-community-courtroom.png" alt="England flag illustrating The Community Courtroom framework after England's World Cup semi final defeat." width="1280" height="720" loading="lazy" decoding="async" /></a>
+  <figcaption>England's World Cup defeat through The Community Courtroom framework.</figcaption>
+</figure>
 <p>England's World Cup defeat to Argentina provided a powerful example of one of the newest Redditrepreneur frameworks.</p>
 <p><a href="https://research.theredditrepreneur.com/Community-Courtroom-383026b0422280509b02dc95d11a62ac?pvs=25">The Community Courtroom</a>.</p>
 <p>The football match ended at the final whistle.</p>
@@ -129,6 +133,10 @@ export const communityIntelligenceWeeklyPlatformLiveBody=`
 <p>The aim is to understand not only whether people are discussing a brand, but what they believe, how strongly those beliefs are shared and whether the brand is learning from the conversations around it.</p>
 
 <h3><a href="/booking-com-community-intelligence-scorecard">Booking.com</a></h3>
+<figure class="weekly-inline-cover">
+  <a href="/booking-com-community-intelligence-scorecard"><img src="/booking-com-community-intelligence-scorecard.webp" alt="Booking.com Community Intelligence Scorecard showing an overall score of 84 out of 100 from The Redditrepreneur" width="1280" height="720" loading="lazy" decoding="async" /></a>
+  <figcaption>Booking.com Community Intelligence Scorecard.</figcaption>
+</figure>
 <p>Booking.com received a strong Community Intelligence Score.</p>
 <p>The brand benefits from years of customer recommendations, broad awareness and a strong position inside travel conversations.</p>
 <p>At the same time, discussions around customer support, cancellation experiences and pricing clarity reveal areas where community trust can become vulnerable.</p>
@@ -136,6 +144,10 @@ export const communityIntelligenceWeeklyPlatformLiveBody=`
 <p>A company can have strong Community Authority while still having specific experience gaps that require attention.</p>
 
 <h3><a href="/the-barclays-bank-community-intelligence-scorecard-says-expectations-are-even-higher-than-trust">Barclays</a></h3>
+<figure class="weekly-inline-cover">
+  <a href="/the-barclays-bank-community-intelligence-scorecard-says-expectations-are-even-higher-than-trust"><img src="/barclays-community-intelligence-scorecard.webp" alt="Barclays Bank Community Intelligence Scorecard cover from The Redditrepreneur" width="1280" height="720" loading="lazy" decoding="async" /></a>
+  <figcaption>Barclays Bank Community Intelligence Scorecard.</figcaption>
+</figure>
 <p>The Barclays Community Intelligence Scorecard explored how a major financial institution is discussed across customer communities.</p>
 <p>Banking conversations are especially valuable because they often reveal the difference between a company's official experience and the reality customers encounter.</p>
 <p>These conversations can expose recurring frustrations, service expectations, trust signals and opportunities for improvement that may never appear clearly inside a traditional analytics report.</p>
