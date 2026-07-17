@@ -5,14 +5,14 @@ import {bbcRadioCommunityBody,bbcRadioCommunityDraft,bbcRadioCommunityRelated} f
 import migrated from '../data/migrated-content.json'
 
 describe('BBC Radio 1 community article draft',()=>{
-  it('uses the requested unique slug and remains unpublished',()=>{
+  it('uses the requested unique slug and is marked for publication',()=>{
     expect(bbcRadioCommunityDraft.slug).toBe('bbc-radio-1-is-hiring-communities')
-    expect(bbcRadioCommunityDraft.draft).toBe(true)
+    expect(bbcRadioCommunityDraft.draft).toBe(false)
     expect(bbcRadioCommunityDraft.date).toBe('2026-07-17')
     expect(migrated.some(item=>item.slug===bbcRadioCommunityDraft.slug)).toBe(false)
     const registry=fs.readFileSync(path.resolve('lib/content.ts'),'utf8')
-    expect(registry).toContain('export const draftContent:ContentItem[]=[bbcRadioCommunityDraft]')
-    expect(registry).not.toMatch(/export const content:ContentItem\[\]=\[[^\n]*bbcRadioCommunityDraft/)
+    expect(registry).toContain('export const draftContent:ContentItem[]=[]')
+    expect(registry).toMatch(/export const content:ContentItem\[\]=\[[^\n]*bbcRadioCommunityDraft/)
   })
 
   it('preserves the supplied headings and adds one contextual call to action',()=>{

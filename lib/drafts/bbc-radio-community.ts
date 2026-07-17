@@ -16,7 +16,7 @@ export const bbcRadioCommunityDraft:ContentItem={
   metaDescription:"BBC Radio 1's move towards creator first talent reveals how community trust, audience building and public evidence are becoming valuable hiring credentials.",
   socialTitle:'BBC Radio 1 Is Hiring Communities, Not Just Creators',
   socialDescription:"BBC Radio 1's move towards creator first talent reveals how community trust, audience building and public evidence are becoming valuable hiring credentials.",
-  draft:true,
+  draft:false,
   readingMinutes:7,
 }
 

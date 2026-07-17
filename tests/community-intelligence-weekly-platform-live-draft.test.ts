@@ -14,7 +14,7 @@ describe('Community Intelligence Weekly platform launch draft',()=>{
     expect(communityIntelligenceWeeklyPlatformLiveDraft.slug).toBe('community-intelligence-weekly-platform-live-vision-becoming-real')
     expect(migrated.some(item=>item.slug===communityIntelligenceWeeklyPlatformLiveDraft.slug)).toBe(false)
     const registry=fs.readFileSync(path.resolve('lib/content.ts'),'utf8')
-    expect(registry).not.toMatch(/export const draftContent:ContentItem\[\]=\[[^\n]*communityIntelligenceWeeklyPlatformLiveDraft/)
+    expect(registry).toContain('export const draftContent:ContentItem[]=[]')
     expect(registry).toMatch(/export const content:ContentItem\[\]=\[[^\n]*communityIntelligenceWeeklyPlatformLiveDraft/)
   })
 
