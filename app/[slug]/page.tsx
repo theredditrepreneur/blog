@@ -9,6 +9,7 @@ import {redditAiSlopArticle,redditAiSlopBody} from '@/lib/articles/reddit-ai-slo
 import {aiEvidenceLayerArticle,aiEvidenceLayerBody} from '@/lib/articles/ai-evidence-layer'
 import {franceSpainFrameworkBody,franceSpainFrameworkDraft} from '@/lib/drafts/france-spain-framework'
 import {englandCommunityCourtroomBody,englandCommunityCourtroomDraft} from '@/lib/drafts/england-community-courtroom'
+import {communityIntelligenceWeeklyPlatformLiveBody,communityIntelligenceWeeklyPlatformLiveDraft} from '@/lib/drafts/community-intelligence-weekly-platform-live'
 import {client} from '@/sanity/lib/client'
 import {site} from '@/lib/site'
 
@@ -19,6 +20,7 @@ const localBodies:Record<string,string>={
   [aiEvidenceLayerArticle.slug]:aiEvidenceLayerBody,
   [franceSpainFrameworkDraft.slug]:franceSpainFrameworkBody,
   [englandCommunityCourtroomDraft.slug]:englandCommunityCourtroomBody,
+  [communityIntelligenceWeeklyPlatformLiveDraft.slug]:communityIntelligenceWeeklyPlatformLiveBody,
 }
 
 export function generateStaticParams(){return allContent.map(({slug})=>({slug}))}
