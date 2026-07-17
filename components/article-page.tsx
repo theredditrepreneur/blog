@@ -11,6 +11,7 @@ import {aiEvidenceLayerArticle,aiEvidenceLayerRelated} from '@/lib/articles/ai-e
 import {franceSpainFrameworkDraft,franceSpainFrameworkRelated} from '@/lib/drafts/france-spain-framework'
 import {englandCommunityCourtroomDraft,englandCommunityCourtroomRelated} from '@/lib/drafts/england-community-courtroom'
 import {communityIntelligenceWeeklyPlatformLiveDraft,communityIntelligenceWeeklyPlatformLiveRelated} from '@/lib/drafts/community-intelligence-weekly-platform-live'
+import {bbcRadioCommunityDraft,bbcRadioCommunityRelated} from '@/lib/drafts/bbc-radio-community'
 import {Newsletter} from './newsletter'
 import {SharePost} from './share-post'
 
@@ -25,13 +26,14 @@ export function ArticlePage({item,embedded=false,bodyHtml,coverImageUrl}:{item:C
     [franceSpainFrameworkDraft.slug]:franceSpainFrameworkRelated,
     [englandCommunityCourtroomDraft.slug]:englandCommunityCourtroomRelated,
     [communityIntelligenceWeeklyPlatformLiveDraft.slug]:communityIntelligenceWeeklyPlatformLiveRelated,
+    [bbcRadioCommunityDraft.slug]:bbcRadioCommunityRelated,
   }
   const related=manualRelated[item.slug]?.map(slug=>content.find(candidate=>candidate.slug===slug)).filter((candidate):candidate is ContentItem=>Boolean(candidate))||content.filter(candidate=>candidate.slug!==item.slug&&(candidate.topic===item.topic||candidate.type===item.type)).slice(0,3)
   const archiveHref:Record<ContentItem['type'],string>={Research:'/research',Scorecard:'/scorecards','Case Study':'/case-studies',Framework:'/frameworks',Benchmark:'/benchmarks',Weekly:'/community-intelligence-weekly',Index:'/community-intelligence-index',Article:'/research'}
   const isAiAuthority=item.slug==='the-ai-authority-formula'
   const isHeadOfCommunityIntelligence=item.slug===headOfCommunityIntelligenceDraft.slug
   const isBookingScorecard=item.slug===bookingComScorecardDraft.slug
-  const isRedditAiSlop=item.slug===redditAiSlopArticle.slug||item.slug===aiEvidenceLayerArticle.slug||item.slug===franceSpainFrameworkDraft.slug||item.slug===englandCommunityCourtroomDraft.slug||item.slug===communityIntelligenceWeeklyPlatformLiveDraft.slug
+  const isRedditAiSlop=item.slug===redditAiSlopArticle.slug||item.slug===aiEvidenceLayerArticle.slug||item.slug===franceSpainFrameworkDraft.slug||item.slug===englandCommunityCourtroomDraft.slug||item.slug===communityIntelligenceWeeklyPlatformLiveDraft.slug||item.slug===bbcRadioCommunityDraft.slug
   const tocLimit=isBookingScorecard?20:12
 
   return <article id="top">

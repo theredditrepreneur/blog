@@ -10,6 +10,7 @@ import {aiEvidenceLayerArticle,aiEvidenceLayerBody} from '@/lib/articles/ai-evid
 import {franceSpainFrameworkBody,franceSpainFrameworkDraft} from '@/lib/drafts/france-spain-framework'
 import {englandCommunityCourtroomBody,englandCommunityCourtroomDraft} from '@/lib/drafts/england-community-courtroom'
 import {communityIntelligenceWeeklyPlatformLiveBody,communityIntelligenceWeeklyPlatformLiveDraft} from '@/lib/drafts/community-intelligence-weekly-platform-live'
+import {bbcRadioCommunityBody,bbcRadioCommunityDraft} from '@/lib/drafts/bbc-radio-community'
 import {client} from '@/sanity/lib/client'
 import {site} from '@/lib/site'
 
@@ -21,6 +22,7 @@ const localBodies:Record<string,string>={
   [franceSpainFrameworkDraft.slug]:franceSpainFrameworkBody,
   [englandCommunityCourtroomDraft.slug]:englandCommunityCourtroomBody,
   [communityIntelligenceWeeklyPlatformLiveDraft.slug]:communityIntelligenceWeeklyPlatformLiveBody,
+  [bbcRadioCommunityDraft.slug]:bbcRadioCommunityBody,
 }
 
 export function generateStaticParams(){return allContent.map(({slug})=>({slug}))}
