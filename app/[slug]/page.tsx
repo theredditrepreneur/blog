@@ -2,7 +2,7 @@ import {notFound} from 'next/navigation'
 import {ArticlePage} from '@/components/article-page'
 import {ScorecardPage} from '@/components/scorecard-page'
 import {FrameworkPage} from '@/components/framework-page'
-import {allContent,latestWeeklyLegacySlug,latestWeeklySlug} from '@/lib/content'
+import {allContent,latestWeeklyLegacySlug,previousWeeklySlug} from '@/lib/content'
 import {headOfCommunityIntelligenceBody,headOfCommunityIntelligenceDraft} from '@/lib/drafts/head-of-community-intelligence'
 import {bookingComScorecardBody,bookingComScorecardDraft} from '@/lib/drafts/booking-com-scorecard'
 import {redditAiSlopArticle,redditAiSlopBody} from '@/lib/articles/reddit-ai-slop'
@@ -52,7 +52,7 @@ export default async function Page({params}:{params:Promise<{slug:string}>}){
   const item=allContent.find(candidate=>candidate.slug===slug)
   if(!item)notFound()
 
-  const cmsSlug=slug===latestWeeklySlug?latestWeeklyLegacySlug:slug
+  const cmsSlug=slug===previousWeeklySlug?latestWeeklyLegacySlug:slug
   const cmsSlugs=slug===cmsSlug?[slug]:[slug,cmsSlug]
   let cms:{bodyHtml?:string,coverImageUrl?:string,updatedAt?:string}|null=null
   if(!item.draft){

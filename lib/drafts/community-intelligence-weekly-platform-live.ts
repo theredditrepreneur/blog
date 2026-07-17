@@ -16,7 +16,7 @@ export const communityIntelligenceWeeklyPlatformLiveDraft:ContentItem={
   metaDescription:'The Community Intelligence Platform is now live. This edition explores the latest Redditrepreneur research, frameworks, scorecards and the growing case for Community Intelligence.',
   socialTitle:'Community Intelligence Weekly: The Platform Is Live',
   socialDescription:'The Community Intelligence Platform is now live. Explore the latest research, frameworks, scorecards and the growing case for Community Intelligence.',
-  draft:true,
+  draft:false,
   readingMinutes:8,
 }
 

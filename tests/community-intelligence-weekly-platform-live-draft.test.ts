@@ -7,15 +7,15 @@ import migrated from '../data/migrated-content.json'
 const visibleText=communityIntelligenceWeeklyPlatformLiveBody.replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim()
 
 describe('Community Intelligence Weekly platform launch draft',()=>{
-  it('uses the requested slug and remains unpublished',()=>{
-    expect(communityIntelligenceWeeklyPlatformLiveDraft.draft).toBe(true)
+  it('uses the requested slug and is marked for publication',()=>{
+    expect(communityIntelligenceWeeklyPlatformLiveDraft.draft).toBe(false)
     expect(communityIntelligenceWeeklyPlatformLiveDraft.type).toBe('Weekly')
     expect(communityIntelligenceWeeklyPlatformLiveDraft.date).toBe('2026-07-17')
     expect(communityIntelligenceWeeklyPlatformLiveDraft.slug).toBe('community-intelligence-weekly-platform-live-vision-becoming-real')
     expect(migrated.some(item=>item.slug===communityIntelligenceWeeklyPlatformLiveDraft.slug)).toBe(false)
     const registry=fs.readFileSync(path.resolve('lib/content.ts'),'utf8')
-    expect(registry).toContain('export const draftContent:ContentItem[]=[communityIntelligenceWeeklyPlatformLiveDraft]')
-    expect(registry).not.toMatch(/export const content:ContentItem\[\]=\[[^\n]*communityIntelligenceWeeklyPlatformLiveDraft/)
+    expect(registry).toContain('export const draftContent:ContentItem[]=[]')
+    expect(registry).toMatch(/export const content:ContentItem\[\]=\[[^\n]*communityIntelligenceWeeklyPlatformLiveDraft/)
   })
 
   it('preserves the supplied heading structure',()=>{
