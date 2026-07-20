@@ -13,7 +13,8 @@ const dimensions=[
 
 export function ScorecardPage({item,bodyHtml,coverImageUrl}:{item:ContentItem,bodyHtml?:string,coverImageUrl?:string}){
   const scorecard=item.scorecard
-  const displayedDimensions=scorecard?.dimensions||dimensions.map(([name,interpretation])=>({name,interpretation,score:undefined}))
+  const displayedDimensions=scorecard?.dimensions||dimensions.map(([name,interpretation])=>({name,interpretation,score:undefined,displayScore:undefined}))
+  const hasCustomDimensions=displayedDimensions.length!==5
 
   return <>
     <section className="scorecard-hero">
@@ -29,7 +30,7 @@ export function ScorecardPage({item,bodyHtml,coverImageUrl}:{item:ContentItem,bo
         <div className="score-status"><strong>Editorial assessment</strong><span>This is an editorial Community Intelligence assessment produced by The Redditrepreneur. It is not an automated live SaaS score.</span></div>
       </div>
     </section>
-    {coverImageUrl&&<div className="article-image shell"><Image src={coverImageUrl} width={1600} height={900} sizes="(max-width: 960px) calc(100vw - 28px), 920px" alt={item.imageAlt||item.title} priority/></div>}
+    {coverImageUrl&&<div className="article-image shell"><Image src={coverImageUrl} width={item.imageWidth||1600} height={item.imageHeight||900} sizes="(max-width: 960px) calc(100vw - 28px), 920px" alt={item.imageAlt||item.title} priority/></div>}
     {scorecard&&<section className="scorecard-summary shell" aria-labelledby="scorecard-summary-title">
       <div className="score-total" aria-label={`${scorecard.brandName} overall Community Intelligence Score ${scorecard.overallScore} out of 100, grade ${scorecard.grade}`}>
         <span>Overall Community Intelligence Score</span>
@@ -45,8 +46,8 @@ export function ScorecardPage({item,bodyHtml,coverImageUrl}:{item:ContentItem,bo
       </div>
     </section>}
     <section className="section shell">
-      <div className="section-heading"><div><div className="eyebrow">Structured assessment</div><h2>Five dimensions of Community Intelligence</h2></div></div>
-      <div className="dimension-grid">{displayedDimensions.map(({name,interpretation,score},i)=><article key={name}><span>0{i+1}{score!==undefined?` | ${score}/100`:''}</span><h3>{name}</h3><p>{interpretation}</p></article>)}</div>
+      <div className="section-heading"><div><div className="eyebrow">Structured assessment</div><h2>{displayedDimensions.length===5?'Five dimensions of Community Intelligence':`${displayedDimensions.length} score dimensions`}</h2></div></div>
+      <div className={`dimension-grid${hasCustomDimensions?' dimension-grid-custom':''}`}>{displayedDimensions.map(({name,interpretation,score,displayScore},i)=><article key={name}><span>{String(i+1).padStart(2,'0')}{score!==undefined?` | ${displayScore||`${score}/100`}`:''}</span><h3>{name}</h3>{hasCustomDimensions&&score!==undefined&&<meter min="0" max="100" value={score} aria-label={`${name} score ${displayScore||`${score} out of 100`}`}/>}<p>{interpretation}</p></article>)}</div>
       {!scorecard&&<div className="methodology-callout"><h2>How This Score Was Calculated</h2><p>The report explains the research approach, evidence considered, research period, limitations and confidence available when the assessment was published.</p><Link className="text-link" href="/the-redditrepreneur-community-intelligence-scorecard">Read the full Scorecard methodology</Link></div>}
     </section>
     <ArticlePage item={item} embedded bodyHtml={bodyHtml} coverImageUrl={coverImageUrl}/>

@@ -11,6 +11,7 @@ import {franceSpainFrameworkBody,franceSpainFrameworkDraft} from '@/lib/drafts/f
 import {englandCommunityCourtroomBody,englandCommunityCourtroomDraft} from '@/lib/drafts/england-community-courtroom'
 import {communityIntelligenceWeeklyPlatformLiveBody,communityIntelligenceWeeklyPlatformLiveDraft} from '@/lib/drafts/community-intelligence-weekly-platform-live'
 import {bbcRadioCommunityBody,bbcRadioCommunityDraft} from '@/lib/drafts/bbc-radio-community'
+import {nikeCommunityScorecardBody,nikeCommunityScorecardDraft,nikeCommunityScorecardFaqs} from '@/lib/drafts/nike-community-scorecard'
 import {client} from '@/sanity/lib/client'
 import {site} from '@/lib/site'
 
@@ -23,6 +24,7 @@ const localBodies:Record<string,string>={
   [englandCommunityCourtroomDraft.slug]:englandCommunityCourtroomBody,
   [communityIntelligenceWeeklyPlatformLiveDraft.slug]:communityIntelligenceWeeklyPlatformLiveBody,
   [bbcRadioCommunityDraft.slug]:bbcRadioCommunityBody,
+  [nikeCommunityScorecardDraft.slug]:nikeCommunityScorecardBody,
 }
 
 export function generateStaticParams(){return allContent.map(({slug})=>({slug}))}
@@ -81,5 +83,12 @@ export default async function Page({params}:{params:Promise<{slug:string}>}){
     image:schemaImage,
   }
   const page=item.type==='Scorecard'?<ScorecardPage item={item} bodyHtml={bodyHtml} coverImageUrl={coverImageUrl}/>:item.type==='Framework'?<FrameworkPage item={item} bodyHtml={bodyHtml} coverImageUrl={coverImageUrl}/>:<ArticlePage item={item} bodyHtml={bodyHtml} coverImageUrl={coverImageUrl}/>
-  return <>{page}<script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(schema).replace(/</g,'\u003c')}}/></>
+  const isNikeScorecard=item.slug===nikeCommunityScorecardDraft.slug
+  const faqSchema=isNikeScorecard?{'@context':'https://schema.org','@type':'FAQPage',mainEntity:nikeCommunityScorecardFaqs.map(({question,answer})=>({'@type':'Question',name:question,acceptedAnswer:{'@type':'Answer',text:answer}}))}:null
+  const breadcrumbSchema=isNikeScorecard?{'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:[
+    {'@type':'ListItem',position:1,name:'Home',item:site.url},
+    {'@type':'ListItem',position:2,name:'Scorecards',item:`${site.url}/scorecards`},
+    {'@type':'ListItem',position:3,name:item.title,item:`${site.url}/${item.slug}`},
+  ]}:null
+  return <>{page}<script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(schema).replace(/</g,'\u003c')}}/>{faqSchema&&<script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(faqSchema).replace(/</g,'\u003c')}}/>}{breadcrumbSchema&&<script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(breadcrumbSchema).replace(/</g,'\u003c')}}/>}</>
 }
