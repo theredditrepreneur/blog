@@ -17,7 +17,7 @@ export const nikeCommunityScorecardDraft:ContentItem={
   metaDescription:'Nike scores 84 out of 100 in The Redditrepreneur Community Intelligence Scorecard. Explore its trust, cultural authority, innovation perception and competitive position.',
   socialTitle:"Nike's Community Intelligence Scorecard",
   socialDescription:'Nike still leads culture and earns exceptional community advocacy, but stronger running competitors are changing the conversation around innovation and choice.',
-  draft:true,
+  draft:false,
   readingMinutes:15,
   scorecard:{
     brandName:'Nike',

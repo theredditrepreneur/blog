@@ -95,8 +95,8 @@ const migratedItems=(migrated as Array<{title:string;slug:string;type:string;exc
 })
 const migratedSlugs=new Set((migrated as Array<{slug:string}>).map(item=>item.slug))
 const curatedExtras=curated.filter(item=>!migratedSlugs.has(item.slug===previousWeeklySlug?latestWeeklyLegacySlug:item.slug))
-export const content:ContentItem[]=[...migratedItems,...curatedExtras,bbcRadioCommunityDraft,communityIntelligenceWeeklyPlatformLiveDraft,englandCommunityCourtroomDraft,franceSpainFrameworkDraft,aiEvidenceLayerArticle,redditAiSlopArticle,headOfCommunityIntelligenceDraft,bookingComScorecardDraft].sort((a,b)=>b.date.localeCompare(a.date))
-export const draftContent:ContentItem[]=[nikeCommunityScorecardDraft]
+export const content:ContentItem[]=[...migratedItems,...curatedExtras,nikeCommunityScorecardDraft,bbcRadioCommunityDraft,communityIntelligenceWeeklyPlatformLiveDraft,englandCommunityCourtroomDraft,franceSpainFrameworkDraft,aiEvidenceLayerArticle,redditAiSlopArticle,headOfCommunityIntelligenceDraft,bookingComScorecardDraft].sort((a,b)=>b.date.localeCompare(a.date))
+export const draftContent:ContentItem[]=[]
 export const allContent:ContentItem[]=[...content,...draftContent]
 
 export const frameworks = ['Community Gravity', 'Market Gravity', 'Trust Collapse', 'Narrative Compression', 'Belief Correction', 'Mission Premium', 'Hype Hangover', 'Expectation Gravity', 'Community Intelligence Stack', 'Share of Consensus']

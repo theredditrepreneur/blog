@@ -7,11 +7,11 @@ const visibleCopy=nikeCommunityScorecardBody.replace(/<[^>]+>/g,' ').replace(/&[
 const metadata=[nikeCommunityScorecardDraft.title,nikeCommunityScorecardDraft.excerpt,nikeCommunityScorecardDraft.subtitle,nikeCommunityScorecardDraft.imageAlt,nikeCommunityScorecardDraft.seoTitle,nikeCommunityScorecardDraft.metaDescription,nikeCommunityScorecardDraft.socialTitle,nikeCommunityScorecardDraft.socialDescription,...nikeCommunityScorecardFaqs.flatMap(item=>[item.question,item.answer])].filter(Boolean).join(' ')
 
 describe('Nike Community Intelligence Scorecard',()=>{
-  it('remains a private draft',()=>{
-    expect(nikeCommunityScorecardDraft.draft).toBe(true)
+  it('is registered for publication',()=>{
+    expect(nikeCommunityScorecardDraft.draft).toBe(false)
     const registry=fs.readFileSync(path.resolve('lib/content.ts'),'utf8')
-    expect(registry).toContain('export const draftContent:ContentItem[]=[nikeCommunityScorecardDraft]')
-    expect(registry).not.toMatch(/export const content:ContentItem\[\]=\[[^\n]*nikeCommunityScorecardDraft/)
+    expect(registry).toContain('export const draftContent:ContentItem[]=[]')
+    expect(registry).toMatch(/export const content:ContentItem\[\]=\[[^\n]*nikeCommunityScorecardDraft/)
   })
 
   it('preserves every supplied score',()=>{
