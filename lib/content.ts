@@ -3,6 +3,7 @@ export type ContentType = 'Research' | 'Scorecard' | 'Case Study' | 'Framework' 
 export type ScorecardDimension = {
   name: string
   score: number
+  displayScore?: string
   interpretation: string
 }
 
@@ -48,6 +49,7 @@ import {franceSpainFrameworkDraft} from '@/lib/drafts/france-spain-framework'
 import {englandCommunityCourtroomDraft} from '@/lib/drafts/england-community-courtroom'
 import {communityIntelligenceWeeklyPlatformLiveDraft} from '@/lib/drafts/community-intelligence-weekly-platform-live'
 import {bbcRadioCommunityDraft} from '@/lib/drafts/bbc-radio-community'
+import {nikeCommunityScorecardDraft} from '@/lib/drafts/nike-community-scorecard'
 
 export const latestWeeklySlug=communityIntelligenceWeeklyPlatformLiveDraft.slug
 export const previousWeeklySlug='community-intelligence-weekly-the-death-of-social-listening-b2b-saas-community-intelligence-benchmarks-and-more'
@@ -94,7 +96,7 @@ const migratedItems=(migrated as Array<{title:string;slug:string;type:string;exc
 const migratedSlugs=new Set((migrated as Array<{slug:string}>).map(item=>item.slug))
 const curatedExtras=curated.filter(item=>!migratedSlugs.has(item.slug===previousWeeklySlug?latestWeeklyLegacySlug:item.slug))
 export const content:ContentItem[]=[...migratedItems,...curatedExtras,bbcRadioCommunityDraft,communityIntelligenceWeeklyPlatformLiveDraft,englandCommunityCourtroomDraft,franceSpainFrameworkDraft,aiEvidenceLayerArticle,redditAiSlopArticle,headOfCommunityIntelligenceDraft,bookingComScorecardDraft].sort((a,b)=>b.date.localeCompare(a.date))
-export const draftContent:ContentItem[]=[]
+export const draftContent:ContentItem[]=[nikeCommunityScorecardDraft]
 export const allContent:ContentItem[]=[...content,...draftContent]
 
 export const frameworks = ['Community Gravity', 'Market Gravity', 'Trust Collapse', 'Narrative Compression', 'Belief Correction', 'Mission Premium', 'Hype Hangover', 'Expectation Gravity', 'Community Intelligence Stack', 'Share of Consensus']

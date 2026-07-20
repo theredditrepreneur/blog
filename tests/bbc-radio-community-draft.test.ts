@@ -11,7 +11,7 @@ describe('BBC Radio 1 community article draft',()=>{
     expect(bbcRadioCommunityDraft.date).toBe('2026-07-17')
     expect(migrated.some(item=>item.slug===bbcRadioCommunityDraft.slug)).toBe(false)
     const registry=fs.readFileSync(path.resolve('lib/content.ts'),'utf8')
-    expect(registry).toContain('export const draftContent:ContentItem[]=[]')
+    expect(registry).toContain('export const draftContent:ContentItem[]=')
     expect(registry).toMatch(/export const content:ContentItem\[\]=\[[^\n]*bbcRadioCommunityDraft/)
   })
 
