@@ -18,5 +18,5 @@ await client.transaction()
   .delete(draftId)
   .commit()
 
-const result=await client.fetch('*[_id==$documentId][0]{_id,_type,title,"slug":slug.current,publishedAt,brandName,overallScore,grade,tier,dimensions[]{name,score,displayScore,interpretation},"author":author->name,"cover":coverImage.asset->url,"topics":topics[]->title,"related":relatedContent[]->{title,"slug":slug.current},seo}',{documentId})
+const result=await client.fetch('*[_id==$documentId][0]{_id,_type,title,"slug":slug.current,publishedAt,brandName,criteria,overallScore,rating,criterionAnalysis,"author":author->name,"cover":coverImage.asset->url,"topics":topics[]->title,"related":relatedContent[]->{title,"slug":slug.current},seo}',{documentId})
 console.log(JSON.stringify(result,null,2))

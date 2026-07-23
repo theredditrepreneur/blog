@@ -21,20 +21,18 @@ export const nikeCommunityScorecardDraft:ContentItem={
   readingMinutes:15,
   scorecard:{
     brandName:'Nike',
-    overallScore:84,
-    grade:'Strong',
-    tier:'Strong Community Intelligence',
-    dimensions:[
-      {name:'Brand Trust',score:92,displayScore:'9.2 / 10',interpretation:'Decades of familiarity, product experience and cultural presence support durable confidence in the brand.'},
-      {name:'Product Satisfaction',score:81,displayScore:'8.1 / 10',interpretation:'Satisfaction remains positive, although fit, comfort and model choice create varied experiences.'},
-      {name:'Innovation Perception',score:76,displayScore:'7.6 / 10',interpretation:'Nike remains associated with innovation, but specialist running brands now compete more visibly for that distinction.'},
-      {name:'Customer Support',score:72,displayScore:'7.2 / 10',interpretation:'Service experience is the clearest area where inconsistent outcomes can weaken an otherwise strong relationship.'},
-      {name:'Community Engagement',score:91,displayScore:'9.1 / 10',interpretation:'Nike naturally appears across sport, fashion, running and cultural conversations at exceptional scale.'},
-      {name:'Competitive Position',score:85,displayScore:'8.5 / 10',interpretation:'The brand remains a category leader while facing credible alternatives in specialist performance segments.'},
-      {name:'Advocacy',score:90,displayScore:'9.0 / 10',interpretation:'Customers and fans continue to recommend, defend and identify with Nike across many communities.'},
-      {name:'AI Search Readiness',score:93,displayScore:'9.3 / 10',interpretation:'Extensive owned, institutional and community evidence gives AI systems a rich public record to interpret.'},
-      {name:'Narrative Consistency',score:78,displayScore:'7.8 / 10',interpretation:'The core brand story is powerful, but product conversations vary across lifestyle, fashion and specialist performance contexts.'},
-    ],
+    criteria:{brandTrust:9.2,productSatisfaction:8.1,innovationPerception:7.6,customerSupport:7.2,communityEngagement:9.1,competitivePosition:8.5,advocacy:9,aiSearchReadiness:9.3,narrativeConsistency:7.8},
+    analysis:{
+      brandTrust:'Decades of familiarity, product experience and cultural presence support durable confidence in the brand.',
+      productSatisfaction:'Satisfaction remains positive, although fit, comfort and model choice create varied experiences.',
+      innovationPerception:'Nike remains associated with innovation, but specialist running brands now compete more visibly for that distinction.',
+      customerSupport:'Service experience is the clearest area where inconsistent outcomes can weaken an otherwise strong relationship.',
+      communityEngagement:'Nike naturally appears across sport, fashion, running and cultural conversations at exceptional scale.',
+      competitivePosition:'The brand remains a category leader while facing credible alternatives in specialist performance segments.',
+      advocacy:'Customers and fans continue to recommend, defend and identify with Nike across many communities.',
+      aiSearchReadiness:'Extensive owned, institutional and community evidence gives AI systems a rich public record to interpret.',
+      narrativeConsistency:'The core brand story is powerful, but product conversations vary across lifestyle, fashion and specialist performance contexts.',
+    },
     keyInsight:'Nike is not losing trust. It is facing better competition and a more demanding comparison environment within running communities.',
     primaryStrength:'Exceptional Community Gravity, advocacy and AI search readiness',
     primaryRisk:'Challenger brands can narrow the innovation gap by owning clearer specialist performance narratives',
@@ -48,7 +46,7 @@ export const nikeCommunityScorecardRelated=[
 ]
 
 export const nikeCommunityScorecardFaqs=[
-  {question:"What is Nike's Community Intelligence Score?",answer:'Nike receives an editorial Community Intelligence Score of 84 out of 100, with a Strong rating.'},
+  {question:"What is Nike's Community Intelligence Score?",answer:'Nike receives an editorial Community Intelligence Score of 84 out of 100, with an Excellent rating.'},
   {question:'What is the main finding of the Nike Scorecard?',answer:'Nike retains high trust, advocacy and cultural authority. Its main challenge is stronger competition from brands with clear specialist performance stories.'},
   {question:'Is this an automated customer rating?',answer:'No. This is an editorial Community Intelligence assessment produced by The Redditrepreneur. It is not an automated live SaaS score or a statistically representative customer survey.'},
   {question:'Why is Nike strong in AI search readiness?',answer:'Nike has extensive owned, institutional and community evidence across products, sport, culture and customer experience. That gives AI systems a broad public evidence base to interpret.'},
@@ -67,7 +65,7 @@ export const nikeCommunityScorecardBody=`
 <aside class="editor-note"><p><strong>Editorial disclosure:</strong> This is an editorial Community Intelligence assessment produced by The Redditrepreneur. It is not an automated live SaaS score or a statistically representative customer survey.</p></aside>
 
 <h2>Executive Summary</h2>
-<p>Nike receives an overall Community Intelligence Score of <strong>84 / 100</strong>, with a <strong>Strong</strong> rating.</p>
+<p>Nike receives an overall Community Intelligence Score of <strong>84 / 100</strong>, with an <strong>Excellent</strong> rating.</p>
 <p>The result reflects a brand with exceptional cultural reach, durable trust and a remarkable ability to remain present inside conversations that matter.</p>
 <p>Nike has not lost its position as a defining force in sport and culture. Its name still carries immediate meaning. Customers continue to recommend familiar products. Fans defend the brand. Athletes, collectors and casual buyers all contribute to a public evidence layer that very few competitors can match.</p>
 <p>The central challenge is more specific.</p>
@@ -95,7 +93,7 @@ export const nikeCommunityScorecardBody=`
   </tbody>
 </table>
 
-<div class="framework-callout"><p class="eyebrow">Overall result</p><h3>84 / 100</h3><p><strong>Rating:</strong> Strong</p><p>Nike remains a brand with outstanding Community Gravity. The next contest is not basic recognition. It is maintaining specialist product authority while communities gain more credible choices.</p></div>
+<div class="framework-callout"><p class="eyebrow">Overall result</p><h3>84 / 100</h3><p><strong>Rating:</strong> Excellent</p><p>Nike remains a brand with outstanding Community Gravity. The next contest is not basic recognition. It is maintaining specialist product authority while communities gain more credible choices.</p></div>
 
 <h2>Nike Is Not Losing Trust. It Is Facing Better Competition.</h2>
 <p>The most important finding is easy to misunderstand.</p>
@@ -220,7 +218,7 @@ export const nikeCommunityScorecardBody=`
 
 <h2>Frequently Asked Questions</h2>
 <h3>What is Nike's Community Intelligence Score?</h3>
-<p>Nike receives an editorial Community Intelligence Score of 84 out of 100, with a Strong rating.</p>
+<p>Nike receives an editorial Community Intelligence Score of 84 out of 100, with an Excellent rating.</p>
 <h3>What is the main finding of the Nike Scorecard?</h3>
 <p>Nike retains high trust, advocacy and cultural authority. Its main challenge is stronger competition from brands with clear specialist performance stories.</p>
 <h3>Is this an automated customer rating?</h3>

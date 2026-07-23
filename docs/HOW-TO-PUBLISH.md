@@ -10,7 +10,7 @@ Choose **Article**. Add the headline, slug, deliberate excerpt, author, publicat
 
 ## Create a Scorecard
 
-Choose **Community Intelligence Scorecard**. Enter the verified brand, score, tier, methodology version, confidence, research period and limitations. Complete Community Presence, Community Trust, Share of Consensus, Insight Responsiveness and Community Authority. Never infer or silently alter a historical score.
+Choose **Community Intelligence Scorecard**. Enter the brand and complete all nine criteria: Brand Trust, Product Satisfaction, Innovation Perception, Customer Support, Community Engagement, Competitive Position, Advocacy, AI Search Readiness and Narrative Consistency. Each criterion must be between 0 and 10. The overall score and rating are calculated from the central methodology. Add evidence based analysis for every criterion and never silently alter a historical score.
 
 ## Create a case study
 

@@ -1,22 +1,6 @@
 export type ContentType = 'Research' | 'Scorecard' | 'Case Study' | 'Framework' | 'Benchmark' | 'Weekly' | 'Index' | 'Article'
 
-export type ScorecardDimension = {
-  name: string
-  score: number
-  displayScore?: string
-  interpretation: string
-}
-
-export type ScorecardData = {
-  brandName: string
-  overallScore: number
-  grade: string
-  tier: string
-  dimensions: ScorecardDimension[]
-  keyInsight: string
-  primaryStrength: string
-  primaryRisk: string
-}
+import type {CommunityIntelligenceScorecard} from '@/lib/community-intelligence-scorecard'
 
 export type ContentItem = {
   title: string
@@ -37,7 +21,7 @@ export type ContentItem = {
   tags?: string[]
   draft?: boolean
   readingMinutes?: number
-  scorecard?: ScorecardData
+  scorecard?: CommunityIntelligenceScorecard
 }
 
 import migrated from '@/data/migrated-content.json'
@@ -51,6 +35,8 @@ import {communityIntelligenceWeeklyPlatformLiveDraft} from '@/lib/drafts/communi
 import {bbcRadioCommunityDraft} from '@/lib/drafts/bbc-radio-community'
 import {nikeCommunityScorecardDraft} from '@/lib/drafts/nike-community-scorecard'
 import {communityIntelligenceEarlyWarningArticle} from '@/lib/articles/community-intelligence-early-warning-system'
+import {robloxCommunityScorecardDraft} from '@/lib/drafts/roblox-community-scorecard'
+import {barclaysScorecard,gymsharkScorecard} from '@/lib/scorecard-records'
 
 export const latestWeeklySlug=communityIntelligenceWeeklyPlatformLiveDraft.slug
 export const previousWeeklySlug='community-intelligence-weekly-the-death-of-social-listening-b2b-saas-community-intelligence-benchmarks-and-more'
@@ -58,10 +44,10 @@ export const latestWeeklyLegacySlug='community-intelligence-weekly-3'
 
 const curated: ContentItem[] = [
   {title:'The AI Authority Formula',slug:'the-ai-authority-formula',type:'Article',excerpt:'AI does not invent trust. It interprets the public evidence surrounding a brand. The AI Authority Formula explains the six signals that shape whether AI systems recommend one company and ignore another.',date:'2026-07-13',topic:'AI Search',image:'/ai-authority-formula-cover.webp',imageAlt:'The AI Authority Formula showing Community Trust, Evidence Quality, Recommendation Frequency, Third Party Validation, Content Credibility and Expert Consensus'},
-  {title: 'The Barclays Bank Community Intelligence Scorecard', slug: 'the-barclays-bank-community-intelligence-scorecard-says-expectations-are-even-higher-than-trust', type: 'Scorecard', excerpt: 'A structured analysis of how expectations, trust and community authority shape perceptions of Barclays Bank.', date: '2026-07-12', topic: 'Brand Intelligence'},
+  {title: 'The Barclays Bank Community Intelligence Scorecard', slug: 'the-barclays-bank-community-intelligence-scorecard-says-expectations-are-even-higher-than-trust', type: 'Scorecard', excerpt: 'A structured analysis of how expectations, trust and community authority shape perceptions of Barclays Bank.', date: '2026-07-12', topic: 'Brand Intelligence',image:'/barclays-community-intelligence-scorecard.webp',imageAlt:'Barclays Bank Community Intelligence Scorecard cover from The Redditrepreneur',scorecard:barclaysScorecard},
   {title: 'Community Intelligence Weekly: The Death Of Social Listening, B2B SaaS Community Intelligence Benchmarks and More', slug: previousWeeklySlug, type: 'Weekly', excerpt: 'This week: why social listening is giving way to Community Intelligence, new B2B SaaS benchmarks and the signals reshaping how brands understand communities.', date: '2026-07-08', topic: 'Community Strategy', image: '/community-intelligence-weekly.jpg'},
   {title: 'What Streamer University Teaches Us About Community Intelligence', slug: 'what-streamer-university-teaches-us-about-community-intelligence', type: 'Case Study', excerpt: 'What a creator-led institution reveals about belonging, authority and community-led growth.', date: '2026-07-08', topic: 'Creator Economy'},
-  {title: 'The Redditrepreneur Community Intelligence Scorecard: Gymshark', slug: 'the-redditrepreneur-community-intelligence-scorecard-gymshark', type: 'Scorecard', excerpt: 'How Gymshark performs across the five dimensions of Community Intelligence.', date: '2026-07-06', topic: 'Consumer Brands'},
+  {title: 'The Redditrepreneur Community Intelligence Scorecard: Gymshark', slug: 'the-redditrepreneur-community-intelligence-scorecard-gymshark', type: 'Scorecard', excerpt: 'How Gymshark performs across nine Community Intelligence criteria spanning perception, participation and strategic value.', date: '2026-07-06', topic: 'Consumer Brands',scorecard:gymsharkScorecard},
   {title: 'The 2026 B2B SaaS Community Intelligence Benchmarks', slug: 'the-2026-b2b-saas-community-intelligence-benchmarks-tracking-share-of-consensus', type: 'Benchmark', excerpt: 'Tracking Share of Consensus and the community signals influencing B2B SaaS discovery.', date: '2026-07-03', topic: 'B2B SaaS'},
   {title: 'The Community Intelligence Stack', slug: 'the-community-intelligence-stack-turning-conversations-into-competitive-advantage', type: 'Framework', excerpt: 'A practical framework for turning online conversations into competitive advantage.', date: '2026-06-27', topic: 'Community Strategy'},
   {title: 'What Is Community Gravity?', slug: 'what-is-community-gravity', type: 'Framework', excerpt: 'Why some communities naturally pull people in, keep them engaged and become difficult to leave.', date: '2026-06-25', topic: 'Community Strategy'},
@@ -96,7 +82,7 @@ const migratedItems=(migrated as Array<{title:string;slug:string;type:string;exc
 })
 const migratedSlugs=new Set((migrated as Array<{slug:string}>).map(item=>item.slug))
 const curatedExtras=curated.filter(item=>!migratedSlugs.has(item.slug===previousWeeklySlug?latestWeeklyLegacySlug:item.slug))
-export const content:ContentItem[]=[...migratedItems,...curatedExtras,communityIntelligenceEarlyWarningArticle,nikeCommunityScorecardDraft,bbcRadioCommunityDraft,communityIntelligenceWeeklyPlatformLiveDraft,englandCommunityCourtroomDraft,franceSpainFrameworkDraft,aiEvidenceLayerArticle,redditAiSlopArticle,headOfCommunityIntelligenceDraft,bookingComScorecardDraft].sort((a,b)=>b.date.localeCompare(a.date))
+export const content:ContentItem[]=[...migratedItems,...curatedExtras,robloxCommunityScorecardDraft,communityIntelligenceEarlyWarningArticle,nikeCommunityScorecardDraft,bbcRadioCommunityDraft,communityIntelligenceWeeklyPlatformLiveDraft,englandCommunityCourtroomDraft,franceSpainFrameworkDraft,aiEvidenceLayerArticle,redditAiSlopArticle,headOfCommunityIntelligenceDraft,bookingComScorecardDraft].sort((a,b)=>b.date.localeCompare(a.date))
 export const draftContent:ContentItem[]=[]
 export const allContent:ContentItem[]=[...content,...draftContent]
 

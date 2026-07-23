@@ -15,16 +15,18 @@ export const bookingComScorecardDraft:ContentItem={
   readingMinutes:10,
   scorecard:{
     brandName:'Booking.com',
-    overallScore:84,
-    grade:'A-',
-    tier:'Strong Community Authority',
-    dimensions:[
-      {name:'Community Presence',score:94,interpretation:'Exceptional visibility and natural familiarity across online travel conversations.'},
-      {name:'Community Trust',score:82,interpretation:'Strong overall trust, with friction concentrated around support, cancellations and unexpected charges.'},
-      {name:'Share of Consensus',score:88,interpretation:'Booking.com repeatedly appears as a default recommendation when travellers compare booking platforms.'},
-      {name:'Insight Responsiveness',score:75,interpretation:'Recurring community feedback creates a clear opportunity for more visible product and service responses.'},
-      {name:'Community Authority',score:81,interpretation:'The brand holds meaningful recommendation authority that depends on consistently positive customer experiences.'},
-    ],
+    criteria:{brandTrust:8.2,productSatisfaction:8.8,innovationPerception:7.5,customerSupport:7.5,communityEngagement:9.4,competitivePosition:8.6,advocacy:8.8,aiSearchReadiness:8.5,narrativeConsistency:8.2},
+    analysis:{
+      brandTrust:'Trust remains strong, with friction concentrated around support, cancellations and unexpected charges.',
+      productSatisfaction:'Travellers value the choice, straightforward booking journey and verified review ecosystem.',
+      innovationPerception:'Useful filters and the Genius programme add value, although community evidence does not establish category leading innovation.',
+      customerSupport:'Support, cancellation and dispute resolution remain the clearest sources of post booking frustration.',
+      communityEngagement:'Booking.com appears naturally and frequently throughout online travel conversations.',
+      competitivePosition:'The brand remains a default option while Airbnb, Google Hotels, Agoda and Expedia retain distinct strengths.',
+      advocacy:'Successful travellers repeatedly recommend Booking.com in platform comparison conversations.',
+      aiSearchReadiness:'Extensive reviews, brand recognition and repeated community citations create a strong public evidence layer.',
+      narrativeConsistency:'Communities consistently value reliability and choice, while support and pricing friction create a clear counter narrative.',
+    },
     keyInsight:'Booking.com has become a default recommendation in online travel communities, but its strongest opportunity now lies in improving the post-booking experience when customers need support.',
     primaryStrength:'Community recommendation and extensive accommodation choice',
     primaryRisk:'Support, cancellation and pricing friction can weaken trust after the booking is complete',
@@ -39,7 +41,7 @@ export const bookingComScorecardRelated=[
 
 export const bookingComScorecardBody=`
 <p><strong>Community Intelligence Score: 84/100</strong></p>
-<p><strong>Grade: A-</strong></p>
+<p><strong>Rating: Excellent</strong></p>
 <p><strong>Booking.com Does Not Have an Awareness Problem. It Has a Community Experience Opportunity.</strong></p>
 
 <h2>Executive Summary</h2>
@@ -54,20 +56,7 @@ export const bookingComScorecardBody=`
 <p>This Scorecard explores where Booking.com excels, where competitors are beginning to create opportunities and what leadership should prioritise next.</p>
 
 <h2>The Redditrepreneur Community Intelligence Scorecard</h2>
-<table>
-  <caption>Booking.com scores across the five Community Intelligence dimensions</caption>
-  <thead><tr><th scope="col">Category</th><th scope="col">Score</th></tr></thead>
-  <tbody>
-    <tr><th scope="row">Community Presence</th><td>94</td></tr>
-    <tr><th scope="row">Community Trust</th><td>82</td></tr>
-    <tr><th scope="row">Share of Consensus</th><td>88</td></tr>
-    <tr><th scope="row">Insight Responsiveness</th><td>75</td></tr>
-    <tr><th scope="row">Community Authority</th><td>81</td></tr>
-  </tbody>
-</table>
-<h3>Overall Community Intelligence Score</h3>
-<p><strong>84/100</strong></p>
-<p><strong>Grade: A-</strong></p>
+<p>Booking.com is assessed across nine criteria grouped into Perception, Participation and Strategic Value. The structured Scorecard above provides the complete score breakdown.</p>
 
 <h2>What This Score Means</h2>
 <p>An 84 places Booking.com among the strongest Community Intelligence performers within the online travel industry.</p>
@@ -75,17 +64,17 @@ export const bookingComScorecardBody=`
 <p>The biggest opportunity is no longer increasing awareness.</p>
 <p>It is protecting trust throughout the customer journey.</p>
 
-<h2>Community Presence</h2>
-<p><strong>Score: 94/100</strong></p>
-<p>Booking.com has exceptional Community Presence.</p>
+<h2>Community Engagement</h2>
+<p><strong>Score: 9.4/10</strong></p>
+<p>Booking.com has exceptional Community Engagement.</p>
 <p>Whether travellers are discussing city breaks, business travel, family holidays or backpacking, Booking.com appears naturally throughout online conversations.</p>
 <p>Unlike many brands that rely on paid visibility, Booking.com benefits from genuine community familiarity.</p>
 <p>Travellers mention the platform because they use it.</p>
 <p>That distinction matters.</p>
-<p>Community Presence built through authentic experience is considerably more durable than awareness created solely through advertising.</p>
+<p>Community engagement built through authentic experience is considerably more durable than awareness created solely through advertising.</p>
 
-<h2>Community Trust</h2>
-<p><strong>Score: 82/100</strong></p>
+<h2>Brand Trust</h2>
+<p><strong>Score: 8.2/10</strong></p>
 <p>Trust remains strong overall.</p>
 <p>Travellers consistently describe Booking.com as:</p>
 <ul><li>Reliable</li><li>Convenient</li><li>Familiar</li><li>Easy to use</li></ul>
@@ -99,8 +88,8 @@ export const bookingComScorecardBody=`
 <p>However, customers frequently associate the overall experience with the platform.</p>
 <p>That creates an opportunity for Booking.com to strengthen trust after purchase rather than only before it.</p>
 
-<h2>Share of Consensus</h2>
-<p><strong>Score: 88/100</strong></p>
+<h2>Advocacy</h2>
+<p><strong>Score: 8.8/10</strong></p>
 <p>One of the strongest indicators of Community Authority is recommendation frequency.</p>
 <p>Booking.com repeatedly appears whenever travellers ask questions such as:</p>
 <blockquote><p>“Where should I book hotels?”</p><p>“What is the safest booking platform?”</p><p>“Which travel site do you trust?”</p></blockquote>
@@ -109,8 +98,8 @@ export const bookingComScorecardBody=`
 <p>This creates a powerful flywheel.</p>
 <p>Each successful booking reinforces future recommendations.</p>
 
-<h2>Insight Responsiveness</h2>
-<p><strong>Score: 75/100</strong></p>
+<h2>Customer Support</h2>
+<p><strong>Score: 7.5/10</strong></p>
 <p>Communities consistently identify several recurring themes.</p>
 <p>These include:</p>
 <ul><li>Pricing transparency</li><li>Cancellation clarity</li><li>Customer support</li><li>Genius loyalty benefits</li></ul>
@@ -119,9 +108,9 @@ export const bookingComScorecardBody=`
 <p>The conversations themselves provide valuable product research.</p>
 <p>Community Intelligence should become an ongoing input into product development rather than simply a monitoring exercise.</p>
 
-<h2>Community Authority</h2>
-<p><strong>Score: 81/100</strong></p>
-<p>Community Authority measures whether people actively trust a brand enough to recommend it.</p>
+<h2>Competitive Position</h2>
+<p><strong>Score: 8.6/10</strong></p>
+<p>Competitive Position measures how a brand is compared with alternatives and where communities believe it wins or loses.</p>
 <p>Booking.com performs well here.</p>
 <p>It has become a default recommendation within the travel category.</p>
 <p>That position is difficult to achieve.</p>
@@ -209,7 +198,7 @@ export const bookingComScorecardBody=`
 <p>Community recommendation.</p>
 <p>People recommend the platform because they have used it successfully.</p>
 <p>That creates a significant competitive advantage.</p>
-<p>However, maintaining Community Authority requires continuous attention.</p>
+<p>However, maintaining community authority requires continuous attention.</p>
 <p>Communities rarely remember flawless bookings.</p>
 <p>They remember how companies respond when problems occur.</p>
 <p>Booking.com’s greatest opportunity is not acquiring more awareness.</p>
@@ -218,19 +207,19 @@ export const bookingComScorecardBody=`
 
 <h2>Booking.com Community Intelligence Score</h2>
 <p><strong>84/100</strong></p>
-<p><strong>Grade: A-</strong></p>
+<p><strong>Rating: Excellent</strong></p>
 <h3>Strengths</h3>
-<ul><li>Exceptional Community Presence</li><li>Strong recommendation behaviour</li><li>Trusted booking platform</li><li>Extensive accommodation choice</li><li>Excellent review ecosystem</li></ul>
+<ul><li>Exceptional Community Engagement</li><li>Strong advocacy</li><li>Trusted booking platform</li><li>Extensive accommodation choice</li><li>Excellent review ecosystem</li></ul>
 <h3>Opportunities</h3>
 <ul><li>Improve customer support perception</li><li>Increase pricing transparency</li><li>Clarify cancellation policies</li><li>Strengthen Genius programme awareness</li><li>Continue building Community Authority through exceptional customer experience</li></ul>
 
 <h2>Editor’s Note</h2>
-<p>The Redditrepreneur <a href="/the-redditrepreneur-community-intelligence-scorecard/">Community Intelligence Scorecard</a> is a proprietary framework that evaluates how organisations perform across five key dimensions: Community Presence, Community Trust, Share of Consensus, Insight Responsiveness and Community Authority.</p>
+<p>The Redditrepreneur <a href="/the-redditrepreneur-community-intelligence-scorecard/">Community Intelligence Scorecard</a> is a proprietary framework that evaluates nine criteria across Perception, Participation and Strategic Value.</p>
 <p>Unlike traditional brand tracking, the Scorecard focuses on the conversations people have voluntarily across online communities and how those conversations influence purchasing decisions, competitive positioning and AI search visibility.</p>
 <p>To learn more about the methodology, explore the Redditrepreneur Community Intelligence Scorecard, browse the <a href="/glossary/">Community Intelligence Glossary</a>, or discover how the <a href="https://www.theredditrepreneur.com/services/community-intelligence-audit">Community Intelligence Audit</a>, <a href="https://www.theredditrepreneur.com/services/ai-authority-audit">AI Authority Audit</a> and <a href="https://www.theredditrepreneur.com/services/fractional-chief-community-intelligence-officer">Fractional Chief Community Intelligence Officer engagement</a> help organisations turn community conversations into strategic advantage.</p>
 
 <h2>How This Score Was Calculated</h2>
-<p>This editorial Scorecard assesses Booking.com across the five dimensions of The Redditrepreneur Community Intelligence Scorecard: Community Presence, Community Trust, Share of Consensus, Insight Responsiveness and Community Authority.</p>
+<p>This editorial Scorecard assesses Booking.com across nine equally weighted criteria. Each criterion is scored out of 10 and the raw total out of 90 is normalised into an overall score out of 100.</p>
 <p>The analysis interprets recurring themes, recommendation behaviour, customer frustrations and competitive comparisons found across public online community discussions.</p>
 <p>The score is intended as a strategic editorial assessment rather than a statistically representative customer survey.</p>
 <p><a href="/the-redditrepreneur-community-intelligence-scorecard/">Read the current Redditrepreneur Community Intelligence Scorecard methodology.</a></p>`

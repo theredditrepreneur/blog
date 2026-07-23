@@ -2,6 +2,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import {getCliClient} from 'sanity/cli'
 import {nikeCommunityScorecardBody,nikeCommunityScorecardDraft,nikeCommunityScorecardRelated} from '../../lib/drafts/nike-community-scorecard'
+import {deriveScorecard} from '../../lib/community-intelligence-scorecard'
 
 const client=getCliClient({apiVersion:'2024-01-01'})
 const documentId='scorecard-nike-community-intelligence'
@@ -12,6 +13,7 @@ const canonicalUrl=`https://blog.theredditrepreneur.com/${nikeCommunityScorecard
 const scorecard=nikeCommunityScorecardDraft.scorecard
 
 if(!scorecard)throw new Error('Nike Scorecard data is missing')
+const derived=deriveScorecard(scorecard)
 
 const existing=await client.fetch<Array<{_id:string}>>('*[slug.current==$slug && !(_id in [$draftId,$documentId])]{_id}',{slug:nikeCommunityScorecardDraft.slug,draftId,documentId})
 if(existing.length)throw new Error(`Slug already belongs to ${existing.map(item=>item._id).join(', ')}`)
@@ -64,12 +66,12 @@ await client.createOrReplace({
   relatedContent:related.map(item=>({_type:'reference',_key:item.slug,_ref:item._id})),
   featured:false,
   brandName:scorecard.brandName,
-  overallScore:scorecard.overallScore,
-  grade:scorecard.grade,
-  tier:scorecard.tier,
+  criteria:{_type:'scorecardCriteria',...scorecard.criteria},
+  overallScore:derived.overallScore,
+  rating:derived.rating,
   assessmentStatus:'Editorial Community Intelligence assessment',
-  dimensions:scorecard.dimensions.map((dimension,index)=>({_type:'scoreDimension',_key:`dimension-${index+1}`,name:dimension.name,score:dimension.score,displayScore:dimension.displayScore,interpretation:dimension.interpretation,evidence:[]})),
-  methodologyVersion:'Current Redditrepreneur Community Intelligence Scorecard methodology',
+  criterionAnalysis:scorecard.analysis,
+  methodologyVersion:'Nine criterion methodology',
   keyInsight:scorecard.keyInsight,
   primaryStrength:scorecard.primaryStrength,
   primaryRisk:scorecard.primaryRisk,
@@ -79,7 +81,7 @@ await client.createOrReplace({
   body:[{_type:'legacyHtml',_key:'scorecard-body',html:nikeCommunityScorecardBody,reviewStatus:'reviewed',notes:'Nike Scorecard formatted as an unpublished editorial draft. Do not publish without explicit approval.'}],
 })
 
-const result=await client.fetch('*[_id==$draftId][0]{_id,_type,title,"slug":slug.current,publishedAt,brandName,overallScore,grade,tier,assessmentStatus,dimensions[]{name,score,displayScore,interpretation},methodologyVersion,keyInsight,primaryStrength,primaryRisk,dataLimitations,"author":author->name,"cover":coverImage.asset->url,"topics":topics[]->title,"related":relatedContent[]->title,seo}',{draftId})
+const result=await client.fetch('*[_id==$draftId][0]{_id,_type,title,"slug":slug.current,publishedAt,brandName,criteria,overallScore,rating,assessmentStatus,criterionAnalysis,methodologyVersion,keyInsight,primaryStrength,primaryRisk,dataLimitations,"author":author->name,"cover":coverImage.asset->url,"topics":topics[]->title,"related":relatedContent[]->title,seo}',{draftId})
 fs.mkdirSync(path.resolve('reports/generated'),{recursive:true})
 fs.writeFileSync(path.resolve('reports/generated/nike-scorecard-draft.json'),JSON.stringify(result,null,2))
 console.log(JSON.stringify(result,null,2))

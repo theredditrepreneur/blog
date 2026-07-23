@@ -129,7 +129,7 @@ export const communityIntelligenceWeeklyPlatformLiveBody=`
 <p>Traditional social listening often focuses on volume and sentiment.</p>
 <p>The Community Intelligence Scorecard looks deeper.</p>
 <p>It examines areas including:</p>
-<ul><li>Community Presence</li><li>Community Trust</li><li>Share of Consensus</li><li>Insight Responsiveness</li><li>Community Authority</li></ul>
+<p>The current Scorecard assesses nine criteria across three pillars.</p><h4>Perception</h4><ul><li>Brand Trust</li><li>Product Satisfaction</li><li>Innovation Perception</li></ul><h4>Participation</h4><ul><li>Community Engagement</li><li>Advocacy</li><li>Narrative Consistency</li></ul><h4>Strategic Value</h4><ul><li>Competitive Position</li><li>Customer Support</li><li>AI Search Readiness</li></ul>
 <p>The aim is to understand not only whether people are discussing a brand, but what they believe, how strongly those beliefs are shared and whether the brand is learning from the conversations around it.</p>
 
 <h3><a href="/booking-com-community-intelligence-scorecard">Booking.com</a></h3>

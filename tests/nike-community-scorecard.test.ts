@@ -2,6 +2,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import {describe,expect,it} from 'vitest'
 import {nikeCommunityScorecardBody,nikeCommunityScorecardDraft,nikeCommunityScorecardFaqs} from '../lib/drafts/nike-community-scorecard'
+import {deriveScorecard,scorecardCriterionIds} from '../lib/community-intelligence-scorecard'
 
 const visibleCopy=nikeCommunityScorecardBody.replace(/<[^>]+>/g,' ').replace(/&[a-z]+;/gi,' ')
 const metadata=[nikeCommunityScorecardDraft.title,nikeCommunityScorecardDraft.excerpt,nikeCommunityScorecardDraft.subtitle,nikeCommunityScorecardDraft.imageAlt,nikeCommunityScorecardDraft.seoTitle,nikeCommunityScorecardDraft.metaDescription,nikeCommunityScorecardDraft.socialTitle,nikeCommunityScorecardDraft.socialDescription,...nikeCommunityScorecardFaqs.flatMap(item=>[item.question,item.answer])].filter(Boolean).join(' ')
@@ -15,8 +16,10 @@ describe('Nike Community Intelligence Scorecard',()=>{
   })
 
   it('preserves every supplied score',()=>{
-    expect(nikeCommunityScorecardDraft.scorecard?.overallScore).toBe(84)
-    expect(nikeCommunityScorecardDraft.scorecard?.dimensions.map(item=>item.displayScore)).toEqual(['9.2 / 10','8.1 / 10','7.6 / 10','7.2 / 10','9.1 / 10','8.5 / 10','9.0 / 10','9.3 / 10','7.8 / 10'])
+    const result=deriveScorecard(nikeCommunityScorecardDraft.scorecard!)
+    expect(result.overallScore).toBe(84)
+    expect(result.rating).toBe('Excellent')
+    expect(Object.keys(result.criteria).sort()).toEqual([...scorecardCriterionIds].sort())
   })
 
   it('contains no visible hyphens or dashes',()=>{

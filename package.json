@@ -5,11 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "node ./node_modules/next/dist/bin/next dev",
-    "build": "node ./node_modules/next/dist/bin/next build",
+    "build": "npm run validate:scorecards && node ./node_modules/next/dist/bin/next build",
     "start": "node ./node_modules/next/dist/bin/next start",
     "lint": "node ./node_modules/eslint/bin/eslint.js .",
     "typecheck": "node ./node_modules/typescript/bin/tsc --noEmit",
     "test": "node ./node_modules/vitest/vitest.mjs run",
+    "validate:scorecards": "node ./node_modules/tsx/dist/cli.mjs scripts/validate-scorecards.ts",
     "ghost:audit": "node ./node_modules/tsx/dist/cli.mjs scripts/ghost/audit.ts",
     "ghost:dry-run": "node ./node_modules/tsx/dist/cli.mjs scripts/ghost/import.ts --dry-run",
     "ghost:import": "node ./node_modules/tsx/dist/cli.mjs scripts/ghost/import.ts",

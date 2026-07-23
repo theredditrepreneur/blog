@@ -5,6 +5,16 @@ defineType({name:'legacyMetadata',title:'Migration metadata',type:'object',optio
 defineType({name:'tableBlock',title:'Table',type:'object',fields:[defineField({name:'caption',type:'string'}),defineField({name:'rows',type:'array',of:[defineArrayMember({type:'object',fields:[defineField({name:'cells',type:'array',of:[defineArrayMember({type:'string'})]})]})]})]}),
 defineType({name:'videoEmbed',title:'Video',type:'object',fields:[defineField({name:'url',type:'url',validation:r=>r.required()}),defineField({name:'title',type:'string',validation:r=>r.required()}),defineField({name:'caption',type:'string'}),defineField({name:'transcript',type:'text'})]}),
 defineType({name:'legacyHtml',title:'Legacy HTML fallback',type:'object',fields:[defineField({name:'html',type:'text',rows:12,readOnly:true}),defineField({name:'reviewStatus',type:'string',options:{list:['required','reviewed','replaced']},initialValue:'required'}),defineField({name:'notes',type:'text'})]}),
-defineType({name:'scoreDimension',title:'Score dimension',type:'object',fields:[defineField({name:'name',type:'string',validation:r=>r.required()}),defineField({name:'score',type:'number',validation:r=>r.required().min(0).max(100)}),defineField({name:'displayScore',type:'string',description:'Optional editorial scale label such as 9.2 / 10'}),defineField({name:'interpretation',type:'text'}),defineField({name:'evidence',type:'array',of:[defineArrayMember({type:'block'})]})]}),
+defineType({name:'scorecardCriteria',title:'Nine Scorecard criteria',type:'object',fields:[
+  defineField({name:'brandTrust',title:'Brand Trust',type:'number',validation:r=>r.required().min(0).max(10)}),
+  defineField({name:'productSatisfaction',title:'Product Satisfaction',type:'number',validation:r=>r.required().min(0).max(10)}),
+  defineField({name:'innovationPerception',title:'Innovation Perception',type:'number',validation:r=>r.required().min(0).max(10)}),
+  defineField({name:'communityEngagement',title:'Community Engagement',type:'number',validation:r=>r.required().min(0).max(10)}),
+  defineField({name:'advocacy',title:'Advocacy',type:'number',validation:r=>r.required().min(0).max(10)}),
+  defineField({name:'narrativeConsistency',title:'Narrative Consistency',type:'number',validation:r=>r.required().min(0).max(10)}),
+  defineField({name:'competitivePosition',title:'Competitive Position',type:'number',validation:r=>r.required().min(0).max(10)}),
+  defineField({name:'customerSupport',title:'Customer Support',type:'number',validation:r=>r.required().min(0).max(10)}),
+  defineField({name:'aiSearchReadiness',title:'AI Search Readiness',type:'number',validation:r=>r.required().min(0).max(10)}),
+]}),
 ]
 export const cta=defineType({name:'callToAction',title:'Call to action',type:'document',fields:[defineField({name:'title',type:'string',validation:r=>r.required()}),defineField({name:'label',type:'string',validation:r=>r.required()}),defineField({name:'url',type:'url',validation:r=>r.required()}),defineField({name:'style',type:'string',options:{list:['primary','secondary','text']},initialValue:'primary'})]})

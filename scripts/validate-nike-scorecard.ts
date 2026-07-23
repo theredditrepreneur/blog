@@ -16,7 +16,7 @@ const visibleMetadata=[
   nikeCommunityScorecardDraft.socialTitle,
   nikeCommunityScorecardDraft.socialDescription,
   ...nikeCommunityScorecardFaqs.flatMap(item=>[item.question,item.answer]),
-  ...nikeCommunityScorecardDraft.scorecard!.dimensions.flatMap(item=>[item.name,item.displayScore,item.interpretation]),
+  ...Object.values(nikeCommunityScorecardDraft.scorecard!.analysis||{}),
 ].filter(Boolean).join(' ')
 
 const prohibited=/[\-\u2013\u2014]/g
