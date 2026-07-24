@@ -36,6 +36,7 @@ import {bbcRadioCommunityDraft} from '@/lib/drafts/bbc-radio-community'
 import {nikeCommunityScorecardDraft} from '@/lib/drafts/nike-community-scorecard'
 import {communityIntelligenceEarlyWarningArticle} from '@/lib/articles/community-intelligence-early-warning-system'
 import {hubspotRedditPerformanceArticle} from '@/lib/articles/hubspot-reddit-performance-marketing'
+import {restIsFootballCommunitySuccessArticle} from '@/lib/articles/rest-is-football-community-success'
 import {robloxCommunityScorecardDraft} from '@/lib/drafts/roblox-community-scorecard'
 import {barclaysScorecard,gymsharkScorecard} from '@/lib/scorecard-records'
 
@@ -83,9 +84,9 @@ const migratedItems=(migrated as Array<{title:string;slug:string;type:string;exc
 })
 const migratedSlugs=new Set((migrated as Array<{slug:string}>).map(item=>item.slug))
 const curatedExtras=curated.filter(item=>!migratedSlugs.has(item.slug===previousWeeklySlug?latestWeeklyLegacySlug:item.slug))
-export const content:ContentItem[]=[...migratedItems,...curatedExtras,hubspotRedditPerformanceArticle,robloxCommunityScorecardDraft,communityIntelligenceEarlyWarningArticle,nikeCommunityScorecardDraft,bbcRadioCommunityDraft,communityIntelligenceWeeklyPlatformLiveDraft,englandCommunityCourtroomDraft,franceSpainFrameworkDraft,aiEvidenceLayerArticle,redditAiSlopArticle,headOfCommunityIntelligenceDraft,bookingComScorecardDraft].sort((a,b)=>b.date.localeCompare(a.date))
+export const content:ContentItem[]=[...migratedItems,...curatedExtras,restIsFootballCommunitySuccessArticle,hubspotRedditPerformanceArticle,robloxCommunityScorecardDraft,communityIntelligenceEarlyWarningArticle,nikeCommunityScorecardDraft,bbcRadioCommunityDraft,communityIntelligenceWeeklyPlatformLiveDraft,englandCommunityCourtroomDraft,franceSpainFrameworkDraft,aiEvidenceLayerArticle,redditAiSlopArticle,headOfCommunityIntelligenceDraft,bookingComScorecardDraft].sort((a,b)=>b.date.localeCompare(a.date))
 export const draftContent:ContentItem[]=[]
 export const allContent:ContentItem[]=[...content,...draftContent]
 
 export const frameworks = ['Community Gravity', 'Market Gravity', 'Trust Collapse', 'Narrative Compression', 'Belief Correction', 'Mission Premium', 'Hype Hangover', 'Expectation Gravity', 'Community Intelligence Stack', 'Share of Consensus']
-export const topics = ['AI Search', 'Brand Intelligence', 'Customer Insights', 'Community Strategy', 'Industry Analysis', 'Reddit', 'Creator Economy', 'B2B SaaS', 'Consumer Brands']
+export const topics = ['Community Intelligence', 'AI Search', 'Brand Intelligence', 'Customer Insights', 'Community Strategy', 'Industry Analysis', 'Reddit', 'Creator Economy', 'B2B SaaS', 'Consumer Brands']

@@ -15,6 +15,7 @@ import {bbcRadioCommunityDraft,bbcRadioCommunityRelated} from '@/lib/drafts/bbc-
 import {nikeCommunityScorecardDraft,nikeCommunityScorecardRelated} from '@/lib/drafts/nike-community-scorecard'
 import {communityIntelligenceEarlyWarningArticle,communityIntelligenceEarlyWarningRelated} from '@/lib/articles/community-intelligence-early-warning-system'
 import {hubspotRedditPerformanceArticle,hubspotRedditPerformanceRelated} from '@/lib/articles/hubspot-reddit-performance-marketing'
+import {restIsFootballCommunitySuccessArticle,restIsFootballCommunitySuccessRelated} from '@/lib/articles/rest-is-football-community-success'
 import {Newsletter} from './newsletter'
 import {SharePost} from './share-post'
 
@@ -33,6 +34,7 @@ export function ArticlePage({item,embedded=false,bodyHtml,coverImageUrl}:{item:C
     [nikeCommunityScorecardDraft.slug]:nikeCommunityScorecardRelated,
     [communityIntelligenceEarlyWarningArticle.slug]:communityIntelligenceEarlyWarningRelated,
     [hubspotRedditPerformanceArticle.slug]:hubspotRedditPerformanceRelated,
+    [restIsFootballCommunitySuccessArticle.slug]:restIsFootballCommunitySuccessRelated,
   }
   const related=manualRelated[item.slug]?.map(slug=>content.find(candidate=>candidate.slug===slug)).filter((candidate):candidate is ContentItem=>Boolean(candidate))||content.filter(candidate=>candidate.slug!==item.slug&&(candidate.topic===item.topic||candidate.type===item.type)).slice(0,3)
   const archiveHref:Record<ContentItem['type'],string>={Research:'/research',Scorecard:'/scorecards','Case Study':'/case-studies',Framework:'/frameworks',Benchmark:'/benchmarks',Weekly:'/community-intelligence-weekly',Index:'/community-intelligence-index',Article:'/research'}
@@ -41,7 +43,7 @@ export function ArticlePage({item,embedded=false,bodyHtml,coverImageUrl}:{item:C
   const isBookingScorecard=item.slug===bookingComScorecardDraft.slug
   const isNikeScorecard=item.slug===nikeCommunityScorecardDraft.slug
   const isEarlyWarning=item.slug===communityIntelligenceEarlyWarningArticle.slug
-  const isRedditAiSlop=item.slug===redditAiSlopArticle.slug||item.slug===aiEvidenceLayerArticle.slug||item.slug===franceSpainFrameworkDraft.slug||item.slug===englandCommunityCourtroomDraft.slug||item.slug===communityIntelligenceWeeklyPlatformLiveDraft.slug||item.slug===bbcRadioCommunityDraft.slug||item.slug===hubspotRedditPerformanceArticle.slug||isNikeScorecard||isEarlyWarning
+  const isRedditAiSlop=item.slug===redditAiSlopArticle.slug||item.slug===aiEvidenceLayerArticle.slug||item.slug===franceSpainFrameworkDraft.slug||item.slug===englandCommunityCourtroomDraft.slug||item.slug===communityIntelligenceWeeklyPlatformLiveDraft.slug||item.slug===bbcRadioCommunityDraft.slug||item.slug===hubspotRedditPerformanceArticle.slug||item.slug===restIsFootballCommunitySuccessArticle.slug||isNikeScorecard||isEarlyWarning
   const tocLimit=isBookingScorecard||isNikeScorecard?24:12
   const publicationIndex=content.findIndex(candidate=>candidate.slug===item.slug)
   const newerArticle=publicationIndex>0?content[publicationIndex-1]:undefined
