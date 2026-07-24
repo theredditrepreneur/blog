@@ -5,13 +5,23 @@ export function sanitiseImportedHtml(html:string){
 
 export type ArticleHeading={id:string;label:string;level:2|3}
 
+const headingEntities:Record<string,string>={amp:'&',apos:"'",quot:'"',nbsp:' ',rsquo:'’',lsquo:'‘',rdquo:'”',ldquo:'“'}
+
+function decodeHeadingText(value:string){
+  return value.replace(/&(#x[\da-f]+|#\d+|amp|apos|quot|nbsp|rsquo|lsquo|rdquo|ldquo);/gi,(_,entity:string)=>{
+    if(entity.startsWith('#x'))return String.fromCodePoint(Number.parseInt(entity.slice(2),16))
+    if(entity.startsWith('#'))return String.fromCodePoint(Number.parseInt(entity.slice(1),10))
+    return headingEntities[entity.toLowerCase()]||`&${entity};`
+  })
+}
+
 export function prepareImportedHtml(html:string){
   const headings:ArticleHeading[]=[]
   const used=new Map<string,number>()
   const safe=sanitiseImportedHtml(html).replace(/<h1\b([^>]*)>([\s\S]*?)<\/h1>/gi,'<h2$1>$2</h2>')
   const prepared=safe.replace(/<h([23])\b([^>]*)>([\s\S]*?)<\/h\1>/gi,(_,level,attrs,inner)=>{
-    const label=String(inner).replace(/<[^>]+>/g,'').replace(/&amp;/g,'&').replace(/&#39;/g,"'").replace(/&quot;/g,'"').trim()
-    const base=label.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'section'
+    const label=decodeHeadingText(String(inner).replace(/<[^>]+>/g,'')).trim()
+    const base=label.toLowerCase().replace(/['’]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'section'
     const count=(used.get(base)||0)+1;used.set(base,count)
     const id=count===1?base:`${base}-${count}`
     headings.push({id,label,level:Number(level) as 2|3})
