@@ -37,6 +37,7 @@ import {nikeCommunityScorecardDraft} from '@/lib/drafts/nike-community-scorecard
 import {communityIntelligenceEarlyWarningArticle} from '@/lib/articles/community-intelligence-early-warning-system'
 import {hubspotRedditPerformanceArticle} from '@/lib/articles/hubspot-reddit-performance-marketing'
 import {restIsFootballCommunitySuccessArticle} from '@/lib/articles/rest-is-football-community-success'
+import {xMen97Season2Article} from '@/lib/articles/x-men-97-season-2-community-intelligence'
 import {robloxCommunityScorecardDraft} from '@/lib/drafts/roblox-community-scorecard'
 import {barclaysScorecard,gymsharkScorecard} from '@/lib/scorecard-records'
 
@@ -84,7 +85,7 @@ const migratedItems=(migrated as Array<{title:string;slug:string;type:string;exc
 })
 const migratedSlugs=new Set((migrated as Array<{slug:string}>).map(item=>item.slug))
 const curatedExtras=curated.filter(item=>!migratedSlugs.has(item.slug===previousWeeklySlug?latestWeeklyLegacySlug:item.slug))
-export const content:ContentItem[]=[...migratedItems,...curatedExtras,restIsFootballCommunitySuccessArticle,hubspotRedditPerformanceArticle,robloxCommunityScorecardDraft,communityIntelligenceEarlyWarningArticle,nikeCommunityScorecardDraft,bbcRadioCommunityDraft,communityIntelligenceWeeklyPlatformLiveDraft,englandCommunityCourtroomDraft,franceSpainFrameworkDraft,aiEvidenceLayerArticle,redditAiSlopArticle,headOfCommunityIntelligenceDraft,bookingComScorecardDraft].sort((a,b)=>b.date.localeCompare(a.date))
+export const content:ContentItem[]=[...migratedItems,...curatedExtras,xMen97Season2Article,restIsFootballCommunitySuccessArticle,hubspotRedditPerformanceArticle,robloxCommunityScorecardDraft,communityIntelligenceEarlyWarningArticle,nikeCommunityScorecardDraft,bbcRadioCommunityDraft,communityIntelligenceWeeklyPlatformLiveDraft,englandCommunityCourtroomDraft,franceSpainFrameworkDraft,aiEvidenceLayerArticle,redditAiSlopArticle,headOfCommunityIntelligenceDraft,bookingComScorecardDraft].sort((a,b)=>b.date.localeCompare(a.date))
 export const draftContent:ContentItem[]=[]
 export const allContent:ContentItem[]=[...content,...draftContent]
 
