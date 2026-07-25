@@ -70,22 +70,21 @@ export const worldCupCommercialisationBody=`
 <p>The answer is different for every business.</p>
 <p>The only way to know is by listening to the community.</p>
 
-<h2>Why Community Intelligence Matters</h2>
-<p>Most businesses measure sales.</p>
-<p>They measure website visitors.</p>
-<p>They measure engagement.</p>
-<p>Those numbers are useful.</p>
-<p>But they don&rsquo;t explain what people believe.</p>
-<p><a href="/what-is-community-intelligence">Community Intelligence</a> looks at conversations.</p>
-<p>It helps businesses understand:</p>
-<ul>
-  <li>What customers like.</li>
-  <li>What frustrates them.</li>
-  <li>What they are worried about.</li>
-  <li>What stories they tell each other.</li>
-  <li>And what might happen next.</li>
-</ul>
-<p>That gives businesses a chance to spot problems before they become reputation problems.</p>
+<h2>What Community Intelligence Reveals About This World Cup</h2>
+<p>Ticket sales and viewing figures tell FIFA that the tournament was popular.</p>
+<p>They don&rsquo;t explain why some fans still felt uneasy.</p>
+<p>That is what <a href="/what-is-community-intelligence">Community Intelligence</a> can reveal.</p>
+<p>A halftime show on its own may seem harmless.</p>
+<p>An advert during a break may seem like a small change.</p>
+<p>Higher ticket prices may be explained as a separate decision.</p>
+<p>But fans can join all of those things together.</p>
+<p>They may see one larger story:</p>
+<blockquote><p>The World Cup is making more room for sponsors and less room for supporters.</p></blockquote>
+<p>That shared story is the important signal.</p>
+<p>It shows that fans are no longer judging each commercial change on its own.</p>
+<p>They are using every change as evidence of what they believe FIFA values most.</p>
+<p>FIFA does not have to agree with every complaint.</p>
+<p>But it needs to know when many small complaints are becoming one powerful story about money, trust and who the World Cup is really for.</p>
 
 <h2>Final Thoughts</h2>
 <p>The 2026 World Cup wasn&rsquo;t ruined.</p>

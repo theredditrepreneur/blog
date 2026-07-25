@@ -24,7 +24,7 @@ describe('2026 World Cup commercialisation case study',()=>{
       'Football Is More Than a Product',
       'Success Doesn&rsquo;t Always Mean Trust',
       'What Businesses Can Learn',
-      'Why Community Intelligence Matters',
+      'What Community Intelligence Reveals About This World Cup',
       'Final Thoughts',
     ])
   })
