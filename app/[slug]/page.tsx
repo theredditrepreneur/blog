@@ -18,6 +18,7 @@ import {hubspotRedditPerformanceArticle,hubspotRedditPerformanceBody} from '@/li
 import {restIsFootballCommunitySuccessArticle,restIsFootballCommunitySuccessBody} from '@/lib/articles/rest-is-football-community-success'
 import {xMen97Season2Article,xMen97Season2Body} from '@/lib/articles/x-men-97-season-2-community-intelligence'
 import {squarespacePriceIncreaseArticle,squarespacePriceIncreaseBody} from '@/lib/articles/squarespace-price-increase-community-intelligence'
+import {hubspotCommunityGovernanceArticle,hubspotCommunityGovernanceBody} from '@/lib/articles/hubspot-community-governance-product-decision'
 import {client} from '@/sanity/lib/client'
 import {site} from '@/lib/site'
 
@@ -37,6 +38,7 @@ const localBodies:Record<string,string>={
   [restIsFootballCommunitySuccessArticle.slug]:restIsFootballCommunitySuccessBody,
   [xMen97Season2Article.slug]:xMen97Season2Body,
   [squarespacePriceIncreaseArticle.slug]:squarespacePriceIncreaseBody,
+  [hubspotCommunityGovernanceArticle.slug]:hubspotCommunityGovernanceBody,
 }
 
 export function generateStaticParams(){return allContent.map(({slug})=>({slug}))}
@@ -87,6 +89,7 @@ export default async function Page({params}:{params:Promise<{slug:string}>}){
   const isRestIsFootball=item.slug===restIsFootballCommunitySuccessArticle.slug
   const isXMen97=item.slug===xMen97Season2Article.slug
   const isSquarespacePriceIncrease=item.slug===squarespacePriceIncreaseArticle.slug
+  const isHubspotCommunityGovernance=item.slug===hubspotCommunityGovernanceArticle.slug
   const schema={
     '@context':'https://schema.org',
     '@type':isEarlyWarning?['Article','BlogPosting']:item.type==='Scorecard'||item.type==='Benchmark'?'Report':'Article',
@@ -104,7 +107,7 @@ export default async function Page({params}:{params:Promise<{slug:string}>}){
   const isRobloxScorecard=item.slug===robloxCommunityScorecardDraft.slug
   const visibleFaqs=isNikeScorecard?nikeCommunityScorecardFaqs:isRobloxScorecard?robloxCommunityScorecardFaqs:null
   const faqSchema=visibleFaqs?{'@context':'https://schema.org','@type':'FAQPage',mainEntity:visibleFaqs.map(({question,answer})=>({'@type':'Question',name:question,acceptedAnswer:{'@type':'Answer',text:answer}}))}:null
-  const breadcrumbSchema=isNikeScorecard||isRobloxScorecard||isEarlyWarning||isHubspotPerformance||isRestIsFootball||isXMen97||isSquarespacePriceIncrease?{'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:[
+  const breadcrumbSchema=isNikeScorecard||isRobloxScorecard||isEarlyWarning||isHubspotPerformance||isRestIsFootball||isXMen97||isSquarespacePriceIncrease||isHubspotCommunityGovernance?{'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:[
     {'@type':'ListItem',position:1,name:'Home',item:site.url},
     {'@type':'ListItem',position:2,name:isNikeScorecard||isRobloxScorecard?'Scorecards':'Research',item:`${site.url}/${isNikeScorecard||isRobloxScorecard?'scorecards':'research'}`},
     {'@type':'ListItem',position:3,name:item.title,item:`${site.url}/${item.slug}`},
