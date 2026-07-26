@@ -29,6 +29,7 @@ import {youtubeAiThumbnailArticle,youtubeAiThumbnailBody} from '@/lib/articles/y
 import {patreonPlatformChangeArticle,patreonPlatformChangeBody,patreonPlatformChangeFaqs} from '@/lib/articles/patreon-platform-change'
 import {tripComAiTravelAgentArticle,tripComAiTravelAgentBody,tripComAiTravelAgentFaqs} from '@/lib/articles/trip-com-ai-travel-agent'
 import {adobeAiPhotoCritiqueArticle,adobeAiPhotoCritiqueBody} from '@/lib/articles/adobe-ai-photo-critique'
+import {christopherNolanOdysseyArticle,christopherNolanOdysseyBody} from '@/lib/articles/christopher-nolan-odyssey-trust-conversation'
 import {client} from '@/sanity/lib/client'
 import {site} from '@/lib/site'
 
@@ -59,6 +60,7 @@ const localBodies:Record<string,string>={
   [patreonPlatformChangeArticle.slug]:patreonPlatformChangeBody,
   [tripComAiTravelAgentArticle.slug]:tripComAiTravelAgentBody,
   [adobeAiPhotoCritiqueArticle.slug]:adobeAiPhotoCritiqueBody,
+  [christopherNolanOdysseyArticle.slug]:christopherNolanOdysseyBody,
 }
 
 export function generateStaticParams(){return allContent.map(({slug})=>({slug}))}
@@ -119,6 +121,7 @@ export default async function Page({params}:{params:Promise<{slug:string}>}){
   const isPatreonPlatformChange=item.slug===patreonPlatformChangeArticle.slug
   const isTripComAiTravelAgent=item.slug===tripComAiTravelAgentArticle.slug
   const isAdobeAiPhotoCritique=item.slug===adobeAiPhotoCritiqueArticle.slug
+  const isChristopherNolanOdyssey=item.slug===christopherNolanOdysseyArticle.slug
   const schema={
     '@context':'https://schema.org',
     '@type':isEarlyWarning?['Article','BlogPosting']:item.type==='Scorecard'||item.type==='Benchmark'?'Report':'Article',
@@ -136,7 +139,7 @@ export default async function Page({params}:{params:Promise<{slug:string}>}){
   const isRobloxScorecard=item.slug===robloxCommunityScorecardDraft.slug
   const visibleFaqs=isNikeScorecard?nikeCommunityScorecardFaqs:isRobloxScorecard?robloxCommunityScorecardFaqs:isPatreonPlatformChange?patreonPlatformChangeFaqs:isTripComAiTravelAgent?tripComAiTravelAgentFaqs:null
   const faqSchema=visibleFaqs?{'@context':'https://schema.org','@type':'FAQPage',mainEntity:visibleFaqs.map(({question,answer})=>({'@type':'Question',name:question,acceptedAnswer:{'@type':'Answer',text:answer}}))}:null
-  const breadcrumbSchema=isNikeScorecard||isRobloxScorecard||isEarlyWarning||isHubspotPerformance||isRestIsFootball||isXMen97||isSquarespacePriceIncrease||isHubspotCommunityGovernance||isWorldCupCommercialisation||isFacebookTikTok||isMetaGlassesOwnership||isAmazonPrimeVideoGames||isXboxGamePass||isOpenAiAgentOversight||isPatreonPlatformChange||isTripComAiTravelAgent||isAdobeAiPhotoCritique?{'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:[
+  const breadcrumbSchema=isNikeScorecard||isRobloxScorecard||isEarlyWarning||isHubspotPerformance||isRestIsFootball||isXMen97||isSquarespacePriceIncrease||isHubspotCommunityGovernance||isWorldCupCommercialisation||isFacebookTikTok||isMetaGlassesOwnership||isAmazonPrimeVideoGames||isXboxGamePass||isOpenAiAgentOversight||isPatreonPlatformChange||isTripComAiTravelAgent||isAdobeAiPhotoCritique||isChristopherNolanOdyssey?{'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:[
     {'@type':'ListItem',position:1,name:'Home',item:site.url},
     {'@type':'ListItem',position:2,name:isNikeScorecard||isRobloxScorecard?'Scorecards':'Research',item:`${site.url}/${isNikeScorecard||isRobloxScorecard?'scorecards':'research'}`},
     {'@type':'ListItem',position:3,name:item.title,item:`${site.url}/${item.slug}`},
