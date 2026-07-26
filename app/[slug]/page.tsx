@@ -23,6 +23,7 @@ import {worldCupCommercialisationArticle,worldCupCommercialisationBody} from '@/
 import {facebookTikTokArticle,facebookTikTokBody} from '@/lib/articles/facebook-becoming-more-like-tiktok'
 import {metaGlassesOwnershipArticle,metaGlassesOwnershipBody} from '@/lib/articles/meta-glasses-monthly-charge-ownership'
 import {amazonPrimeVideoGamesArticle,amazonPrimeVideoGamesBody} from '@/lib/articles/amazon-games-inside-prime-video'
+import {xboxGamePassArticle,xboxGamePassBody} from '@/lib/articles/xbox-game-pass-more-for-less'
 import {client} from '@/sanity/lib/client'
 import {site} from '@/lib/site'
 
@@ -47,6 +48,7 @@ const localBodies:Record<string,string>={
   [facebookTikTokArticle.slug]:facebookTikTokBody,
   [metaGlassesOwnershipArticle.slug]:metaGlassesOwnershipBody,
   [amazonPrimeVideoGamesArticle.slug]:amazonPrimeVideoGamesBody,
+  [xboxGamePassArticle.slug]:xboxGamePassBody,
 }
 
 export function generateStaticParams(){return allContent.map(({slug})=>({slug}))}
@@ -102,6 +104,7 @@ export default async function Page({params}:{params:Promise<{slug:string}>}){
   const isFacebookTikTok=item.slug===facebookTikTokArticle.slug
   const isMetaGlassesOwnership=item.slug===metaGlassesOwnershipArticle.slug
   const isAmazonPrimeVideoGames=item.slug===amazonPrimeVideoGamesArticle.slug
+  const isXboxGamePass=item.slug===xboxGamePassArticle.slug
   const schema={
     '@context':'https://schema.org',
     '@type':isEarlyWarning?['Article','BlogPosting']:item.type==='Scorecard'||item.type==='Benchmark'?'Report':'Article',
@@ -119,7 +122,7 @@ export default async function Page({params}:{params:Promise<{slug:string}>}){
   const isRobloxScorecard=item.slug===robloxCommunityScorecardDraft.slug
   const visibleFaqs=isNikeScorecard?nikeCommunityScorecardFaqs:isRobloxScorecard?robloxCommunityScorecardFaqs:null
   const faqSchema=visibleFaqs?{'@context':'https://schema.org','@type':'FAQPage',mainEntity:visibleFaqs.map(({question,answer})=>({'@type':'Question',name:question,acceptedAnswer:{'@type':'Answer',text:answer}}))}:null
-  const breadcrumbSchema=isNikeScorecard||isRobloxScorecard||isEarlyWarning||isHubspotPerformance||isRestIsFootball||isXMen97||isSquarespacePriceIncrease||isHubspotCommunityGovernance||isWorldCupCommercialisation||isFacebookTikTok||isMetaGlassesOwnership||isAmazonPrimeVideoGames?{'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:[
+  const breadcrumbSchema=isNikeScorecard||isRobloxScorecard||isEarlyWarning||isHubspotPerformance||isRestIsFootball||isXMen97||isSquarespacePriceIncrease||isHubspotCommunityGovernance||isWorldCupCommercialisation||isFacebookTikTok||isMetaGlassesOwnership||isAmazonPrimeVideoGames||isXboxGamePass?{'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:[
     {'@type':'ListItem',position:1,name:'Home',item:site.url},
     {'@type':'ListItem',position:2,name:isNikeScorecard||isRobloxScorecard?'Scorecards':'Research',item:`${site.url}/${isNikeScorecard||isRobloxScorecard?'scorecards':'research'}`},
     {'@type':'ListItem',position:3,name:item.title,item:`${site.url}/${item.slug}`},

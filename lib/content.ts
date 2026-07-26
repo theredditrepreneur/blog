@@ -44,6 +44,7 @@ import {worldCupCommercialisationArticle} from '@/lib/articles/world-cup-commerc
 import {facebookTikTokArticle} from '@/lib/articles/facebook-becoming-more-like-tiktok'
 import {metaGlassesOwnershipArticle} from '@/lib/articles/meta-glasses-monthly-charge-ownership'
 import {amazonPrimeVideoGamesArticle} from '@/lib/articles/amazon-games-inside-prime-video'
+import {xboxGamePassArticle} from '@/lib/articles/xbox-game-pass-more-for-less'
 import {robloxCommunityScorecardDraft} from '@/lib/drafts/roblox-community-scorecard'
 import {barclaysScorecard,gymsharkScorecard} from '@/lib/scorecard-records'
 
@@ -91,7 +92,7 @@ const migratedItems=(migrated as Array<{title:string;slug:string;type:string;exc
 })
 const migratedSlugs=new Set((migrated as Array<{slug:string}>).map(item=>item.slug))
 const curatedExtras=curated.filter(item=>!migratedSlugs.has(item.slug===previousWeeklySlug?latestWeeklyLegacySlug:item.slug))
-export const content:ContentItem[]=[...migratedItems,...curatedExtras,amazonPrimeVideoGamesArticle,metaGlassesOwnershipArticle,facebookTikTokArticle,worldCupCommercialisationArticle,hubspotCommunityGovernanceArticle,squarespacePriceIncreaseArticle,xMen97Season2Article,restIsFootballCommunitySuccessArticle,hubspotRedditPerformanceArticle,robloxCommunityScorecardDraft,communityIntelligenceEarlyWarningArticle,nikeCommunityScorecardDraft,bbcRadioCommunityDraft,communityIntelligenceWeeklyPlatformLiveDraft,englandCommunityCourtroomDraft,franceSpainFrameworkDraft,aiEvidenceLayerArticle,redditAiSlopArticle,headOfCommunityIntelligenceDraft,bookingComScorecardDraft].sort((a,b)=>b.date.localeCompare(a.date))
+export const content:ContentItem[]=[...migratedItems,...curatedExtras,xboxGamePassArticle,amazonPrimeVideoGamesArticle,metaGlassesOwnershipArticle,facebookTikTokArticle,worldCupCommercialisationArticle,hubspotCommunityGovernanceArticle,squarespacePriceIncreaseArticle,xMen97Season2Article,restIsFootballCommunitySuccessArticle,hubspotRedditPerformanceArticle,robloxCommunityScorecardDraft,communityIntelligenceEarlyWarningArticle,nikeCommunityScorecardDraft,bbcRadioCommunityDraft,communityIntelligenceWeeklyPlatformLiveDraft,englandCommunityCourtroomDraft,franceSpainFrameworkDraft,aiEvidenceLayerArticle,redditAiSlopArticle,headOfCommunityIntelligenceDraft,bookingComScorecardDraft].sort((a,b)=>b.date.localeCompare(a.date))
 export const draftContent:ContentItem[]=[]
 export const allContent:ContentItem[]=[...content,...draftContent]
 
