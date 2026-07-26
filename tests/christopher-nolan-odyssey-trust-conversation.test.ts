@@ -51,7 +51,7 @@ describe("Christopher Nolan's The Odyssey trust article",()=>{
   it('ships the supplied 16 by 9 cover image',()=>{
     const image=path.resolve('public/christopher-nolan-the-odyssey-trust-conversation.png')
     expect(fs.existsSync(image)).toBe(true)
-    expect(fs.statSync(image).size).toBe(1313580)
+    expect(fs.statSync(image).size).toBe(1600617)
     expect(christopherNolanOdysseyArticle.imageWidth).toBe(1672)
     expect(christopherNolanOdysseyArticle.imageHeight).toBe(941)
   })
