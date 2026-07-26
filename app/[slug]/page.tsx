@@ -25,6 +25,7 @@ import {metaGlassesOwnershipArticle,metaGlassesOwnershipBody} from '@/lib/articl
 import {amazonPrimeVideoGamesArticle,amazonPrimeVideoGamesBody} from '@/lib/articles/amazon-games-inside-prime-video'
 import {xboxGamePassArticle,xboxGamePassBody} from '@/lib/articles/xbox-game-pass-more-for-less'
 import {openAiAgentOversightArticle,openAiAgentOversightBody} from '@/lib/articles/openai-agent-hugging-face-community-oversight'
+import {youtubeAiThumbnailArticle,youtubeAiThumbnailBody} from '@/lib/articles/youtube-ai-thumbnail-community-intelligence'
 import {client} from '@/sanity/lib/client'
 import {site} from '@/lib/site'
 
@@ -51,6 +52,7 @@ const localBodies:Record<string,string>={
   [amazonPrimeVideoGamesArticle.slug]:amazonPrimeVideoGamesBody,
   [xboxGamePassArticle.slug]:xboxGamePassBody,
   [openAiAgentOversightArticle.slug]:openAiAgentOversightBody,
+  [youtubeAiThumbnailArticle.slug]:youtubeAiThumbnailBody,
 }
 
 export function generateStaticParams(){return allContent.map(({slug})=>({slug}))}
