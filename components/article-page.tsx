@@ -28,6 +28,7 @@ import {openAiAgentOversightArticle,openAiAgentOversightRelated} from '@/lib/art
 import {youtubeAiThumbnailArticle,youtubeAiThumbnailRelated} from '@/lib/articles/youtube-ai-thumbnail-community-intelligence'
 import {patreonPlatformChangeArticle,patreonPlatformChangeRelated} from '@/lib/articles/patreon-platform-change'
 import {tripComAiTravelAgentArticle,tripComAiTravelAgentRelated} from '@/lib/articles/trip-com-ai-travel-agent'
+import {adobeAiPhotoCritiqueArticle,adobeAiPhotoCritiqueRelated} from '@/lib/articles/adobe-ai-photo-critique'
 import {Newsletter} from './newsletter'
 import {SharePost} from './share-post'
 
@@ -59,6 +60,7 @@ export function ArticlePage({item,embedded=false,bodyHtml,coverImageUrl}:{item:C
     [youtubeAiThumbnailArticle.slug]:youtubeAiThumbnailRelated,
     [patreonPlatformChangeArticle.slug]:patreonPlatformChangeRelated,
     [tripComAiTravelAgentArticle.slug]:tripComAiTravelAgentRelated,
+    [adobeAiPhotoCritiqueArticle.slug]:adobeAiPhotoCritiqueRelated,
   }
   const related=manualRelated[item.slug]?.map(slug=>content.find(candidate=>candidate.slug===slug)).filter((candidate):candidate is ContentItem=>Boolean(candidate))||content.filter(candidate=>candidate.slug!==item.slug&&(candidate.topic===item.topic||candidate.type===item.type)).slice(0,3)
   const archiveHref:Record<ContentItem['type'],string>={Research:'/research',Scorecard:'/scorecards','Case Study':'/case-studies',Framework:'/frameworks',Benchmark:'/benchmarks',Weekly:'/community-intelligence-weekly',Index:'/community-intelligence-index',Article:'/research'}
@@ -67,7 +69,7 @@ export function ArticlePage({item,embedded=false,bodyHtml,coverImageUrl}:{item:C
   const isBookingScorecard=item.slug===bookingComScorecardDraft.slug
   const isNikeScorecard=item.slug===nikeCommunityScorecardDraft.slug
   const isEarlyWarning=item.slug===communityIntelligenceEarlyWarningArticle.slug
-  const isRedditAiSlop=item.slug===redditAiSlopArticle.slug||item.slug===aiEvidenceLayerArticle.slug||item.slug===franceSpainFrameworkDraft.slug||item.slug===englandCommunityCourtroomDraft.slug||item.slug===communityIntelligenceWeeklyPlatformLiveDraft.slug||item.slug===bbcRadioCommunityDraft.slug||item.slug===hubspotRedditPerformanceArticle.slug||item.slug===restIsFootballCommunitySuccessArticle.slug||item.slug===xMen97Season2Article.slug||item.slug===squarespacePriceIncreaseArticle.slug||item.slug===hubspotCommunityGovernanceArticle.slug||item.slug===worldCupCommercialisationArticle.slug||item.slug===facebookTikTokArticle.slug||item.slug===metaGlassesOwnershipArticle.slug||item.slug===amazonPrimeVideoGamesArticle.slug||item.slug===xboxGamePassArticle.slug||item.slug===openAiAgentOversightArticle.slug||item.slug===youtubeAiThumbnailArticle.slug||item.slug===patreonPlatformChangeArticle.slug||item.slug===tripComAiTravelAgentArticle.slug||isNikeScorecard||isEarlyWarning
+  const isRedditAiSlop=item.slug===redditAiSlopArticle.slug||item.slug===aiEvidenceLayerArticle.slug||item.slug===franceSpainFrameworkDraft.slug||item.slug===englandCommunityCourtroomDraft.slug||item.slug===communityIntelligenceWeeklyPlatformLiveDraft.slug||item.slug===bbcRadioCommunityDraft.slug||item.slug===hubspotRedditPerformanceArticle.slug||item.slug===restIsFootballCommunitySuccessArticle.slug||item.slug===xMen97Season2Article.slug||item.slug===squarespacePriceIncreaseArticle.slug||item.slug===hubspotCommunityGovernanceArticle.slug||item.slug===worldCupCommercialisationArticle.slug||item.slug===facebookTikTokArticle.slug||item.slug===metaGlassesOwnershipArticle.slug||item.slug===amazonPrimeVideoGamesArticle.slug||item.slug===xboxGamePassArticle.slug||item.slug===openAiAgentOversightArticle.slug||item.slug===youtubeAiThumbnailArticle.slug||item.slug===patreonPlatformChangeArticle.slug||item.slug===tripComAiTravelAgentArticle.slug||item.slug===adobeAiPhotoCritiqueArticle.slug||isNikeScorecard||isEarlyWarning
   const tocLimit=isBookingScorecard||isNikeScorecard?24:12
   const publicationIndex=content.findIndex(candidate=>candidate.slug===item.slug)
   const newerArticle=publicationIndex>0?content[publicationIndex-1]:undefined
@@ -95,7 +97,7 @@ export function ArticlePage({item,embedded=false,bodyHtml,coverImageUrl}:{item:C
     </div>
 
     {related.length>0&&<section className="related-content shell" aria-labelledby={`related-${item.slug}`}><div className="eyebrow">Continue exploring</div><h2 id={`related-${item.slug}`}>Related Community Intelligence research</h2><div className="related-grid">{related.map(candidate=><article key={candidate.slug}><div className="eyebrow">{candidate.type}</div><h3><Link href={`/${candidate.slug}`}>{candidate.title}</Link></h3><p>{candidate.excerpt}</p></article>)}</div></section>}
-    {isEarlyWarning&&<nav className="article-pagination shell" aria-label="Previous and next articles">{olderArticle&&<Link href={`/${olderArticle.slug}`}><span>Previous article</span><strong>{olderArticle.title}</strong></Link>}{newerArticle&&<Link href={`/${newerArticle.slug}`}><span>Next article</span><strong>{newerArticle.title}</strong></Link>}</nav>}
+    {(isEarlyWarning||item.slug===adobeAiPhotoCritiqueArticle.slug)&&<nav className="article-pagination shell" aria-label="Previous and next articles">{olderArticle&&<Link href={`/${olderArticle.slug}`}><span>Previous article</span><strong>{olderArticle.title}</strong></Link>}{newerArticle&&<Link href={`/${newerArticle.slug}`}><span>Next article</span><strong>{newerArticle.title}</strong></Link>}</nav>}
     <div className="shell share-shell"><SharePost title={item.title} url={`${site.url}/${item.slug}/`}/></div>
     <section id="about-author" className="author-box shell"><Image src="/tonte-bo-douglas.jpg" width={150} height={150} alt="Tonte Bo Douglas"/><div><div className="eyebrow">About the author</div><h2>Tonte Bo Douglas</h2><p>Founder of The Redditrepreneur and a Community Intelligence researcher and strategist studying how online communities shape trust, discovery, brands and markets.</p><Link href="/authors/tonte-bo-douglas">View Tonte&rsquo;s latest work</Link></div></section>
     <div className="shell"><Newsletter/></div>

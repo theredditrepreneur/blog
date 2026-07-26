@@ -50,6 +50,7 @@ import {openAiAgentOversightArticle} from '@/lib/articles/openai-agent-hugging-f
 import {youtubeAiThumbnailArticle} from '@/lib/articles/youtube-ai-thumbnail-community-intelligence'
 import {patreonPlatformChangeArticle} from '@/lib/articles/patreon-platform-change'
 import {tripComAiTravelAgentArticle} from '@/lib/articles/trip-com-ai-travel-agent'
+import {adobeAiPhotoCritiqueArticle} from '@/lib/articles/adobe-ai-photo-critique'
 import {robloxCommunityScorecardDraft} from '@/lib/drafts/roblox-community-scorecard'
 import {barclaysScorecard,gymsharkScorecard} from '@/lib/scorecard-records'
 
@@ -97,9 +98,9 @@ const migratedItems=(migrated as Array<{title:string;slug:string;type:string;exc
 })
 const migratedSlugs=new Set((migrated as Array<{slug:string}>).map(item=>item.slug))
 const curatedExtras=curated.filter(item=>!migratedSlugs.has(item.slug===previousWeeklySlug?latestWeeklyLegacySlug:item.slug))
-export const content:ContentItem[]=[...migratedItems,...curatedExtras,tripComAiTravelAgentArticle,patreonPlatformChangeArticle,youtubeAiThumbnailArticle,openAiAgentOversightArticle,xboxGamePassArticle,amazonPrimeVideoGamesArticle,metaGlassesOwnershipArticle,facebookTikTokArticle,worldCupCommercialisationArticle,hubspotCommunityGovernanceArticle,squarespacePriceIncreaseArticle,xMen97Season2Article,restIsFootballCommunitySuccessArticle,hubspotRedditPerformanceArticle,robloxCommunityScorecardDraft,communityIntelligenceEarlyWarningArticle,nikeCommunityScorecardDraft,bbcRadioCommunityDraft,communityIntelligenceWeeklyPlatformLiveDraft,englandCommunityCourtroomDraft,franceSpainFrameworkDraft,aiEvidenceLayerArticle,redditAiSlopArticle,headOfCommunityIntelligenceDraft,bookingComScorecardDraft].sort((a,b)=>b.date.localeCompare(a.date))
+export const content:ContentItem[]=[...migratedItems,...curatedExtras,adobeAiPhotoCritiqueArticle,tripComAiTravelAgentArticle,patreonPlatformChangeArticle,youtubeAiThumbnailArticle,openAiAgentOversightArticle,xboxGamePassArticle,amazonPrimeVideoGamesArticle,metaGlassesOwnershipArticle,facebookTikTokArticle,worldCupCommercialisationArticle,hubspotCommunityGovernanceArticle,squarespacePriceIncreaseArticle,xMen97Season2Article,restIsFootballCommunitySuccessArticle,hubspotRedditPerformanceArticle,robloxCommunityScorecardDraft,communityIntelligenceEarlyWarningArticle,nikeCommunityScorecardDraft,bbcRadioCommunityDraft,communityIntelligenceWeeklyPlatformLiveDraft,englandCommunityCourtroomDraft,franceSpainFrameworkDraft,aiEvidenceLayerArticle,redditAiSlopArticle,headOfCommunityIntelligenceDraft,bookingComScorecardDraft].sort((a,b)=>b.date.localeCompare(a.date))
 export const draftContent:ContentItem[]=[]
 export const allContent:ContentItem[]=[...content,...draftContent]
 
 export const frameworks = ['Community Gravity', 'Market Gravity', 'Trust Collapse', 'Narrative Compression', 'Belief Correction', 'Mission Premium', 'Hype Hangover', 'Expectation Gravity', 'Community Intelligence Stack', 'Share of Consensus']
-export const topics = ['Community Intelligence', 'AI Search', 'Brand Intelligence', 'Customer Insights', 'Community Strategy', 'Industry Analysis', 'Industry News', 'Reddit', 'Creator Economy', 'B2B SaaS', 'Consumer Brands']
+export const topics = ['Community Intelligence', 'Artificial Intelligence', 'AI Search', 'Brand Intelligence', 'Customer Insights', 'Community Strategy', 'Industry Analysis', 'Industry News', 'Reddit', 'Creator Economy', 'B2B SaaS', 'Consumer Brands']
