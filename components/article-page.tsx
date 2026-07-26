@@ -22,6 +22,7 @@ import {hubspotCommunityGovernanceArticle,hubspotCommunityGovernanceRelated} fro
 import {worldCupCommercialisationArticle,worldCupCommercialisationRelated} from '@/lib/articles/world-cup-commercialisation'
 import {facebookTikTokArticle,facebookTikTokRelated} from '@/lib/articles/facebook-becoming-more-like-tiktok'
 import {metaGlassesOwnershipArticle,metaGlassesOwnershipRelated} from '@/lib/articles/meta-glasses-monthly-charge-ownership'
+import {amazonPrimeVideoGamesArticle,amazonPrimeVideoGamesRelated} from '@/lib/articles/amazon-games-inside-prime-video'
 import {Newsletter} from './newsletter'
 import {SharePost} from './share-post'
 
@@ -47,6 +48,7 @@ export function ArticlePage({item,embedded=false,bodyHtml,coverImageUrl}:{item:C
     [worldCupCommercialisationArticle.slug]:worldCupCommercialisationRelated,
     [facebookTikTokArticle.slug]:facebookTikTokRelated,
     [metaGlassesOwnershipArticle.slug]:metaGlassesOwnershipRelated,
+    [amazonPrimeVideoGamesArticle.slug]:amazonPrimeVideoGamesRelated,
   }
   const related=manualRelated[item.slug]?.map(slug=>content.find(candidate=>candidate.slug===slug)).filter((candidate):candidate is ContentItem=>Boolean(candidate))||content.filter(candidate=>candidate.slug!==item.slug&&(candidate.topic===item.topic||candidate.type===item.type)).slice(0,3)
   const archiveHref:Record<ContentItem['type'],string>={Research:'/research',Scorecard:'/scorecards','Case Study':'/case-studies',Framework:'/frameworks',Benchmark:'/benchmarks',Weekly:'/community-intelligence-weekly',Index:'/community-intelligence-index',Article:'/research'}
@@ -55,7 +57,7 @@ export function ArticlePage({item,embedded=false,bodyHtml,coverImageUrl}:{item:C
   const isBookingScorecard=item.slug===bookingComScorecardDraft.slug
   const isNikeScorecard=item.slug===nikeCommunityScorecardDraft.slug
   const isEarlyWarning=item.slug===communityIntelligenceEarlyWarningArticle.slug
-  const isRedditAiSlop=item.slug===redditAiSlopArticle.slug||item.slug===aiEvidenceLayerArticle.slug||item.slug===franceSpainFrameworkDraft.slug||item.slug===englandCommunityCourtroomDraft.slug||item.slug===communityIntelligenceWeeklyPlatformLiveDraft.slug||item.slug===bbcRadioCommunityDraft.slug||item.slug===hubspotRedditPerformanceArticle.slug||item.slug===restIsFootballCommunitySuccessArticle.slug||item.slug===xMen97Season2Article.slug||item.slug===squarespacePriceIncreaseArticle.slug||item.slug===hubspotCommunityGovernanceArticle.slug||item.slug===worldCupCommercialisationArticle.slug||item.slug===facebookTikTokArticle.slug||item.slug===metaGlassesOwnershipArticle.slug||isNikeScorecard||isEarlyWarning
+  const isRedditAiSlop=item.slug===redditAiSlopArticle.slug||item.slug===aiEvidenceLayerArticle.slug||item.slug===franceSpainFrameworkDraft.slug||item.slug===englandCommunityCourtroomDraft.slug||item.slug===communityIntelligenceWeeklyPlatformLiveDraft.slug||item.slug===bbcRadioCommunityDraft.slug||item.slug===hubspotRedditPerformanceArticle.slug||item.slug===restIsFootballCommunitySuccessArticle.slug||item.slug===xMen97Season2Article.slug||item.slug===squarespacePriceIncreaseArticle.slug||item.slug===hubspotCommunityGovernanceArticle.slug||item.slug===worldCupCommercialisationArticle.slug||item.slug===facebookTikTokArticle.slug||item.slug===metaGlassesOwnershipArticle.slug||item.slug===amazonPrimeVideoGamesArticle.slug||isNikeScorecard||isEarlyWarning
   const tocLimit=isBookingScorecard||isNikeScorecard?24:12
   const publicationIndex=content.findIndex(candidate=>candidate.slug===item.slug)
   const newerArticle=publicationIndex>0?content[publicationIndex-1]:undefined
