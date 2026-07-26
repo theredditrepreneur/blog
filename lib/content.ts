@@ -48,6 +48,7 @@ import {amazonPrimeVideoGamesArticle} from '@/lib/articles/amazon-games-inside-p
 import {xboxGamePassArticle} from '@/lib/articles/xbox-game-pass-more-for-less'
 import {openAiAgentOversightArticle} from '@/lib/articles/openai-agent-hugging-face-community-oversight'
 import {youtubeAiThumbnailArticle} from '@/lib/articles/youtube-ai-thumbnail-community-intelligence'
+import {patreonPlatformChangeArticle} from '@/lib/articles/patreon-platform-change'
 import {robloxCommunityScorecardDraft} from '@/lib/drafts/roblox-community-scorecard'
 import {barclaysScorecard,gymsharkScorecard} from '@/lib/scorecard-records'
 
@@ -95,7 +96,7 @@ const migratedItems=(migrated as Array<{title:string;slug:string;type:string;exc
 })
 const migratedSlugs=new Set((migrated as Array<{slug:string}>).map(item=>item.slug))
 const curatedExtras=curated.filter(item=>!migratedSlugs.has(item.slug===previousWeeklySlug?latestWeeklyLegacySlug:item.slug))
-export const content:ContentItem[]=[...migratedItems,...curatedExtras,youtubeAiThumbnailArticle,openAiAgentOversightArticle,xboxGamePassArticle,amazonPrimeVideoGamesArticle,metaGlassesOwnershipArticle,facebookTikTokArticle,worldCupCommercialisationArticle,hubspotCommunityGovernanceArticle,squarespacePriceIncreaseArticle,xMen97Season2Article,restIsFootballCommunitySuccessArticle,hubspotRedditPerformanceArticle,robloxCommunityScorecardDraft,communityIntelligenceEarlyWarningArticle,nikeCommunityScorecardDraft,bbcRadioCommunityDraft,communityIntelligenceWeeklyPlatformLiveDraft,englandCommunityCourtroomDraft,franceSpainFrameworkDraft,aiEvidenceLayerArticle,redditAiSlopArticle,headOfCommunityIntelligenceDraft,bookingComScorecardDraft].sort((a,b)=>b.date.localeCompare(a.date))
+export const content:ContentItem[]=[...migratedItems,...curatedExtras,patreonPlatformChangeArticle,youtubeAiThumbnailArticle,openAiAgentOversightArticle,xboxGamePassArticle,amazonPrimeVideoGamesArticle,metaGlassesOwnershipArticle,facebookTikTokArticle,worldCupCommercialisationArticle,hubspotCommunityGovernanceArticle,squarespacePriceIncreaseArticle,xMen97Season2Article,restIsFootballCommunitySuccessArticle,hubspotRedditPerformanceArticle,robloxCommunityScorecardDraft,communityIntelligenceEarlyWarningArticle,nikeCommunityScorecardDraft,bbcRadioCommunityDraft,communityIntelligenceWeeklyPlatformLiveDraft,englandCommunityCourtroomDraft,franceSpainFrameworkDraft,aiEvidenceLayerArticle,redditAiSlopArticle,headOfCommunityIntelligenceDraft,bookingComScorecardDraft].sort((a,b)=>b.date.localeCompare(a.date))
 export const draftContent:ContentItem[]=[]
 export const allContent:ContentItem[]=[...content,...draftContent]
 
