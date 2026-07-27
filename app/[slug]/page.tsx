@@ -31,6 +31,7 @@ import {tripComAiTravelAgentArticle,tripComAiTravelAgentBody,tripComAiTravelAgen
 import {adobeAiPhotoCritiqueArticle,adobeAiPhotoCritiqueBody} from '@/lib/articles/adobe-ai-photo-critique'
 import {christopherNolanOdysseyArticle,christopherNolanOdysseyBody} from '@/lib/articles/christopher-nolan-odyssey-trust-conversation'
 import {saudiEaCommunityTrustArticle,saudiEaCommunityTrustBody} from '@/lib/articles/saudi-arabia-buying-ea-community-trust'
+import {communityIntelligenceWeeklyTrustArticle,communityIntelligenceWeeklyTrustBody} from '@/lib/articles/community-intelligence-weekly-trust'
 import {client} from '@/sanity/lib/client'
 import {site} from '@/lib/site'
 
@@ -63,6 +64,7 @@ const localBodies:Record<string,string>={
   [adobeAiPhotoCritiqueArticle.slug]:adobeAiPhotoCritiqueBody,
   [christopherNolanOdysseyArticle.slug]:christopherNolanOdysseyBody,
   [saudiEaCommunityTrustArticle.slug]:saudiEaCommunityTrustBody,
+  [communityIntelligenceWeeklyTrustArticle.slug]:communityIntelligenceWeeklyTrustBody,
 }
 
 export function generateStaticParams(){return allContent.map(({slug})=>({slug}))}
@@ -125,6 +127,7 @@ export default async function Page({params}:{params:Promise<{slug:string}>}){
   const isAdobeAiPhotoCritique=item.slug===adobeAiPhotoCritiqueArticle.slug
   const isChristopherNolanOdyssey=item.slug===christopherNolanOdysseyArticle.slug
   const isSaudiEaCommunityTrust=item.slug===saudiEaCommunityTrustArticle.slug
+  const isCommunityIntelligenceWeeklyTrust=item.slug===communityIntelligenceWeeklyTrustArticle.slug
   const schema={
     '@context':'https://schema.org',
     '@type':isEarlyWarning?['Article','BlogPosting']:item.type==='Scorecard'||item.type==='Benchmark'?'Report':'Article',
@@ -142,7 +145,7 @@ export default async function Page({params}:{params:Promise<{slug:string}>}){
   const isRobloxScorecard=item.slug===robloxCommunityScorecardDraft.slug
   const visibleFaqs=isNikeScorecard?nikeCommunityScorecardFaqs:isRobloxScorecard?robloxCommunityScorecardFaqs:isPatreonPlatformChange?patreonPlatformChangeFaqs:isTripComAiTravelAgent?tripComAiTravelAgentFaqs:null
   const faqSchema=visibleFaqs?{'@context':'https://schema.org','@type':'FAQPage',mainEntity:visibleFaqs.map(({question,answer})=>({'@type':'Question',name:question,acceptedAnswer:{'@type':'Answer',text:answer}}))}:null
-  const breadcrumbSchema=isNikeScorecard||isRobloxScorecard||isEarlyWarning||isHubspotPerformance||isRestIsFootball||isXMen97||isSquarespacePriceIncrease||isHubspotCommunityGovernance||isWorldCupCommercialisation||isFacebookTikTok||isMetaGlassesOwnership||isAmazonPrimeVideoGames||isXboxGamePass||isOpenAiAgentOversight||isPatreonPlatformChange||isTripComAiTravelAgent||isAdobeAiPhotoCritique||isChristopherNolanOdyssey||isSaudiEaCommunityTrust?{'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:[
+  const breadcrumbSchema=isNikeScorecard||isRobloxScorecard||isEarlyWarning||isHubspotPerformance||isRestIsFootball||isXMen97||isSquarespacePriceIncrease||isHubspotCommunityGovernance||isWorldCupCommercialisation||isFacebookTikTok||isMetaGlassesOwnership||isAmazonPrimeVideoGames||isXboxGamePass||isOpenAiAgentOversight||isPatreonPlatformChange||isTripComAiTravelAgent||isAdobeAiPhotoCritique||isChristopherNolanOdyssey||isSaudiEaCommunityTrust||isCommunityIntelligenceWeeklyTrust?{'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:[
     {'@type':'ListItem',position:1,name:'Home',item:site.url},
     {'@type':'ListItem',position:2,name:isNikeScorecard||isRobloxScorecard?'Scorecards':'Research',item:`${site.url}/${isNikeScorecard||isRobloxScorecard?'scorecards':'research'}`},
     {'@type':'ListItem',position:3,name:item.title,item:`${site.url}/${item.slug}`},
