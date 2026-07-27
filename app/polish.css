@@ -3,6 +3,7 @@
 .card-art img{object-fit:contain}
 .article-image{width:min(920px,calc(100% - 40px))}
 .article-image img{max-height:540px;object-fit:contain;background:var(--surface)}
+.article-image.article-image-16x9 img{height:auto;max-height:none;aspect-ratio:16/9;object-fit:contain}
 .share-shell{max-width:900px}
 .share-post{border-block:1px solid var(--line);padding-block:38px;margin-bottom:50px;display:grid;grid-template-columns:1fr auto;gap:18px 35px;align-items:center}
 .share-post h2{font:500 2rem var(--font-serif),serif;color:var(--navy);margin:0}
