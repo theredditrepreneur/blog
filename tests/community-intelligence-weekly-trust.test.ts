@@ -13,7 +13,7 @@ const homepage=fs.readFileSync('app/page.tsx','utf8')
 describe('Community Intelligence Weekly trust edition',()=>{
   it('uses the expanded topic-led Weekly title without Weekly 4 in the title',()=>{
     expect(communityIntelligenceWeeklyTrustArticle.title).toBe('Community Intelligence Weekly: Christopher Nolan, AI Advice, Platform Change and Gaming Trust')
-    expect(communityIntelligenceWeeklyTrustArticle.subtitle).toBe('The biggest stories, the smartest conversations and what they mean for businesses.')
+    expect(communityIntelligenceWeeklyTrustArticle.subtitle).toBe('The biggest stories from the past week, the smartest conversations and what they mean for businesses.')
     expect(communityIntelligenceWeeklyTrustArticle.slug).toBe('community-intelligence-trust-becoming-biggest-advantage')
     expect(communityIntelligenceWeeklyTrustArticle.type).toBe('Weekly')
     expect(communityIntelligenceWeeklyTrustArticle.topic).toBe('Community Intelligence Weekly')
@@ -34,6 +34,8 @@ describe('Community Intelligence Weekly trust edition',()=>{
     expect(communityIntelligenceWeeklyTrustBody).not.toContain('<h1')
     expect(communityIntelligenceWeeklyTrustBody).not.toContain('—')
     expect(communityIntelligenceWeeklyTrustBody).toContain("<h2>Welcome</h2>")
+    expect(communityIntelligenceWeeklyTrustBody).toContain('<h2>Stories From the Past Week</h2>')
+    expect(communityIntelligenceWeeklyTrustBody).not.toMatch(/\bthis week(?:'s)?\b/i)
     expect(communityIntelligenceWeeklyTrustBody).toContain('This is the fourth edition of Community Intelligence Weekly.')
     expect(communityIntelligenceWeeklyTrustBody).toContain('class="editors-note"')
     expect(communityIntelligenceWeeklyTrustBody).toContain('Understand What Your Community Is Really Saying')

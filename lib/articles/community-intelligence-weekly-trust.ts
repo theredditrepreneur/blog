@@ -3,7 +3,7 @@ import type {ContentItem} from '@/lib/content'
 
 export const communityIntelligenceWeeklyTrustBody=`
 <h2>Welcome</h2>
-<p>This week reminded me of something important.</p>
+<p>Looking back over the past week reminded me of something important.</p>
 <p>Businesses often look at sales, reviews or website traffic to work out if something is successful.</p>
 <p>But by then, people have usually already made up their minds.</p>
 <p>Communities tell you much earlier.</p>
@@ -12,8 +12,8 @@ export const communityIntelligenceWeeklyTrustBody=`
 <p>It means listening to real conversations and turning them into useful lessons.</p>
 <p><strong>So what?</strong> Do not wait for a monthly sales report to tell you that something has changed. Listen while people are still explaining the change to each other.</p>
 
-<h2>This Week's Stories</h2>
-<p>This week we looked at:</p>
+<h2>Stories From the Past Week</h2>
+<p>Over the past week, we looked at:</p>
 <ul>
   <li><a href="/christopher-nolan-the-odyssey-trust-conversation">Christopher Nolan's <em>The Odyssey</em></a></li>
   <li><a href="/x-men-97-season-2-community-intelligence-episode-6"><em>X-Men '97</em> Season 2</a></li>
@@ -37,7 +37,7 @@ export const communityIntelligenceWeeklyTrustBody=`
 <p>People do not just buy products.</p>
 <p>They buy things they trust.</p>
 
-<h2>Big Idea of the Week</h2>
+<h2>Big Idea From the Past Week</h2>
 
 <h3>Trust Is More Valuable Than Hype</h3>
 <p>Lots of companies spend millions trying to create excitement.</p>
@@ -68,7 +68,7 @@ export const communityIntelligenceWeeklyTrustBody=`
 <p><strong>So what?</strong> Look for the people who explain your product to others. They are doing some of your most valuable work.</p>
 
 <h3>Ownership Creates Expectations</h3>
-<p>Several stories this week were really about ownership.</p>
+<p>Several stories from the past week were really about ownership.</p>
 <p>Meta tested a monthly limit for a feature that already worked on some of its smart glasses.</p>
 <p>Amazon made cloud games easier to find inside Prime Video.</p>
 <p>Xbox is trying to change a Game Pass offer that trained players to expect a lot for one monthly payment.</p>
@@ -140,7 +140,7 @@ export const communityIntelligenceWeeklyTrustBody=`
 <p><strong>So what?</strong> Do not treat the sale or release as the end. Give people useful reasons to keep talking.</p>
 
 <h3>Trust Across Gaming</h3>
-<p>The gaming stories this week show why trust is not a soft idea.</p>
+<p>The gaming stories from the past week show why trust is not a soft idea.</p>
 <p>It affects whether people buy a console.</p>
 <p>It affects whether they spend years building progress inside a game.</p>
 <p>It affects whether they believe a subscription will still offer value next year.</p>
@@ -194,7 +194,7 @@ export const communityIntelligenceWeeklyTrustBody=`
   <h2 id="weekly-trust-editors-note">Editor's Note</h2>
   <p>This is the fourth edition of Community Intelligence Weekly.</p>
   <p>Every edition is designed to teach one new idea rather than repeat previous newsletters.</p>
-  <p>This week's lesson is simple.</p>
+  <p>The lesson from the past week is simple.</p>
   <p>Trust is one of the most valuable things a business can build.</p>
   <p>Communities are usually the first place where that trust becomes visible.</p>
 </aside>
@@ -211,10 +211,10 @@ export const communityIntelligenceWeeklyTrustBody=`
 
 export const communityIntelligenceWeeklyTrustArticle:ContentItem={
   title:'Community Intelligence Weekly: Christopher Nolan, AI Advice, Platform Change and Gaming Trust',
-  subtitle:'The biggest stories, the smartest conversations and what they mean for businesses.',
+  subtitle:'The biggest stories from the past week, the smartest conversations and what they mean for businesses.',
   slug:'community-intelligence-trust-becoming-biggest-advantage',
   type:'Weekly',
-  excerpt:"This week's Community Intelligence newsletter explains why trust matters more than hype and what businesses can learn from the biggest online conversations.",
+  excerpt:'This edition looks back at the past week and explains why trust matters more than hype across creator, AI, platform and gaming communities.',
   date:'2026-07-27',
   topic:'Community Intelligence Weekly',
   tags:['Community Intelligence','Community Intelligence Weekly','Christopher Nolan','The Odyssey',"X-Men 97",'Adobe','Trip.com','Electronic Arts','YouTube','Patreon','Meta','Amazon','Xbox','Audience Trust','Creator Trust','Community Strategy'],
@@ -223,9 +223,9 @@ export const communityIntelligenceWeeklyTrustArticle:ContentItem={
   imageWidth:1280,
   imageHeight:720,
   seoTitle:'Community Intelligence Weekly: Creator, AI, Platform and Gaming Trust',
-  metaDescription:"This week's Community Intelligence Weekly explores Christopher Nolan, AI advice, platform change, gaming ownership and why trust matters more than hype.",
+  metaDescription:'This Community Intelligence Weekly looks back at Christopher Nolan, AI advice, platform change, gaming ownership and why trust matters more than hype.',
   socialTitle:'Community Intelligence Weekly: Christopher Nolan, AI Advice, Platform Change and Gaming Trust',
-  socialDescription:'The biggest creator, AI, platform and gaming conversations of the week, explained in simple English with practical lessons for businesses.',
+  socialDescription:'The biggest creator, AI, platform and gaming conversations from the past week, explained in simple English with practical lessons for businesses.',
   draft:false,
   featured:true,
   readingMinutes:Math.ceil(readingTime(communityIntelligenceWeeklyTrustBody.replace(/<[^>]+>/g,' ')).minutes),

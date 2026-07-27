@@ -88,7 +88,7 @@ export function ArticlePage({item,embedded=false,bodyHtml,coverImageUrl}:{item:C
         <div className="eyebrow">{item.topic||item.type}</div>
         <h1>{item.title}</h1>
         {(item.subtitle||isAiAuthority)&&<p className="article-subtitle">{item.subtitle||'Why AI Recommends Some Brands and Ignores Others'}</p>}
-        {item.slug!==christopherNolanOdysseyArticle.slug&&<p className="dek">{item.excerpt}</p>}
+        {item.slug!==christopherNolanOdysseyArticle.slug&&item.slug!==communityIntelligenceWeeklyTrustArticle.slug&&<p className="dek">{item.excerpt}</p>}
         <div className="byline"><Image src="/tonte-bo-douglas.jpg" width={48} height={48} alt="Tonte Bo Douglas"/><span>By <Link href="/authors/tonte-bo-douglas">Tonte Bo Douglas</Link><small>{item.draft?'Proposed':'Published'} <time dateTime={item.date}>{new Intl.DateTimeFormat('en-GB',{dateStyle:'long'}).format(new Date(item.date))}</time> · {item.readingMinutes||8} min read</small></span></div>
       </header>
       {coverImageUrl?<div className="article-image shell"><Image src={coverImageUrl} width={item.imageWidth||1600} height={item.imageHeight||900} sizes="(max-width: 960px) calc(100vw - 28px), 920px" alt={item.imageAlt||item.title} priority/></div>:<div className="article-cover"><div className="eyebrow light">The Redditrepreneur Research</div><strong>{item.title}</strong></div>}
