@@ -11,8 +11,8 @@ const registry=fs.readFileSync('lib/content.ts','utf8')
 const homepage=fs.readFileSync('app/page.tsx','utf8')
 
 describe('Community Intelligence Weekly trust edition',()=>{
-  it('uses the requested published metadata without Weekly 4 in the title',()=>{
-    expect(communityIntelligenceWeeklyTrustArticle.title).toBe("Community Intelligence: Why Trust Is Becoming Every Brand's Biggest Advantage")
+  it('uses the expanded topic-led Weekly title without Weekly 4 in the title',()=>{
+    expect(communityIntelligenceWeeklyTrustArticle.title).toBe('Community Intelligence Weekly: Christopher Nolan, AI Advice, Platform Change and Gaming Trust')
     expect(communityIntelligenceWeeklyTrustArticle.subtitle).toBe('The biggest stories, the smartest conversations and what they mean for businesses.')
     expect(communityIntelligenceWeeklyTrustArticle.slug).toBe('community-intelligence-trust-becoming-biggest-advantage')
     expect(communityIntelligenceWeeklyTrustArticle.type).toBe('Weekly')
@@ -27,7 +27,7 @@ describe('Community Intelligence Weekly trust edition',()=>{
     expect(registry).toContain('export const latestWeeklySlug=communityIntelligenceWeeklyTrustArticle.slug')
     expect(registry).toContain('communityIntelligenceWeeklyTrustArticle,saudiEaCommunityTrustArticle')
     expect(homepage).toContain('/community-intelligence-weekly-trust.jpg')
-    expect(homepage).toContain("Why Trust Is Becoming Every Brand&apos;s Biggest Advantage")
+    expect(homepage).toContain('Community Intelligence Weekly: Christopher Nolan, AI Advice, Platform Change and Gaming Trust')
   })
 
   it('uses simple semantic copy and the requested editorial elements',()=>{
@@ -38,6 +38,8 @@ describe('Community Intelligence Weekly trust edition',()=>{
     expect(communityIntelligenceWeeklyTrustBody).toContain('class="editors-note"')
     expect(communityIntelligenceWeeklyTrustBody).toContain('Understand What Your Community Is Really Saying')
     expect(communityIntelligenceWeeklyTrustBody).toContain('Explore Community Intelligence Services')
+    expect(communityIntelligenceWeeklyTrustBody).toContain('https://app.theredditrepreneur.com')
+    expect(communityIntelligenceWeeklyTrustBody).toContain('Explore the Community Intelligence Platform')
   })
 
   it('links the stories and selected related reading to real routes',()=>{
@@ -46,6 +48,14 @@ describe('Community Intelligence Weekly trust edition',()=>{
     expect(communityIntelligenceWeeklyTrustBody).toContain('/adobe-ai-photo-critique')
     expect(communityIntelligenceWeeklyTrustBody).toContain('/trip-com-wants-to-be-your-ai-travel-agent')
     expect(communityIntelligenceWeeklyTrustBody).toContain('/saudi-arabia-buying-ea-community-trust')
+    expect(communityIntelligenceWeeklyTrustBody).toContain('/youtube-is-fighting-ai-slop-while-teaching-creators-to-make-more-ai-content')
+    expect(communityIntelligenceWeeklyTrustBody).toContain('/patreon-was-built-to-protect-creators-from-platform-change')
+    expect(communityIntelligenceWeeklyTrustBody).toContain('/meta-glasses-monthly-charge-ownership')
+    expect(communityIntelligenceWeeklyTrustBody).toContain('/amazon-games-inside-prime-video')
+    expect(communityIntelligenceWeeklyTrustBody).toContain('/xbox-game-pass-more-for-less')
+    expect(communityIntelligenceWeeklyTrustBody).toContain('/facebook-becoming-more-like-tiktok')
+    expect(communityIntelligenceWeeklyTrustBody).toContain('/hubspot-community-governance-product-decision')
+    expect(communityIntelligenceWeeklyTrustBody).toContain('/squarespace-price-increase-community-intelligence')
     expect(communityIntelligenceWeeklyTrustRelated).toEqual([
       'christopher-nolan-the-odyssey-trust-conversation',
       'x-men-97-season-2-community-intelligence-episode-6',
