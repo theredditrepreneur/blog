@@ -39,6 +39,7 @@ import {haloPlaystationCommunityIntelligenceArticle,haloPlaystationCommunityInte
 import {londonRobotaxiCommunityTrustArticle,londonRobotaxiCommunityTrustBody} from '@/lib/articles/london-robotaxi-race-community-trust'
 import {xMoneySocialReputationArticle,xMoneySocialReputationBody} from '@/lib/articles/x-money-social-reputation-financial-trust'
 import {appleLeasingOwnershipArticle,appleLeasingOwnershipBody} from '@/lib/articles/apple-leasing-future-of-ownership'
+import {redditGoogleKnowledgeStructureArticle,redditGoogleKnowledgeStructureBody} from '@/lib/articles/reddit-google-community-knowledge-structure'
 import {client} from '@/sanity/lib/client'
 import {site} from '@/lib/site'
 
@@ -79,6 +80,7 @@ const localBodies:Record<string,string>={
   [londonRobotaxiCommunityTrustArticle.slug]:londonRobotaxiCommunityTrustBody,
   [xMoneySocialReputationArticle.slug]:xMoneySocialReputationBody,
   [appleLeasingOwnershipArticle.slug]:appleLeasingOwnershipBody,
+  [redditGoogleKnowledgeStructureArticle.slug]:redditGoogleKnowledgeStructureBody,
 }
 
 export function generateStaticParams(){return allContent.map(({slug})=>({slug}))}
@@ -149,6 +151,7 @@ export default async function Page({params}:{params:Promise<{slug:string}>}){
   const isLondonRobotaxiCommunityTrust=item.slug===londonRobotaxiCommunityTrustArticle.slug
   const isXMoneySocialReputation=item.slug===xMoneySocialReputationArticle.slug
   const isAppleLeasingOwnership=item.slug===appleLeasingOwnershipArticle.slug
+  const isRedditGoogleKnowledgeStructure=item.slug===redditGoogleKnowledgeStructureArticle.slug
   const schema={
     '@context':'https://schema.org',
     '@type':isEarlyWarning?['Article','BlogPosting']:item.type==='Scorecard'||item.type==='Benchmark'?'Report':'Article',
@@ -166,7 +169,7 @@ export default async function Page({params}:{params:Promise<{slug:string}>}){
   const isRobloxScorecard=item.slug===robloxCommunityScorecardDraft.slug
   const visibleFaqs=isNikeScorecard?nikeCommunityScorecardFaqs:isRobloxScorecard?robloxCommunityScorecardFaqs:isPatreonPlatformChange?patreonPlatformChangeFaqs:isTripComAiTravelAgent?tripComAiTravelAgentFaqs:null
   const faqSchema=visibleFaqs?{'@context':'https://schema.org','@type':'FAQPage',mainEntity:visibleFaqs.map(({question,answer})=>({'@type':'Question',name:question,acceptedAnswer:{'@type':'Answer',text:answer}}))}:null
-  const breadcrumbSchema=isNikeScorecard||isRobloxScorecard||isEarlyWarning||isHubspotPerformance||isRestIsFootball||isXMen97||isSquarespacePriceIncrease||isHubspotCommunityGovernance||isWorldCupCommercialisation||isFacebookTikTok||isMetaGlassesOwnership||isAmazonPrimeVideoGames||isXboxGamePass||isOpenAiAgentOversight||isPatreonPlatformChange||isTripComAiTravelAgent||isAdobeAiPhotoCritique||isChristopherNolanOdyssey||isSaudiEaCommunityTrust||isCommunityIntelligenceWeeklyTrust||isPlaystationBlackout||isMetaSmartGlassesBystanderTrust||isFanaticsSportsSuperApp||isHaloPlaystationCommunityIntelligence||isLondonRobotaxiCommunityTrust||isXMoneySocialReputation||isAppleLeasingOwnership?{'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:[
+  const breadcrumbSchema=isNikeScorecard||isRobloxScorecard||isEarlyWarning||isHubspotPerformance||isRestIsFootball||isXMen97||isSquarespacePriceIncrease||isHubspotCommunityGovernance||isWorldCupCommercialisation||isFacebookTikTok||isMetaGlassesOwnership||isAmazonPrimeVideoGames||isXboxGamePass||isOpenAiAgentOversight||isPatreonPlatformChange||isTripComAiTravelAgent||isAdobeAiPhotoCritique||isChristopherNolanOdyssey||isSaudiEaCommunityTrust||isCommunityIntelligenceWeeklyTrust||isPlaystationBlackout||isMetaSmartGlassesBystanderTrust||isFanaticsSportsSuperApp||isHaloPlaystationCommunityIntelligence||isLondonRobotaxiCommunityTrust||isXMoneySocialReputation||isAppleLeasingOwnership||isRedditGoogleKnowledgeStructure?{'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:[
     {'@type':'ListItem',position:1,name:'Home',item:site.url},
     {'@type':'ListItem',position:2,name:isNikeScorecard||isRobloxScorecard?'Scorecards':'Research',item:`${site.url}/${isNikeScorecard||isRobloxScorecard?'scorecards':'research'}`},
     {'@type':'ListItem',position:3,name:item.title,item:`${site.url}/${item.slug}`},
