@@ -45,6 +45,7 @@ import {cyeraInvisibleAiWorkforceArticle,cyeraInvisibleAiWorkforceBody} from '@/
 import {netflixBritainDefaultTvChannelArticle,netflixBritainDefaultTvChannelBody} from '@/lib/articles/netflix-britain-default-tv-channel'
 import {xboxGameDiscInternetPermissionArticle,xboxGameDiscInternetPermissionBody} from '@/lib/articles/xbox-game-disc-needs-internet-permission'
 import {gtaViGamingEcosystemArticle,gtaViGamingEcosystemBody} from '@/lib/articles/gta-vi-selling-the-entire-gaming-ecosystem'
+import {davidOrnsteinCommunityTrustArticle,davidOrnsteinCommunityTrustBody} from '@/lib/articles/every-community-has-its-own-david-ornstein'
 import {client} from '@/sanity/lib/client'
 import {site} from '@/lib/site'
 
@@ -91,6 +92,7 @@ const localBodies:Record<string,string>={
   [netflixBritainDefaultTvChannelArticle.slug]:netflixBritainDefaultTvChannelBody,
   [xboxGameDiscInternetPermissionArticle.slug]:xboxGameDiscInternetPermissionBody,
   [gtaViGamingEcosystemArticle.slug]:gtaViGamingEcosystemBody,
+  [davidOrnsteinCommunityTrustArticle.slug]:davidOrnsteinCommunityTrustBody,
 }
 
 export function generateStaticParams(){return allContent.map(({slug})=>({slug}))}
@@ -167,6 +169,7 @@ export default async function Page({params}:{params:Promise<{slug:string}>}){
   const isNetflixBritainDefaultTvChannel=item.slug===netflixBritainDefaultTvChannelArticle.slug
   const isXboxGameDiscInternetPermission=item.slug===xboxGameDiscInternetPermissionArticle.slug
   const isGtaViGamingEcosystem=item.slug===gtaViGamingEcosystemArticle.slug
+  const isDavidOrnsteinCommunityTrust=item.slug===davidOrnsteinCommunityTrustArticle.slug
   const schema={
     '@context':'https://schema.org',
     '@type':isEarlyWarning?['Article','BlogPosting']:item.type==='Scorecard'||item.type==='Benchmark'?'Report':'Article',
@@ -184,7 +187,7 @@ export default async function Page({params}:{params:Promise<{slug:string}>}){
   const isRobloxScorecard=item.slug===robloxCommunityScorecardDraft.slug
   const visibleFaqs=isNikeScorecard?nikeCommunityScorecardFaqs:isRobloxScorecard?robloxCommunityScorecardFaqs:isPatreonPlatformChange?patreonPlatformChangeFaqs:isTripComAiTravelAgent?tripComAiTravelAgentFaqs:null
   const faqSchema=visibleFaqs?{'@context':'https://schema.org','@type':'FAQPage',mainEntity:visibleFaqs.map(({question,answer})=>({'@type':'Question',name:question,acceptedAnswer:{'@type':'Answer',text:answer}}))}:null
-  const breadcrumbSchema=isNikeScorecard||isRobloxScorecard||isEarlyWarning||isHubspotPerformance||isRestIsFootball||isXMen97||isSquarespacePriceIncrease||isHubspotCommunityGovernance||isWorldCupCommercialisation||isFacebookTikTok||isMetaGlassesOwnership||isAmazonPrimeVideoGames||isXboxGamePass||isOpenAiAgentOversight||isPatreonPlatformChange||isTripComAiTravelAgent||isAdobeAiPhotoCritique||isChristopherNolanOdyssey||isSaudiEaCommunityTrust||isCommunityIntelligenceWeeklyTrust||isPlaystationBlackout||isMetaSmartGlassesBystanderTrust||isFanaticsSportsSuperApp||isHaloPlaystationCommunityIntelligence||isLondonRobotaxiCommunityTrust||isXMoneySocialReputation||isAppleLeasingOwnership||isRedditGoogleKnowledgeStructure||isRobloxAiGameCreationDiscovery||isCyeraInvisibleAiWorkforce||isNetflixBritainDefaultTvChannel||isXboxGameDiscInternetPermission||isGtaViGamingEcosystem?{'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:[
+  const breadcrumbSchema=isNikeScorecard||isRobloxScorecard||isEarlyWarning||isHubspotPerformance||isRestIsFootball||isXMen97||isSquarespacePriceIncrease||isHubspotCommunityGovernance||isWorldCupCommercialisation||isFacebookTikTok||isMetaGlassesOwnership||isAmazonPrimeVideoGames||isXboxGamePass||isOpenAiAgentOversight||isPatreonPlatformChange||isTripComAiTravelAgent||isAdobeAiPhotoCritique||isChristopherNolanOdyssey||isSaudiEaCommunityTrust||isCommunityIntelligenceWeeklyTrust||isPlaystationBlackout||isMetaSmartGlassesBystanderTrust||isFanaticsSportsSuperApp||isHaloPlaystationCommunityIntelligence||isLondonRobotaxiCommunityTrust||isXMoneySocialReputation||isAppleLeasingOwnership||isRedditGoogleKnowledgeStructure||isRobloxAiGameCreationDiscovery||isCyeraInvisibleAiWorkforce||isNetflixBritainDefaultTvChannel||isXboxGameDiscInternetPermission||isGtaViGamingEcosystem||isDavidOrnsteinCommunityTrust?{'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:[
     {'@type':'ListItem',position:1,name:'Home',item:site.url},
     {'@type':'ListItem',position:2,name:isNikeScorecard||isRobloxScorecard?'Scorecards':'Research',item:`${site.url}/${isNikeScorecard||isRobloxScorecard?'scorecards':'research'}`},
     {'@type':'ListItem',position:3,name:item.title,item:`${site.url}/${item.slug}`},
