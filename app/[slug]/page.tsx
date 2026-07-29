@@ -42,6 +42,7 @@ import {appleLeasingOwnershipArticle,appleLeasingOwnershipBody} from '@/lib/arti
 import {redditGoogleKnowledgeStructureArticle,redditGoogleKnowledgeStructureBody} from '@/lib/articles/reddit-google-community-knowledge-structure'
 import {robloxAiGameCreationDiscoveryArticle,robloxAiGameCreationDiscoveryBody} from '@/lib/articles/roblox-ai-game-creation-discovery'
 import {cyeraInvisibleAiWorkforceArticle,cyeraInvisibleAiWorkforceBody} from '@/lib/articles/cyera-invisible-ai-workforce'
+import {netflixBritainDefaultTvChannelArticle,netflixBritainDefaultTvChannelBody} from '@/lib/articles/netflix-britain-default-tv-channel'
 import {client} from '@/sanity/lib/client'
 import {site} from '@/lib/site'
 
@@ -85,6 +86,7 @@ const localBodies:Record<string,string>={
   [redditGoogleKnowledgeStructureArticle.slug]:redditGoogleKnowledgeStructureBody,
   [robloxAiGameCreationDiscoveryArticle.slug]:robloxAiGameCreationDiscoveryBody,
   [cyeraInvisibleAiWorkforceArticle.slug]:cyeraInvisibleAiWorkforceBody,
+  [netflixBritainDefaultTvChannelArticle.slug]:netflixBritainDefaultTvChannelBody,
 }
 
 export function generateStaticParams(){return allContent.map(({slug})=>({slug}))}
@@ -158,6 +160,7 @@ export default async function Page({params}:{params:Promise<{slug:string}>}){
   const isRedditGoogleKnowledgeStructure=item.slug===redditGoogleKnowledgeStructureArticle.slug
   const isRobloxAiGameCreationDiscovery=item.slug===robloxAiGameCreationDiscoveryArticle.slug
   const isCyeraInvisibleAiWorkforce=item.slug===cyeraInvisibleAiWorkforceArticle.slug
+  const isNetflixBritainDefaultTvChannel=item.slug===netflixBritainDefaultTvChannelArticle.slug
   const schema={
     '@context':'https://schema.org',
     '@type':isEarlyWarning?['Article','BlogPosting']:item.type==='Scorecard'||item.type==='Benchmark'?'Report':'Article',
@@ -175,7 +178,7 @@ export default async function Page({params}:{params:Promise<{slug:string}>}){
   const isRobloxScorecard=item.slug===robloxCommunityScorecardDraft.slug
   const visibleFaqs=isNikeScorecard?nikeCommunityScorecardFaqs:isRobloxScorecard?robloxCommunityScorecardFaqs:isPatreonPlatformChange?patreonPlatformChangeFaqs:isTripComAiTravelAgent?tripComAiTravelAgentFaqs:null
   const faqSchema=visibleFaqs?{'@context':'https://schema.org','@type':'FAQPage',mainEntity:visibleFaqs.map(({question,answer})=>({'@type':'Question',name:question,acceptedAnswer:{'@type':'Answer',text:answer}}))}:null
-  const breadcrumbSchema=isNikeScorecard||isRobloxScorecard||isEarlyWarning||isHubspotPerformance||isRestIsFootball||isXMen97||isSquarespacePriceIncrease||isHubspotCommunityGovernance||isWorldCupCommercialisation||isFacebookTikTok||isMetaGlassesOwnership||isAmazonPrimeVideoGames||isXboxGamePass||isOpenAiAgentOversight||isPatreonPlatformChange||isTripComAiTravelAgent||isAdobeAiPhotoCritique||isChristopherNolanOdyssey||isSaudiEaCommunityTrust||isCommunityIntelligenceWeeklyTrust||isPlaystationBlackout||isMetaSmartGlassesBystanderTrust||isFanaticsSportsSuperApp||isHaloPlaystationCommunityIntelligence||isLondonRobotaxiCommunityTrust||isXMoneySocialReputation||isAppleLeasingOwnership||isRedditGoogleKnowledgeStructure||isRobloxAiGameCreationDiscovery||isCyeraInvisibleAiWorkforce?{'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:[
+  const breadcrumbSchema=isNikeScorecard||isRobloxScorecard||isEarlyWarning||isHubspotPerformance||isRestIsFootball||isXMen97||isSquarespacePriceIncrease||isHubspotCommunityGovernance||isWorldCupCommercialisation||isFacebookTikTok||isMetaGlassesOwnership||isAmazonPrimeVideoGames||isXboxGamePass||isOpenAiAgentOversight||isPatreonPlatformChange||isTripComAiTravelAgent||isAdobeAiPhotoCritique||isChristopherNolanOdyssey||isSaudiEaCommunityTrust||isCommunityIntelligenceWeeklyTrust||isPlaystationBlackout||isMetaSmartGlassesBystanderTrust||isFanaticsSportsSuperApp||isHaloPlaystationCommunityIntelligence||isLondonRobotaxiCommunityTrust||isXMoneySocialReputation||isAppleLeasingOwnership||isRedditGoogleKnowledgeStructure||isRobloxAiGameCreationDiscovery||isCyeraInvisibleAiWorkforce||isNetflixBritainDefaultTvChannel?{'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:[
     {'@type':'ListItem',position:1,name:'Home',item:site.url},
     {'@type':'ListItem',position:2,name:isNikeScorecard||isRobloxScorecard?'Scorecards':'Research',item:`${site.url}/${isNikeScorecard||isRobloxScorecard?'scorecards':'research'}`},
     {'@type':'ListItem',position:3,name:item.title,item:`${site.url}/${item.slug}`},
