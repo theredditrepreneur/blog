@@ -49,6 +49,8 @@ import {davidOrnsteinCommunityTrustArticle,davidOrnsteinCommunityTrustRelated} f
 import {fortniteAiCharactersCommunityArticle,fortniteAiCharactersCommunityRelated} from '@/lib/articles/fortnite-ai-characters-community-members'
 import {Newsletter} from './newsletter'
 import {SharePost} from './share-post'
+import {ArticleDeskLink,FrameworkCard} from './publication'
+import {getIndustry} from '@/lib/industries'
 
 export function ArticlePage({item,embedded=false,bodyHtml,coverImageUrl}:{item:ContentItem,embedded?:boolean,bodyHtml?:string,coverImageUrl?:string}){
   const prepared=bodyHtml?prepareImportedHtml(bodyHtml):null
@@ -98,7 +100,8 @@ export function ArticlePage({item,embedded=false,bodyHtml,coverImageUrl}:{item:C
     [davidOrnsteinCommunityTrustArticle.slug]:davidOrnsteinCommunityTrustRelated,
     [fortniteAiCharactersCommunityArticle.slug]:fortniteAiCharactersCommunityRelated,
   }
-  const related=manualRelated[item.slug]?.map(slug=>content.find(candidate=>candidate.slug===slug)).filter((candidate):candidate is ContentItem=>Boolean(candidate))||content.filter(candidate=>candidate.slug!==item.slug&&(candidate.topic===item.topic||candidate.type===item.type)).slice(0,3)
+  const itemIndustry=getIndustry(item)
+  const related=manualRelated[item.slug]?.map(slug=>content.find(candidate=>candidate.slug===slug)).filter((candidate):candidate is ContentItem=>Boolean(candidate))||content.filter(candidate=>candidate.slug!==item.slug&&getIndustry(candidate).slug===itemIndustry.slug).slice(0,3)
   const archiveHref:Record<ContentItem['type'],string>={Research:'/research',Scorecard:'/scorecards','Case Study':'/case-studies',Framework:'/frameworks',Benchmark:'/benchmarks',Weekly:'/community-intelligence-weekly',Index:'/community-intelligence-index',Article:'/research'}
   const isAiAuthority=item.slug==='the-ai-authority-formula'
   const isHeadOfCommunityIntelligence=item.slug===headOfCommunityIntelligenceDraft.slug
@@ -110,12 +113,13 @@ export function ArticlePage({item,embedded=false,bodyHtml,coverImageUrl}:{item:C
   const publicationIndex=content.findIndex(candidate=>candidate.slug===item.slug)
   const newerArticle=publicationIndex>0?content[publicationIndex-1]:undefined
   const olderArticle=publicationIndex>=0&&publicationIndex<content.length-1?content[publicationIndex+1]:undefined
+  const industry=itemIndustry
 
   return <article id="top">
     {!embedded&&<>
       <header className="article-header shell">
-        <nav aria-label="Breadcrumb"><Link href="/">Home</Link><span>/</span><Link href={archiveHref[item.type]}>{item.type}</Link></nav>
-        <div className="eyebrow">{item.topic||item.type}</div>
+        <nav aria-label="Breadcrumb"><Link href="/">Home</Link><span>/</span><Link href={`/industries/${industry.slug}`}>{industry.name}</Link><span>/</span><Link href={archiveHref[item.type]}>{item.type}</Link></nav>
+        <div className="article-taxonomy"><Link className="industry-badge" href={`/industries/${industry.slug}`}>{industry.name}</Link><span>{item.topic||item.type}</span></div>
         <h1>{item.title}</h1>
         {(item.subtitle||isAiAuthority)&&<p className="article-subtitle">{item.subtitle||'Why AI Recommends Some Brands and Ignores Others'}</p>}
         {item.slug!==christopherNolanOdysseyArticle.slug&&item.slug!==communityIntelligenceWeeklyTrustArticle.slug&&item.slug!==appleLeasingOwnershipArticle.slug&&item.slug!==redditGoogleKnowledgeStructureArticle.slug&&item.slug!==robloxAiGameCreationDiscoveryArticle.slug&&item.slug!==cyeraInvisibleAiWorkforceArticle.slug&&item.slug!==netflixBritainDefaultTvChannelArticle.slug&&item.slug!==xboxGameDiscInternetPermissionArticle.slug&&item.slug!==gtaViGamingEcosystemArticle.slug&&item.slug!==davidOrnsteinCommunityTrustArticle.slug&&item.slug!==fortniteAiCharactersCommunityArticle.slug&&<p className="dek">{item.excerpt}</p>}
@@ -132,7 +136,9 @@ export function ArticlePage({item,embedded=false,bodyHtml,coverImageUrl}:{item:C
       </div>
     </div>
 
+    <section className="related-frameworks shell" aria-labelledby={`frameworks-${item.slug}`}><div className="eyebrow">Ideas used in this analysis</div><h2 id={`frameworks-${item.slug}`}>Related frameworks</h2><div className="publication-framework-grid">{industry.frameworks.slice(0,3).map(name=><FrameworkCard name={name} key={name}/>)}</div></section>
     {related.length>0&&<section className="related-content shell" aria-labelledby={`related-${item.slug}`}><div className="eyebrow">Continue exploring</div><h2 id={`related-${item.slug}`}>Related Community Intelligence research</h2><div className="related-grid">{related.map(candidate=><article key={candidate.slug}><div className="eyebrow">{candidate.type}</div><h3><Link href={`/${candidate.slug}`}>{candidate.title}</Link></h3><p>{candidate.excerpt}</p></article>)}</div></section>}
+    <ArticleDeskLink industry={industry} item={item}/>
     {(isEarlyWarning||item.slug===adobeAiPhotoCritiqueArticle.slug||item.slug===christopherNolanOdysseyArticle.slug||item.slug===saudiEaCommunityTrustArticle.slug||item.slug===playstationBlackoutArticle.slug||item.slug===metaSmartGlassesBystanderTrustArticle.slug||item.slug===fanaticsSportsSuperAppArticle.slug||item.slug===haloPlaystationCommunityIntelligenceArticle.slug||item.slug===londonRobotaxiCommunityTrustArticle.slug||item.slug===xMoneySocialReputationArticle.slug||item.slug===appleLeasingOwnershipArticle.slug||item.slug===redditGoogleKnowledgeStructureArticle.slug||item.slug===robloxAiGameCreationDiscoveryArticle.slug||item.slug===cyeraInvisibleAiWorkforceArticle.slug||item.slug===netflixBritainDefaultTvChannelArticle.slug||item.slug===xboxGameDiscInternetPermissionArticle.slug||item.slug===gtaViGamingEcosystemArticle.slug||item.slug===davidOrnsteinCommunityTrustArticle.slug||item.slug===fortniteAiCharactersCommunityArticle.slug)&&<nav className="article-pagination shell" aria-label="Previous and next articles">{olderArticle&&<Link href={`/${olderArticle.slug}`}><span>Previous article</span><strong>{olderArticle.title}</strong></Link>}{newerArticle&&<Link href={`/${newerArticle.slug}`}><span>Next article</span><strong>{newerArticle.title}</strong></Link>}</nav>}
     <div className="shell share-shell"><SharePost title={item.title} url={`${site.url}/${item.slug}/`}/></div>
     <section id="about-author" className="author-box shell"><Image src="/tonte-bo-douglas.jpg" width={150} height={150} alt="Tonte Bo Douglas"/><div><div className="eyebrow">About the author</div><h2>Tonte Bo Douglas</h2><p>Founder of The Redditrepreneur and a Community Intelligence researcher and strategist studying how online communities shape trust, discovery, brands and markets.</p><Link href="/authors/tonte-bo-douglas">View Tonte&rsquo;s latest work</Link></div></section>

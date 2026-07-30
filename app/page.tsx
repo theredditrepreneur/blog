@@ -1,25 +1,67 @@
+import type {Metadata} from 'next'
 import Link from 'next/link'
 import {ContentCard} from '@/components/cards'
+import {FrameworkCard,IndustryCard} from '@/components/publication'
 import {Newsletter} from '@/components/newsletter'
-import {content, frameworks, topics,latestWeeklySlug} from '@/lib/content'
-import {site} from '@/lib/site'
+import {content,frameworks} from '@/lib/content'
+import {industries} from '@/lib/industries'
 import {withCoverImages} from '@/lib/covers'
-import {LatestResearch} from '@/components/latest-research'
-import Image from 'next/image'
-import {scorecardPillars} from '@/lib/community-intelligence-scorecard'
+
+export const metadata:Metadata={
+  title:'The Redditrepreneur Research',
+  description:'Community Intelligence research covering Gaming, AI, Sport, SaaS, Consumer Brands and Entertainment.',
+  alternates:{canonical:'/'},
+}
+
+const frameworkDescriptions:Record<string,string>={
+  'Community Intelligence Stack':'A practical system for turning community conversations into evidence, insight and action.',
+  'Community Intelligence Scorecard':'A consistent way to measure community trust, participation and strategic value.',
+  'Customer Insight Triangle':'A model connecting what customers say, what they do and what they believe.',
+  'Community Gravity':'Why some communities naturally pull people in and become difficult to leave.',
+  'Belief Correction':'How communities change their minds when new evidence becomes impossible to ignore.',
+  'Narrative Compression':'How complicated events become one simple story that spreads through a community.',
+}
 
 export default async function Home() {
-  const illustrated=await withCoverImages(content.slice(0,7))
+  const illustrated=await withCoverImages(content.slice(0,18))
+  const latest=illustrated.slice(0,6)
+  const weeklySpotlight=content.find(item=>item.image==='/community-intelligence-weekly-trust.jpg'&&item.title==='Community Intelligence Weekly: Christopher Nolan, AI Advice, Platform Change and Gaming Trust')
+  const featured=illustrated.filter(item=>item.featured).slice(0,2)
+  const featuredItems=(weeklySpotlight?[weeklySpotlight,...featured]:featured).filter((item,index,items)=>items.findIndex(candidate=>candidate.slug===item.slug)===index).slice(0,2)
+
   return <>
-    <section className="section shell featured-research-section"><div className="section-heading"><div><div className="eyebrow">Featured research</div><h2>The latest thinking in Community Intelligence</h2></div></div><ContentCard item={illustrated[0]} featured/></section>
-    <section className="section shell latest-research-section"><div className="section-heading"><div><div className="eyebrow">Research library</div><h2>Latest research</h2></div><Link href="/research">View all research</Link></div><LatestResearch items={illustrated.slice(1,7)}/></section>
-    <section className="scorecard-band"><div className="shell split"><div><div className="eyebrow light">Measurement</div><h2>Community Intelligence Scorecards</h2><p>The Redditrepreneur Community Intelligence Scorecard assesses brands across nine criteria grouped into three pillars: Perception, Participation and Strategic Value.</p><Link className="button light-button" href="/the-redditrepreneur-community-intelligence-scorecard">Read the methodology</Link></div><div className="score-preview"><strong>9</strong><span>criteria across three pillars</span><ol>{Object.values(scorecardPillars).sort((a,b)=>a.order-b.order).map(pillar=><li key={pillar.name}>{pillar.name}</li>)}</ol></div></div></section>
-    <section className="section shell"><div className="section-heading"><div><div className="eyebrow">Original thinking</div><h2>The Frameworks Defining Community Intelligence</h2></div><Link href="/frameworks">Explore the library</Link></div><div className="framework-grid">{frameworks.map((x,i)=><div key={x}><span>{String(i+1).padStart(2,'0')}</span><h3>{x}</h3></div>)}</div></section>
-    <section className="weekly section"><div className="shell split"><Image className="weekly-image" src="/community-intelligence-weekly-trust.jpg" width={1280} height={720} alt="Community Intelligence Weekly editorial cover by The Redditrepreneur"/><div><div className="eyebrow">Latest issue</div><h2>Community Intelligence Weekly: Christopher Nolan, AI Advice, Platform Change and Gaming Trust</h2><p>This edition looks back at the biggest creator, AI, platform and gaming trust stories from the past week, with simple lessons for businesses.</p><div className="actions"><Link className="button" href={`/${latestWeeklySlug}`}>Read latest</Link><Link className="text-link" href="/community-intelligence-weekly">Browse archive</Link><a className="text-link" href={site.newsletter}>Subscribe</a></div></div></div></section>
-    <section className="section shell"><div className="section-heading"><div><div className="eyebrow">Applied research</div><h2>Case studies and benchmarks</h2></div></div><p className="collection-note">See what brands, products and cultural events reveal about community behaviour, then compare those patterns through transparent benchmark research.</p><div className="card-grid">{illustrated.filter(item=>item.type==='Case Study'||item.type==='Benchmark').slice(0,3).map(item=><ContentCard key={item.slug} item={item}/>)}</div><div className="actions"><Link className="text-link" href="/case-studies">Browse case studies</Link><Link className="text-link" href="/benchmarks">Explore benchmarks</Link></div></section>
-    <section className="section shell"><div className="section-heading"><div><div className="eyebrow">Explore by subject</div><h2>Topics</h2></div></div><div className="topic-grid">{topics.map(x=><Link key={x} href={`/topics/${x.toLowerCase().replaceAll(' ','-')}`}>{x}<span>→</span></Link>)}</div></section>
-    <section className="section shell glossary-teaser"><div><div className="eyebrow">Glossary</div><h2>Learn the Language of Community Intelligence</h2><p>Clear definitions for the concepts, frameworks and measures shaping this emerging discipline.</p><Link className="button" href="/glossary">Browse the glossary</Link></div><dl><div><dt>Community Intelligence</dt><dd>The practice of analysing authentic online conversations to uncover the beliefs, behaviours and signals influencing markets.</dd></div><div><dt>Share of Consensus</dt><dd>A measure of how strongly a brand or idea appears within trusted community recommendations.</dd></div></dl></section>
-    <section className="about-band"><div className="shell split"><div><div className="eyebrow">About the research</div><h2>From conversation to competitive advantage</h2></div><div><p>The Redditrepreneur combines original research, software and professional services to help organisations understand what online communities say about their brand, competitors and market.</p><div className="actions"><a className="text-link" href={site.main}>Main website</a><a className="text-link" href={site.app}>Explore the platform</a><a className="text-link" href={site.audit}>Community Intelligence Audit</a></div></div></div></section>
-    <div className="shell"><Newsletter/></div>
+    <section className="publication-hero shell">
+      <div className="publication-kicker">The Redditrepreneur Research</div>
+      <h1>We publish Community Intelligence for the world&apos;s most important industries.</h1>
+      <p>Understanding what online communities really think and what businesses should do next.</p>
+      <div className="actions"><Link className="button" href="/research">Explore the latest research</Link><Link className="publication-secondary" href="/industries">Explore industries</Link></div>
+    </section>
+
+    <section className="publication-section industries-section shell" aria-labelledby="industries-heading">
+      <header className="publication-section-heading"><div><span>Editorial desks</span><h2 id="industries-heading">Industries We Track</h2></div><Link href="/industries">View all industries</Link></header>
+      <div className="industry-grid">{industries.map(industry=><IndustryCard key={industry.slug} industry={industry}/>)}</div>
+    </section>
+
+    <section className="publication-section shell" aria-labelledby="frameworks-heading">
+      <header className="publication-section-heading"><div><span>Original thinking</span><h2 id="frameworks-heading">Community Intelligence Frameworks</h2></div><Link href="/frameworks">Explore all frameworks</Link></header>
+      <div className="publication-framework-grid">{frameworks.slice(0,6).map(name=><FrameworkCard key={name} name={name} description={frameworkDescriptions[name]}/>)}</div>
+    </section>
+
+    <section className="publication-section latest-publication shell" aria-labelledby="latest-heading">
+      <header className="publication-section-heading"><div><span>New analysis</span><h2 id="latest-heading">Latest Research</h2></div><Link href="/research">View all research</Link></header>
+      <div className="card-grid">{latest.map(item=><ContentCard key={item.slug} item={item}/>)}</div>
+    </section>
+
+    <section className="publication-section featured-publication" aria-labelledby="featured-heading"><div className="shell">
+      <header className="publication-section-heading"><div><span>Editor&apos;s selection</span><h2 id="featured-heading">Featured Research</h2></div></header>
+      <div className="featured-publication-grid">{featuredItems.map(item=><ContentCard key={item.slug} item={item} featured/>)}</div>
+    </div></section>
+
+    <section className="community-intelligence-explainer" aria-labelledby="community-intelligence-heading"><div className="shell explainer-grid">
+      <div><span className="publication-kicker">The discipline</span><h2 id="community-intelligence-heading">What is Community Intelligence?</h2><p>Community Intelligence turns online conversations into practical business insight.</p><Link className="button" href="/frameworks">Explore Frameworks</Link></div>
+      <div><p>It helps organisations understand:</p><ul><li>What people believe</li><li>Who they trust</li><li>Why opinions change</li><li>What customers want</li><li>Where risks are emerging</li><li>What action should be taken</li></ul></div>
+    </div></section>
+
+    <div className="shell publication-newsletter"><Newsletter/></div>
   </>
 }
