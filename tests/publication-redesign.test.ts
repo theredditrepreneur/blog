@@ -30,6 +30,9 @@ describe('publication-first redesign',()=>{
   })
 
   it('uses publication positioning and industry-aware article exploration',()=>{
+    const homepage=readFileSync('app/page.tsx','utf8')
+    expect(homepage.indexOf('Latest Research')).toBeLessThan(homepage.indexOf('Featured Research'))
+    expect(homepage).not.toContain('publication-hero')
     expect(readFileSync('app/page.tsx','utf8')).toContain("We publish Community Intelligence for the world&apos;s most important industries.")
     expect(readFileSync('components/article-page.tsx','utf8')).toContain('ArticleDeskLink')
     expect(readFileSync('app/layout.tsx','utf8')).toContain('NewsMediaOrganization')

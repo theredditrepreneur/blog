@@ -3,6 +3,7 @@ import Link from 'next/link'
 import {ContentCard} from '@/components/cards'
 import {FrameworkCard,IndustryCard} from '@/components/publication'
 import {Newsletter} from '@/components/newsletter'
+import {content} from '@/lib/content'
 import {content,frameworks} from '@/lib/content'
 import {industries} from '@/lib/industries'
 import {withCoverImages} from '@/lib/covers'
@@ -12,6 +13,10 @@ export const metadata:Metadata={
   description:'Community Intelligence research covering Gaming, AI, Sport, SaaS, Consumer Brands and Entertainment.',
   alternates:{canonical:'/'},
 }
+
+export default async function Home() {
+  const illustrated=await withCoverImages(content.slice(0,24))
+  const latest=illustrated.slice(0,15)
 
 const frameworkDescriptions:Record<string,string>={
   'Community Intelligence Stack':'A practical system for turning community conversations into evidence, insight and action.',
@@ -30,6 +35,7 @@ export default async function Home() {
   const featuredItems=(weeklySpotlight?[weeklySpotlight,...featured]:featured).filter((item,index,items)=>items.findIndex(candidate=>candidate.slug===item.slug)===index).slice(0,2)
 
   return <>
+    <section className="publication-section latest-publication homepage-research-lead shell" aria-labelledby="latest-heading">
     <section className="publication-hero shell">
       <div className="publication-kicker">The Redditrepreneur Research</div>
       <h1>We publish Community Intelligence for the world&apos;s most important industries.</h1>
