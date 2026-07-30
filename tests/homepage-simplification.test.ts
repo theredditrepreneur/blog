@@ -11,6 +11,7 @@ describe('homepage publication direction',()=>{
     expect(home).not.toContain('publication-hero')
     expect(home).not.toContain('Industries We Track')
     expect(home).not.toContain('Community Intelligence Frameworks')
+    expect(home).toContain('illustrated.slice(0,15)')
     expect(home.indexOf('Latest Research')).toBeLessThan(home.indexOf('Featured Research'))
   })
 
