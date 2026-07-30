@@ -1,7 +1,6 @@
 import type {Metadata} from 'next'
 import Link from 'next/link'
 import {ContentCard} from '@/components/cards'
-import {FrameworkCard,IndustryCard} from '@/components/publication'
 import {Newsletter} from '@/components/newsletter'
 import {content} from '@/lib/content'
 import {content,frameworks} from '@/lib/content'
@@ -28,8 +27,8 @@ const frameworkDescriptions:Record<string,string>={
 }
 
 export default async function Home() {
-  const illustrated=await withCoverImages(content.slice(0,18))
-  const latest=illustrated.slice(0,6)
+  const illustrated=await withCoverImages(content.slice(0,24))
+  const latest=illustrated.slice(0,15)
   const weeklySpotlight=content.find(item=>item.image==='/community-intelligence-weekly-trust.jpg'&&item.title==='Community Intelligence Weekly: Christopher Nolan, AI Advice, Platform Change and Gaming Trust')
   const featured=illustrated.filter(item=>item.featured).slice(0,2)
   const featuredItems=(weeklySpotlight?[weeklySpotlight,...featured]:featured).filter((item,index,items)=>items.findIndex(candidate=>candidate.slug===item.slug)===index).slice(0,2)

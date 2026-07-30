@@ -32,7 +32,7 @@
 .featured-publication .featured-card:nth-child(even){grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr)}
 .featured-publication .featured-card:nth-child(even) .card-art{order:2;margin:32px 32px 32px 0}
 .featured-publication .featured-card:nth-child(even){grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr)}
-.featured-publication .featured-card:nth-child(even) .card-art{order:2}
+.featured-publication .featured-card:nth-child(even) .card-art{order:2;margin:32px 32px 32px 0}
 .publication-framework-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
 .publication-framework-card{display:flex;flex-direction:column;min-height:225px;padding:26px;border:1px solid var(--line);border-top:4px solid var(--orange);background:white}
 .publication-framework-card h3{margin:14px 0 10px;color:var(--navy);font:700 1.55rem/1.12 var(--font-serif),Georgia,serif}
@@ -61,7 +61,7 @@
 .brand img{width:158px;height:58px}
 .header-inner>nav{margin-left:auto;gap:24px}.header-inner>nav>a,.industry-menu>summary{font-size:.78rem;letter-spacing:.015em}
 .industry-menu{position:relative}.industry-menu summary{cursor:pointer;list-style:none;font-weight:700}.industry-menu summary::-webkit-details-marker{display:none}.industry-menu summary:after{content:'+';margin-left:6px;color:var(--orange)}.industry-menu[open] summary:after{content:'−'}
-.industry-menu>div{position:absolute;top:34px;left:-180px;width:520px;padding:16px;display:grid;grid-template-columns:1fr 1fr;gap:2px;background:white;border:1px solid var(--line);box-shadow:var(--shadow)}
+.industry-menu>div{position:absolute;top:38px;left:50%;transform:translateX(-50%);width:min(720px,calc(100vw - 48px));padding:18px;display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:white;border:1px solid var(--line);box-shadow:var(--shadow)}
 .industry-menu>div a{display:grid;padding:14px;text-decoration:none}.industry-menu>div a:hover{background:var(--surface)}.industry-menu>div strong{color:var(--navy)}.industry-menu>div span{white-space:normal;color:var(--muted);font-size:.7rem;font-weight:500;line-height:1.35}
 .mobile-industries{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line);margin-top:12px;padding-top:12px}
 
