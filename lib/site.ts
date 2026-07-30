@@ -1,7 +1,7 @@
 export const site = {
   name: 'The Redditrepreneur Research',
   shortName: 'The Redditrepreneur',
-  description: 'Original Community Intelligence research, frameworks, scorecards and analysis from The Redditrepreneur.',
+  description: 'Community Intelligence research covering Gaming, AI, Sport, SaaS, Consumer Brands and Entertainment.',
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://blog.theredditrepreneur.com',
   main: process.env.NEXT_PUBLIC_MAIN_SITE_URL || 'https://www.theredditrepreneur.com',
   app: process.env.NEXT_PUBLIC_APP_URL || 'https://app.theredditrepreneur.com',
@@ -13,7 +13,6 @@ export const site = {
 }
 
 export const nav = [
-  ['Home', '/'], ['Research', '/research'], ['Scorecards', '/scorecards'], ['Case Studies', '/case-studies'],
-  ['Frameworks', '/frameworks'], ['Benchmarks', '/benchmarks'], ['Glossary', '/glossary'],
-  ['Weekly', '/community-intelligence-weekly'],
+  ['Research', '/research'], ['Industries', '/industries'], ['Frameworks', '/frameworks'],
+  ['Community Intelligence', '/what-is-community-intelligence'], ['About', '/about'], ['Search', '/search'],
 ] as const

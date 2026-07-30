@@ -14,6 +14,7 @@ export type ContentItem = {
   imageWidth?: number
   imageHeight?: number
   topic?: string
+  industry?: import('@/lib/industries').IndustrySlug
   seoTitle?: string
   metaDescription?: string
   socialTitle?: string
@@ -120,5 +121,5 @@ export const content:ContentItem[]=[...migratedItems,...curatedExtras,fortniteAi
 export const draftContent:ContentItem[]=[]
 export const allContent:ContentItem[]=[...content,...draftContent]
 
-export const frameworks = ['Community Gravity', 'Market Gravity', 'Trust Collapse', 'Narrative Compression', 'Belief Correction', 'Mission Premium', 'Hype Hangover', 'Expectation Gravity', 'Community Intelligence Stack', 'Share of Consensus']
+export const frameworks = ['Community Intelligence Stack', 'Community Intelligence Scorecard', 'Customer Insight Triangle', 'Community Gravity', 'Belief Correction', 'Narrative Compression', 'Trust Collapse', 'Mission Premium', 'Market Gravity', 'Hype Hangover', 'Expectation Gravity', 'Share of Consensus']
 export const topics = ['Community Intelligence', 'Artificial Intelligence', 'AI Search', 'Brand Intelligence', 'Customer Insights', 'Community Strategy', 'Industry Analysis', 'Industry News', 'Reddit', 'Creator Economy', 'B2B SaaS', 'Consumer Brands']

@@ -49,6 +49,7 @@ import {davidOrnsteinCommunityTrustArticle,davidOrnsteinCommunityTrustBody} from
 import {fortniteAiCharactersCommunityArticle,fortniteAiCharactersCommunityBody} from '@/lib/articles/fortnite-ai-characters-community-members'
 import {client} from '@/sanity/lib/client'
 import {site} from '@/lib/site'
+import {getIndustry} from '@/lib/industries'
 
 const localBodies:Record<string,string>={
   [headOfCommunityIntelligenceDraft.slug]:headOfCommunityIntelligenceBody,
@@ -173,6 +174,8 @@ export default async function Page({params}:{params:Promise<{slug:string}>}){
   const isGtaViGamingEcosystem=item.slug===gtaViGamingEcosystemArticle.slug
   const isDavidOrnsteinCommunityTrust=item.slug===davidOrnsteinCommunityTrustArticle.slug
   const isFortniteAiCharactersCommunity=item.slug===fortniteAiCharactersCommunityArticle.slug
+  const industry=getIndustry(item)
+  const routeHasDedicatedPresentation=isEarlyWarning||isHubspotPerformance||isRestIsFootball||isXMen97||isSquarespacePriceIncrease||isHubspotCommunityGovernance||isWorldCupCommercialisation||isFacebookTikTok||isMetaGlassesOwnership||isAmazonPrimeVideoGames||isXboxGamePass||isOpenAiAgentOversight||isPatreonPlatformChange||isTripComAiTravelAgent||isAdobeAiPhotoCritique||isChristopherNolanOdyssey||isSaudiEaCommunityTrust||isCommunityIntelligenceWeeklyTrust||isPlaystationBlackout||isMetaSmartGlassesBystanderTrust||isFanaticsSportsSuperApp||isHaloPlaystationCommunityIntelligence||isLondonRobotaxiCommunityTrust||isXMoneySocialReputation||isAppleLeasingOwnership||isRedditGoogleKnowledgeStructure||isRobloxAiGameCreationDiscovery||isCyeraInvisibleAiWorkforce||isNetflixBritainDefaultTvChannel||isXboxGameDiscInternetPermission||isGtaViGamingEcosystem||isDavidOrnsteinCommunityTrust||isFortniteAiCharactersCommunity
   const schema={
     '@context':'https://schema.org',
     '@type':isEarlyWarning?['Article','BlogPosting']:item.type==='Scorecard'||item.type==='Benchmark'?'Report':'Article',
@@ -184,16 +187,20 @@ export default async function Page({params}:{params:Promise<{slug:string}>}){
     publisher:{'@type':'Organization',name:'The Redditrepreneur',url:site.main,logo:{'@type':'ImageObject',url:`${site.url}/redditrepreneur-logo.png`}},
     mainEntityOfPage:{'@type':'WebPage','@id':`${site.url}/${slug}`},
     image:schemaImage,
+    articleSection:industry.name,
+    about:{'@type':'Thing',name:industry.deskName,url:`${site.url}/industries/${industry.slug}`},
+    isAccessibleForFree:routeHasDedicatedPresentation||!item.draft,
   }
   const page=item.type==='Scorecard'?<ScorecardPage item={item} bodyHtml={bodyHtml} coverImageUrl={coverImageUrl}/>:item.type==='Framework'?<FrameworkPage item={item} bodyHtml={bodyHtml} coverImageUrl={coverImageUrl}/>:<ArticlePage item={item} bodyHtml={bodyHtml} coverImageUrl={coverImageUrl}/>
   const isNikeScorecard=item.slug===nikeCommunityScorecardDraft.slug
   const isRobloxScorecard=item.slug===robloxCommunityScorecardDraft.slug
   const visibleFaqs=isNikeScorecard?nikeCommunityScorecardFaqs:isRobloxScorecard?robloxCommunityScorecardFaqs:isPatreonPlatformChange?patreonPlatformChangeFaqs:isTripComAiTravelAgent?tripComAiTravelAgentFaqs:null
   const faqSchema=visibleFaqs?{'@context':'https://schema.org','@type':'FAQPage',mainEntity:visibleFaqs.map(({question,answer})=>({'@type':'Question',name:question,acceptedAnswer:{'@type':'Answer',text:answer}}))}:null
-  const breadcrumbSchema=isNikeScorecard||isRobloxScorecard||isEarlyWarning||isHubspotPerformance||isRestIsFootball||isXMen97||isSquarespacePriceIncrease||isHubspotCommunityGovernance||isWorldCupCommercialisation||isFacebookTikTok||isMetaGlassesOwnership||isAmazonPrimeVideoGames||isXboxGamePass||isOpenAiAgentOversight||isPatreonPlatformChange||isTripComAiTravelAgent||isAdobeAiPhotoCritique||isChristopherNolanOdyssey||isSaudiEaCommunityTrust||isCommunityIntelligenceWeeklyTrust||isPlaystationBlackout||isMetaSmartGlassesBystanderTrust||isFanaticsSportsSuperApp||isHaloPlaystationCommunityIntelligence||isLondonRobotaxiCommunityTrust||isXMoneySocialReputation||isAppleLeasingOwnership||isRedditGoogleKnowledgeStructure||isRobloxAiGameCreationDiscovery||isCyeraInvisibleAiWorkforce||isNetflixBritainDefaultTvChannel||isXboxGameDiscInternetPermission||isGtaViGamingEcosystem||isDavidOrnsteinCommunityTrust||isFortniteAiCharactersCommunity?{'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:[
+  const breadcrumbSchema={'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:[
     {'@type':'ListItem',position:1,name:'Home',item:site.url},
-    {'@type':'ListItem',position:2,name:isNikeScorecard||isRobloxScorecard?'Scorecards':'Research',item:`${site.url}/${isNikeScorecard||isRobloxScorecard?'scorecards':'research'}`},
-    {'@type':'ListItem',position:3,name:item.title,item:`${site.url}/${item.slug}`},
-  ]}:null
+    {'@type':'ListItem',position:2,name:'Industries',item:`${site.url}/industries`},
+    {'@type':'ListItem',position:3,name:industry.name,item:`${site.url}/industries/${industry.slug}`},
+    {'@type':'ListItem',position:4,name:item.title,item:`${site.url}/${item.slug}`},
+  ]}
   return <>{page}<script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(schema).replace(/</g,'\u003c')}}/>{faqSchema&&<script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(faqSchema).replace(/</g,'\u003c')}}/>}{breadcrumbSchema&&<script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(breadcrumbSchema).replace(/</g,'\u003c')}}/>}</>
 }
