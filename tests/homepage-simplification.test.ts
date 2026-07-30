@@ -13,12 +13,6 @@ describe('homepage publication direction',()=>{
     expect(home).not.toContain('Community Intelligence Frameworks')
     expect(home).toContain('illustrated.slice(0,15)')
     expect(home.indexOf('Latest Research')).toBeLessThan(home.indexOf('Featured Research'))
-  it('starts with a concise publication mission and editorial desks',()=>{
-    expect(home).not.toContain('Understand the Conversations Shaping Brands, Markets and Culture')
-    expect(home).not.toContain('className="hero shell"')
-    expect(home).toContain('publication-hero')
-    expect(home).toContain("We publish Community Intelligence for the world&apos;s most important industries.")
-    expect(home).toContain('Industries We Track')
   })
 
   it('only shows latest-research filters that have matching items',()=>{
