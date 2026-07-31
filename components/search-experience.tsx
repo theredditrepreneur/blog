@@ -2,25 +2,25 @@
 
 import {useMemo,useState} from 'react'
 import Link from 'next/link'
-import {content,frameworks,topics} from '@/lib/content'
+import {frameworks,topics,type ContentItem} from '@/lib/content'
 import {getIndustry,industries} from '@/lib/industries'
 
 function Highlight({text,query}:{text:string,query:string}){if(!query)return text;const index=text.toLowerCase().indexOf(query.toLowerCase());if(index<0)return text;return <>{text.slice(0,index)}<mark>{text.slice(index,index+query.length)}</mark>{text.slice(index+query.length)}</>}
 
-export function SearchExperience({initialQuery=''}:{initialQuery?:string}){
+export function SearchExperience({initialQuery='',items}:{initialQuery?:string,items:ContentItem[]}){
   const [q,setQ]=useState(initialQuery)
   const [industry,setIndustry]=useState('All')
   const [framework,setFramework]=useState('All')
   const [topic,setTopic]=useState('All')
   const [sort,setSort]=useState('relevance')
-  const results=useMemo(()=>content.filter(item=>{
+  const results=useMemo(()=>items.filter(item=>{
     const itemIndustry=getIndustry(item)
     const corpus=[item.title,item.excerpt,item.topic,...(item.tags||[]),itemIndustry.name,itemIndustry.deskName,...itemIndustry.frameworks].filter(Boolean).join(' ').toLowerCase()
     const matchesIndustry=industry==='All'||itemIndustry.slug===industry
     const matchesFramework=framework==='All'||item.type==='Framework'&&item.title.toLowerCase().includes(framework.toLowerCase())||itemIndustry.frameworks.includes(framework)||corpus.includes(framework.toLowerCase())
     const matchesTopic=topic==='All'||item.topic===topic||item.tags?.includes(topic)
     return matchesIndustry&&matchesFramework&&matchesTopic&&corpus.includes(q.toLowerCase())
-  }).sort((a,b)=>sort==='newest'?b.date.localeCompare(a.date):(q&&b.title.toLowerCase().includes(q.toLowerCase())?1:0)-(q&&a.title.toLowerCase().includes(q.toLowerCase())?1:0)),[q,industry,framework,topic,sort])
+  }).sort((a,b)=>sort==='newest'?b.date.localeCompare(a.date):(q&&b.title.toLowerCase().includes(q.toLowerCase())?1:0)-(q&&a.title.toLowerCase().includes(q.toLowerCase())?1:0)),[q,industry,framework,topic,sort,items])
 
   return <>
     <header className="search-hero shell"><span className="publication-kicker">Publication search</span><h1>Search the research</h1><p>Find analysis by industry, framework, company, brand, keyword or topic.</p></header>
