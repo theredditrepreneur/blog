@@ -14,6 +14,19 @@ export const metadata:Metadata={
 export default async function Home() {
   const illustrated=await withCoverImages(content.slice(0,24))
   const latest=illustrated.slice(0,15)
+
+const frameworkDescriptions:Record<string,string>={
+  'Community Intelligence Stack':'A practical system for turning community conversations into evidence, insight and action.',
+  'Community Intelligence Scorecard':'A consistent way to measure community trust, participation and strategic value.',
+  'Customer Insight Triangle':'A model connecting what customers say, what they do and what they believe.',
+  'Community Gravity':'Why some communities naturally pull people in and become difficult to leave.',
+  'Belief Correction':'How communities change their minds when new evidence becomes impossible to ignore.',
+  'Narrative Compression':'How complicated events become one simple story that spreads through a community.',
+}
+
+export default async function Home() {
+  const illustrated=await withCoverImages(content.slice(0,24))
+  const latest=illustrated.slice(0,15)
   const weeklySpotlight=content.find(item=>item.image==='/community-intelligence-weekly-trust.jpg'&&item.title==='Community Intelligence Weekly: Christopher Nolan, AI Advice, Platform Change and Gaming Trust')
   const featured=illustrated.filter(item=>item.featured).slice(0,2)
   const featuredItems=(weeklySpotlight?[weeklySpotlight,...featured]:featured).filter((item,index,items)=>items.findIndex(candidate=>candidate.slug===item.slug)===index).slice(0,2)
