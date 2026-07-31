@@ -70,6 +70,7 @@ export const industries: Industry[] = [
 ]
 
 const explicitIndustry: Record<string, IndustrySlug> = {
+  'jake-paul-next-fight-cultural-legitimacy': 'sport',
   'fortnite-ai-characters-community-members': 'gaming',
   'every-community-has-its-own-david-ornstein': 'sport',
   'gta-vi-selling-the-entire-gaming-ecosystem': 'gaming',

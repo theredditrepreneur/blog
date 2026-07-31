@@ -47,6 +47,7 @@ import {xboxGameDiscInternetPermissionArticle,xboxGameDiscInternetPermissionBody
 import {gtaViGamingEcosystemArticle,gtaViGamingEcosystemBody} from '@/lib/articles/gta-vi-selling-the-entire-gaming-ecosystem'
 import {davidOrnsteinCommunityTrustArticle,davidOrnsteinCommunityTrustBody} from '@/lib/articles/every-community-has-its-own-david-ornstein'
 import {fortniteAiCharactersCommunityArticle,fortniteAiCharactersCommunityBody} from '@/lib/articles/fortnite-ai-characters-community-members'
+import {jakePaulCulturalLegitimacyArticle,jakePaulCulturalLegitimacyBody} from '@/lib/articles/jake-paul-next-fight-cultural-legitimacy'
 import {client} from '@/sanity/lib/client'
 import {site} from '@/lib/site'
 import {getIndustry} from '@/lib/industries'
@@ -96,6 +97,7 @@ const localBodies:Record<string,string>={
   [gtaViGamingEcosystemArticle.slug]:gtaViGamingEcosystemBody,
   [davidOrnsteinCommunityTrustArticle.slug]:davidOrnsteinCommunityTrustBody,
   [fortniteAiCharactersCommunityArticle.slug]:fortniteAiCharactersCommunityBody,
+  [jakePaulCulturalLegitimacyArticle.slug]:jakePaulCulturalLegitimacyBody,
 }
 
 export function generateStaticParams(){return allContent.map(({slug})=>({slug}))}
