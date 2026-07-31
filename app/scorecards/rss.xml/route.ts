@@ -1,2 +1,4 @@
 import {rss,xml} from '@/lib/feed'
-export function GET(){return xml(rss('Community Intelligence Scorecards',['Scorecard']))}
+import {content} from '@/lib/content'
+import {getSanityArticles,mergeContent} from '@/lib/sanity-content'
+export async function GET(){return xml(rss('Community Intelligence Scorecards',['Scorecard'],mergeContent(content,await getSanityArticles())))}

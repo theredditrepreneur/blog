@@ -24,7 +24,8 @@ describe('publication-first redesign',()=>{
 
   it('preserves article routing while adding desk routes to the sitemap',()=>{
     const sitemap=readFileSync('app/sitemap.ts','utf8')
-    expect(sitemap).toContain('...content.map')
+    expect(sitemap).toContain('...allItems.map')
+    expect(sitemap).toContain('mergeContent(content,await getSanityArticles())')
     expect(sitemap).toContain('industries.map')
     expect(readFileSync('app/industries/[slug]/page.tsx','utf8')).toContain('generateStaticParams')
   })
