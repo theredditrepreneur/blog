@@ -6,6 +6,7 @@ import {FrameworkCard,ScorecardPlaceholder} from '@/components/publication'
 import {content} from '@/lib/content'
 import {getIndustryBySlug,getIndustryContent,getPopularTopics,industries} from '@/lib/industries'
 import {withCoverImages} from '@/lib/covers'
+import {getSanityArticles,mergeContent} from '@/lib/sanity-content'
 
 export function generateStaticParams(){return industries.map(industry=>({slug:industry.slug}))}
 
@@ -20,7 +21,8 @@ export default async function IndustryDeskPage({params}:{params:Promise<{slug:st
   const {slug}=await params
   const industry=getIndustryBySlug(slug)
   if(!industry)notFound()
-  const industryItems=getIndustryContent(content,industry)
+  const merged=mergeContent(content,await getSanityArticles())
+  const industryItems=getIndustryContent(merged,industry)
   const illustrated=await withCoverImages(industryItems)
   const featured=illustrated.filter(item=>item.featured).slice(0,2)
   const featuredItems=featured.length?featured:illustrated.slice(0,2)

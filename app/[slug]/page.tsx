@@ -50,9 +50,9 @@ import {fortniteAiCharactersCommunityArticle,fortniteAiCharactersCommunityBody} 
 import {jakePaulCulturalLegitimacyArticle,jakePaulCulturalLegitimacyBody} from '@/lib/articles/jake-paul-next-fight-cultural-legitimacy'
 import {robloxSafetyRevenueArticle,robloxSafetyRevenueBody} from '@/lib/articles/roblox-safety-changes-hurt-revenue'
 import {playstationCommunityValueArticle,playstationCommunityValueBody} from '@/lib/articles/playstation-community-more-valuable-than-hardware'
-import {client} from '@/sanity/lib/client'
 import {site} from '@/lib/site'
 import {getIndustry} from '@/lib/industries'
+import {getSanityArticle,getSanityArticles,mergeContent} from '@/lib/sanity-content'
 
 const localBodies:Record<string,string>={
   [headOfCommunityIntelligenceDraft.slug]:headOfCommunityIntelligenceBody,
@@ -108,7 +108,7 @@ export function generateStaticParams(){return allContent.map(({slug})=>({slug}))
 
 export async function generateMetadata({params}:{params:Promise<{slug:string}>}){
   const {slug}=await params
-  const item=allContent.find(candidate=>candidate.slug===slug)
+  const item=allContent.find(candidate=>candidate.slug===slug)||(await getSanityArticle(slug))?.item
   if(!item)return {}
   const isAiAuthority=slug==='the-ai-authority-formula'
   const metaTitle=item.seoTitle||(isAiAuthority?'The AI Authority Formula: Why AI Recommends Some Brands':item.title)
@@ -130,22 +130,17 @@ export async function generateMetadata({params}:{params:Promise<{slug:string}>})
 
 export default async function Page({params}:{params:Promise<{slug:string}>}){
   const {slug}=await params
-  const item=allContent.find(candidate=>candidate.slug===slug)
+  const localItem=allContent.find(candidate=>candidate.slug===slug)
+  const directCms=await getSanityArticle(slug)
+  const item=localItem||directCms?.item
   if(!item)notFound()
 
   const cmsSlug=slug===previousWeeklySlug?latestWeeklyLegacySlug:slug
   const cmsSlugs=slug===cmsSlug?[slug]:[slug,cmsSlug]
-  let cms:{bodyHtml?:string,coverImageUrl?:string,updatedAt?:string}|null=null
-  if(!item.draft){
-    try{
-      cms=await client.fetch(`*[_type in ["article","researchReport","scorecard","caseStudy","framework","benchmark","weekly","indexIssue","newsBrief"] && slug.current in $slugs][0]{"bodyHtml":body[0].html,"coverImageUrl":coverImage.asset->url,updatedAt}`,{slugs:cmsSlugs})
-    }catch(error){
-      console.error('Sanity article query failed',error)
-    }
-  }
+  const cms=directCms||(cmsSlugs.length>1?await getSanityArticle(cmsSlug):null)
 
   const bodyHtml=localBodies[item.slug]||cms?.bodyHtml
-  const coverImageUrl=item.image||cms?.coverImageUrl
+  const coverImageUrl=item.image||cms?.item.image
   const schemaImage=coverImageUrl?.startsWith('/')?`${site.url}${coverImageUrl}`:coverImageUrl
   const isEarlyWarning=item.slug===communityIntelligenceEarlyWarningArticle.slug
   const isHubspotPerformance=item.slug===hubspotRedditPerformanceArticle.slug
@@ -197,7 +192,8 @@ export default async function Page({params}:{params:Promise<{slug:string}>}){
     about:{'@type':'Thing',name:industry.deskName,url:`${site.url}/industries/${industry.slug}`},
     isAccessibleForFree:routeHasDedicatedPresentation||!item.draft,
   }
-  const page=item.type==='Scorecard'?<ScorecardPage item={item} bodyHtml={bodyHtml} coverImageUrl={coverImageUrl}/>:item.type==='Framework'?<FrameworkPage item={item} bodyHtml={bodyHtml} coverImageUrl={coverImageUrl}/>:<ArticlePage item={item} bodyHtml={bodyHtml} coverImageUrl={coverImageUrl}/>
+  const mergedContent=mergeContent(allContent,await getSanityArticles())
+  const page=item.type==='Scorecard'?<ScorecardPage item={item} bodyHtml={bodyHtml} coverImageUrl={coverImageUrl}/>:item.type==='Framework'?<FrameworkPage item={item} bodyHtml={bodyHtml} coverImageUrl={coverImageUrl}/>:<ArticlePage item={item} bodyHtml={bodyHtml} coverImageUrl={coverImageUrl} portableBody={cms?.body} allItems={mergedContent}/>
   const isNikeScorecard=item.slug===nikeCommunityScorecardDraft.slug
   const isRobloxScorecard=item.slug===robloxCommunityScorecardDraft.slug
   const visibleFaqs=isNikeScorecard?nikeCommunityScorecardFaqs:isRobloxScorecard?robloxCommunityScorecardFaqs:isPatreonPlatformChange?patreonPlatformChangeFaqs:isTripComAiTravelAgent?tripComAiTravelAgentFaqs:null

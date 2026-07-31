@@ -1,2 +1,4 @@
 import {rss,xml} from '@/lib/feed'
-export function GET(){return xml(rss('The Redditrepreneur Research'))}
+import {content} from '@/lib/content'
+import {getSanityArticles,mergeContent} from '@/lib/sanity-content'
+export async function GET(){return xml(rss('The Redditrepreneur Research',undefined,mergeContent(content,await getSanityArticles())))}
