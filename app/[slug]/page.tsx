@@ -49,6 +49,7 @@ import {davidOrnsteinCommunityTrustArticle,davidOrnsteinCommunityTrustBody} from
 import {fortniteAiCharactersCommunityArticle,fortniteAiCharactersCommunityBody} from '@/lib/articles/fortnite-ai-characters-community-members'
 import {jakePaulCulturalLegitimacyArticle,jakePaulCulturalLegitimacyBody} from '@/lib/articles/jake-paul-next-fight-cultural-legitimacy'
 import {robloxSafetyRevenueArticle,robloxSafetyRevenueBody} from '@/lib/articles/roblox-safety-changes-hurt-revenue'
+import {playstationCommunityValueArticle,playstationCommunityValueBody} from '@/lib/articles/playstation-community-more-valuable-than-hardware'
 import {client} from '@/sanity/lib/client'
 import {site} from '@/lib/site'
 import {getIndustry} from '@/lib/industries'
@@ -100,6 +101,7 @@ const localBodies:Record<string,string>={
   [fortniteAiCharactersCommunityArticle.slug]:fortniteAiCharactersCommunityBody,
   [jakePaulCulturalLegitimacyArticle.slug]:jakePaulCulturalLegitimacyBody,
   [robloxSafetyRevenueArticle.slug]:robloxSafetyRevenueBody,
+  [playstationCommunityValueArticle.slug]:playstationCommunityValueBody,
 }
 
 export function generateStaticParams(){return allContent.map(({slug})=>({slug}))}
