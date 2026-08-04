@@ -19,11 +19,13 @@
     "search:index": "node ./node_modules/pagefind/lib/runner/bin.cjs --site .next/server/app --output-path public/pagefind"
   },
   "dependencies": {
+    "@portabletext/block-tools": "^5.1.12",
     "@portabletext/react": "latest",
     "@sanity/client": "latest",
     "@sanity/image-url": "latest",
     "@sanity/vision": "latest",
     "isomorphic-dompurify": "latest",
+    "jsdom": "^30.0.1",
     "next": "latest",
     "next-sanity": "latest",
     "react": "latest",
@@ -37,6 +39,7 @@
     "@axe-core/playwright": "latest",
     "@eslint/eslintrc": "latest",
     "@playwright/test": "latest",
+    "@types/jsdom": "^28.0.3",
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",

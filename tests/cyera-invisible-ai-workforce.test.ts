@@ -8,7 +8,7 @@ import {
 } from '../lib/articles/cyera-invisible-ai-workforce'
 
 const contentRegistry=fs.readFileSync('lib/content.ts','utf8')
-const routeRegistry=fs.readFileSync('app/[slug]/page.tsx','utf8')
+const routeRegistry=fs.readFileSync('app/[slug]/page.tsx','utf8')+fs.readFileSync('lib/local-bodies.ts','utf8')
 const articlePage=fs.readFileSync('components/article-page.tsx','utf8')
 
 describe('Cyera invisible AI workforce article',()=>{

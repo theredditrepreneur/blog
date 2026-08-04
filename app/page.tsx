@@ -5,6 +5,7 @@ import {Newsletter} from '@/components/newsletter'
 import {content} from '@/lib/content'
 import {withCoverImages} from '@/lib/covers'
 import {getSanityArticles,mergeContent} from '@/lib/sanity-content'
+import {getEditorialSettings} from '@/lib/sanity-settings'
 
 export const metadata:Metadata={
   title:'The Redditrepreneur Research',
@@ -13,12 +14,14 @@ export const metadata:Metadata={
 }
 
 export default async function Home() {
-  const merged=mergeContent(content,await getSanityArticles())
+  const [sanityArticles,settings]=await Promise.all([getSanityArticles(),getEditorialSettings()])
+  const merged=mergeContent(content,sanityArticles)
   const illustrated=await withCoverImages(merged.slice(0,24))
   const latest=illustrated.slice(0,15)
   const weeklySpotlight=merged.find(item=>item.image==='/community-intelligence-weekly-trust.jpg'&&item.title==='Community Intelligence Weekly: Christopher Nolan, AI Advice, Platform Change and Gaming Trust')
   const featured=illustrated.filter(item=>item.featured).slice(0,2)
-  const featuredItems=(weeklySpotlight?[weeklySpotlight,...featured]:featured).filter((item,index,items)=>items.findIndex(candidate=>candidate.slug===item.slug)===index).slice(0,2)
+  const managedFeatured=[settings.featuredSlug,...(settings.homepageCollectionSlugs||[])].filter((slug):slug is string=>Boolean(slug)).map(slug=>illustrated.find(item=>item.slug===slug)).filter((item):item is NonNullable<typeof item>=>Boolean(item))
+  const featuredItems=(managedFeatured.length?managedFeatured:(weeklySpotlight?[weeklySpotlight,...featured]:featured)).filter((item,index,items)=>items.findIndex(candidate=>candidate.slug===item.slug)===index).slice(0,2)
 
   return <>
     <section className="publication-section latest-publication homepage-research-lead shell" aria-labelledby="latest-heading">

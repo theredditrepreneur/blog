@@ -5,8 +5,9 @@ import {industries} from '@/lib/industries'
 
 function IndustryMenu(){return <details className="industry-menu"><summary>Industries</summary><div>{industries.map(industry=><Link key={industry.slug} href={`/industries/${industry.slug}`}><strong>{industry.name}</strong><span>{industry.description}</span></Link>)}</div></details>}
 
-export function Header() {
-  const directNav=nav.filter(([label])=>label!=='Industries')
+export function Header({navigation}:{navigation?:Array<{label:string;href:string}>}) {
+  const activeNav=(navigation?.length?navigation.map(({label,href})=>[label,href] as const):nav)
+  const directNav=activeNav.filter(([label])=>label!=='Industries')
   return <header className="site-header">
     <a className="skip-link" href="#main">Skip to content</a>
     <div className="header-inner">
@@ -19,7 +20,7 @@ export function Header() {
       <details className="mobile-menu">
         <summary aria-label="Open navigation">Menu</summary>
         <nav aria-label="Mobile navigation">
-          {nav.map(([label,href])=><Link key={href} href={href}>{label}</Link>)}
+          {activeNav.map(([label,href])=><Link key={href} href={href}>{label}</Link>)}
           <div className="mobile-industries">{industries.map(industry=><Link key={industry.slug} href={`/industries/${industry.slug}`}>{industry.name}</Link>)}</div>
         </nav>
       </details>

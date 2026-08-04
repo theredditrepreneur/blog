@@ -1,9 +1,12 @@
-import {defineArrayMember,defineField} from 'sanity'
+import {defineArrayMember,defineField,defineType} from 'sanity'
 
-export const bodyField=defineField({name:'body',title:'Body',type:'array',of:[
-  defineArrayMember({type:'block'}),defineArrayMember({type:'image',options:{hotspot:true},fields:[defineField({name:'alt',type:'string',validation:r=>r.required()}),defineField({name:'caption',type:'string'})]}),
+export const blockContent=defineType({name:'blockContent',title:'Article body',type:'array',of:[
+  defineArrayMember({type:'block',marks:{annotations:[defineArrayMember({name:'link',title:'Link',type:'object',fields:[defineField({name:'href',title:'URL or path',type:'string',validation:r=>r.required()}),defineField({name:'blank',title:'Open in a new tab',type:'boolean',initialValue:false})]})]}}),
+  defineArrayMember({type:'image',options:{hotspot:true},fields:[defineField({name:'alt',type:'string',validation:r=>r.required()}),defineField({name:'caption',type:'string'})]}),
   defineArrayMember({type:'tableBlock'}),defineArrayMember({type:'videoEmbed'}),defineArrayMember({type:'reference',to:[{type:'callToAction'}]}),defineArrayMember({type:'legacyHtml'}),
 ]})
+
+export const bodyField=defineField({name:'body',title:'Body',type:'blockContent'})
 
 export const commonFields=[
   defineField({name:'title',type:'string',validation:r=>r.required()}),

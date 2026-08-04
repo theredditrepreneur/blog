@@ -99,7 +99,7 @@ export async function getSanityArticle(slug:string):Promise<SanityArticle|null> 
 
 export function mergeContent(local:ContentItem[],sanity:SanityArticle[]) {
   const merged=new Map<string,ContentItem>()
-  sanity.forEach(({item})=>merged.set(item.slug,item))
   local.forEach(item=>merged.set(item.slug,item))
+  sanity.forEach(({item})=>merged.set(item.slug,item))
   return [...merged.values()].sort((a,b)=>b.date.localeCompare(a.date))
 }
