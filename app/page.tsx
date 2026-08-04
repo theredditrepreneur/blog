@@ -7,10 +7,13 @@ import {withCoverImages} from '@/lib/covers'
 import {getSanityArticles,mergeContent} from '@/lib/sanity-content'
 import {getEditorialSettings} from '@/lib/sanity-settings'
 
-export const metadata:Metadata={
-  title:'The Redditrepreneur Research',
-  description:'Community Intelligence research covering Gaming, AI, Sport, SaaS, Consumer Brands and Entertainment.',
-  alternates:{canonical:'/'},
+export async function generateMetadata():Promise<Metadata>{
+  const settings=await getEditorialSettings()
+  return {
+    title:{absolute:settings.publicationName||'The Redditrepreneur Research'},
+    description:settings.description||'Community Intelligence research covering Gaming, AI, Sport, SaaS, Consumer Brands and Entertainment.',
+    alternates:{canonical:'/'},
+  }
 }
 
 export default async function Home() {
