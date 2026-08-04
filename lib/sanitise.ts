@@ -3,7 +3,7 @@ export function sanitiseImportedHtml(html:string){
   return safe.split(/(<[^>]+>)/g).map(part=>part.startsWith('<')?part:part.replace(/([A-Za-z])-([A-Za-z])/g,'$1 $2')).join('')
 }
 
-export type ArticleHeading={id:string;label:string;level:2|3}
+export type ArticleHeading={id:string;label:string;level:1|2|3}
 
 const headingEntities:Record<string,string>={amp:'&',apos:"'",quot:'"',nbsp:' ',rsquo:'’',lsquo:'‘',rdquo:'”',ldquo:'“'}
 
@@ -18,14 +18,16 @@ function decodeHeadingText(value:string){
 export function prepareImportedHtml(html:string){
   const headings:ArticleHeading[]=[]
   const used=new Map<string,number>()
-  const safe=sanitiseImportedHtml(html).replace(/<h1\b([^>]*)>([\s\S]*?)<\/h1>/gi,'<h2$1>$2</h2>')
-  const prepared=safe.replace(/<h([23])\b([^>]*)>([\s\S]*?)<\/h\1>/gi,(_,level,attrs,inner)=>{
+  const safe=sanitiseImportedHtml(html)
+  const prepared=safe.replace(/<h([123])\b([^>]*)>([\s\S]*?)<\/h\1>/gi,(_,level,attrs,inner)=>{
     const label=decodeHeadingText(String(inner).replace(/<[^>]+>/g,'')).trim()
     const base=label.toLowerCase().replace(/['’]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'section'
     const count=(used.get(base)||0)+1;used.set(base,count)
     const id=count===1?base:`${base}-${count}`
-    headings.push({id,label,level:Number(level) as 2|3})
-    return `<h${level}${String(attrs).replace(/\sid=("[^"]*"|'[^']*')/i,'')} id="${id}">${inner}</h${level}>`
+    const outlineLevel=Number(level) as 1|2|3
+    const renderedLevel=outlineLevel===1?2:outlineLevel
+    headings.push({id,label,level:outlineLevel})
+    return `<h${renderedLevel}${String(attrs).replace(/\sid=("[^"]*"|'[^']*')/i,'')} id="${id}">${inner}</h${renderedLevel}>`
   })
   return {html:prepared,headings}
 }

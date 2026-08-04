@@ -19,13 +19,13 @@ export function preparePortableHeadings(body:SanityBody|undefined){
   const used=new Map<string,number>()
 
   for(const [index,block] of (body||[]).entries()){
-    if(block._type!=='block'||(block.style!=='h2'&&block.style!=='h3'))continue
+    if(block._type!=='block'||(block.style!=='h1'&&block.style!=='h2'&&block.style!=='h3'))continue
     const label=blockText(block)
     if(!label)continue
     const id=headingId(label,used)
     const key=typeof block._key==='string'?block._key:`heading-${index}`
     idsByKey[key]=id
-    headings.push({id,label,level:block.style==='h3'?3:2})
+    headings.push({id,label,level:block.style==='h1'?1:block.style==='h3'?3:2})
   }
 
   return {headings,idsByKey}

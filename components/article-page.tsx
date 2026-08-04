@@ -65,6 +65,7 @@ export function ArticlePage({item,embedded=false,bodyHtml,coverImageUrl,portable
   const portableOutline=preparePortableHeadings(portableBody)
   const outlineHeadings=prepared?.headings.length?prepared.headings:portableOutline.headings
   const portableComponents:Partial<PortableTextComponents>={block:{
+    h1:({children,value})=><h2 id={portableOutline.idsByKey[String(value._key)]}>{children}</h2>,
     h2:({children,value})=><h2 id={portableOutline.idsByKey[String(value._key)]}>{children}</h2>,
     h3:({children,value})=><h3 id={portableOutline.idsByKey[String(value._key)]}>{children}</h3>,
   }}
@@ -130,6 +131,7 @@ export function ArticlePage({item,embedded=false,bodyHtml,coverImageUrl,portable
   const newerArticle=publicationIndex>0?allItems[publicationIndex-1]:undefined
   const olderArticle=publicationIndex>=0&&publicationIndex<allItems.length-1?allItems[publicationIndex+1]:undefined
   const industry=itemIndustry
+  const selectedFrameworks=item.frameworks||[]
 
   return <article id="top">
     {!embedded&&<>
@@ -152,7 +154,7 @@ export function ArticlePage({item,embedded=false,bodyHtml,coverImageUrl,portable
       </div>
     </div>
 
-    <section className="related-frameworks shell" aria-labelledby={`frameworks-${item.slug}`}><div className="eyebrow">Ideas used in this analysis</div><h2 id={`frameworks-${item.slug}`}>Related frameworks</h2><div className="publication-framework-grid">{industry.frameworks.slice(0,3).map(name=><FrameworkCard name={name} key={name}/>)}</div></section>
+    {selectedFrameworks.length>0&&<section className="related-frameworks shell" aria-labelledby={`frameworks-${item.slug}`}><div className="eyebrow">Ideas used in this analysis</div><h2 id={`frameworks-${item.slug}`}>Related frameworks</h2><div className="publication-framework-grid">{selectedFrameworks.map(name=><FrameworkCard name={name} key={name}/>)}</div></section>}
     {related.length>0&&<section className="related-content shell" aria-labelledby={`related-${item.slug}`}><div className="eyebrow">Continue exploring</div><h2 id={`related-${item.slug}`}>Related Community Intelligence research</h2><div className="related-grid">{related.map(candidate=><article key={candidate.slug}><div className="eyebrow">{candidate.type}</div><h3><Link href={`/${candidate.slug}`}>{candidate.title}</Link></h3><p>{candidate.excerpt}</p></article>)}</div></section>}
     <ArticleDeskLink industry={industry} item={item}/>
     {(isEarlyWarning||item.slug===playstationCommunityValueArticle.slug||item.slug===adobeAiPhotoCritiqueArticle.slug||item.slug===christopherNolanOdysseyArticle.slug||item.slug===saudiEaCommunityTrustArticle.slug||item.slug===playstationBlackoutArticle.slug||item.slug===metaSmartGlassesBystanderTrustArticle.slug||item.slug===fanaticsSportsSuperAppArticle.slug||item.slug===haloPlaystationCommunityIntelligenceArticle.slug||item.slug===londonRobotaxiCommunityTrustArticle.slug||item.slug===xMoneySocialReputationArticle.slug||item.slug===appleLeasingOwnershipArticle.slug||item.slug===redditGoogleKnowledgeStructureArticle.slug||item.slug===robloxAiGameCreationDiscoveryArticle.slug||item.slug===cyeraInvisibleAiWorkforceArticle.slug||item.slug===netflixBritainDefaultTvChannelArticle.slug||item.slug===xboxGameDiscInternetPermissionArticle.slug||item.slug===gtaViGamingEcosystemArticle.slug||item.slug===davidOrnsteinCommunityTrustArticle.slug||item.slug===fortniteAiCharactersCommunityArticle.slug||item.slug===jakePaulCulturalLegitimacyArticle.slug||item.slug===robloxSafetyRevenueArticle.slug)&&<nav className="article-pagination shell" aria-label="Previous and next articles">{olderArticle&&<Link href={`/${olderArticle.slug}`}><span>Previous article</span><strong>{olderArticle.title}</strong></Link>}{newerArticle&&<Link href={`/${newerArticle.slug}`}><span>Next article</span><strong>{newerArticle.title}</strong></Link>}</nav>}
