@@ -5,14 +5,14 @@ import {industries} from '@/lib/industries'
 
 function IndustryMenu(){return <details className="industry-menu"><summary>Industries</summary><div>{industries.map(industry=><Link key={industry.slug} href={`/industries/${industry.slug}`}><strong>{industry.name}</strong><span>{industry.description}</span></Link>)}</div></details>}
 
-export function Header({navigation}:{navigation?:Array<{label:string;href:string}>}) {
+export function Header({navigation,publicationName='The Redditrepreneur Research'}:{navigation?:Array<{label:string;href:string}>,publicationName?:string}) {
   const activeNav=(navigation?.length?navigation.map(({label,href})=>[label,href] as const):nav)
   const directNav=activeNav.filter(([label])=>label!=='Industries')
   return <header className="site-header">
     <a className="skip-link" href="#main">Skip to content</a>
     <div className="header-inner">
-      <Link className="brand" href="/" aria-label="The Redditrepreneur Research home">
-        <Image src="/redditrepreneur-logo.png" width={232} height={95} alt="The Redditrepreneur Research" priority />
+      <Link className="brand" href="/" aria-label={`${publicationName} home`}>
+        <Image src="/redditrepreneur-logo.png" width={232} height={95} alt={publicationName} priority />
       </Link>
       <nav aria-label="Primary navigation">
         <Link href="/research">Research</Link><IndustryMenu/>{directNav.filter(([label])=>label!=='Research').map(([label,href])=><Link key={href} href={href}>{label}</Link>)}
