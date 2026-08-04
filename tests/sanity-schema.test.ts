@@ -13,3 +13,10 @@ describe('Sanity editorial schema',()=>{
     expect(shared).toContain("type:'reference',to:[{type:'callToAction'}]")
   })
 })
+
+describe('Sanity Studio security policy',()=>{
+  it('allows the Sanity bridge required by the embedded Studio',()=>{
+    const config=readFileSync('next.config.ts','utf8')
+    expect(config).toContain("script-src 'self' 'unsafe-inline' 'unsafe-eval' https://core.sanity-cdn.com")
+  })
+})

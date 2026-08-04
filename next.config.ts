@@ -13,7 +13,7 @@ const nextConfig: NextConfig = {
       headers: [
         {key: 'X-Content-Type-Options', value: 'nosniff'},
         {key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin'},
-        {key: 'Content-Security-Policy', value: "default-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; frame-src https:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; connect-src 'self' https: wss:; font-src 'self' data: https:; worker-src 'self' blob:; child-src 'self' blob:; base-uri 'self'; form-action 'self' https:; frame-ancestors 'none'"},
+        {key: 'Content-Security-Policy', value: "default-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; frame-src https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://core.sanity-cdn.com; style-src 'self' 'unsafe-inline'; connect-src 'self' https: wss:; font-src 'self' data: https:; worker-src 'self' blob:; child-src 'self' blob:; base-uri 'self'; form-action 'self' https:; frame-ancestors 'none'"},
       ],
     },{
       source: '/((?!studio(?:/|$)).*)',

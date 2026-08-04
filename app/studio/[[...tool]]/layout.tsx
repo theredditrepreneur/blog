@@ -1,7 +1,7 @@
 import type {Metadata} from 'next'
 
 export const metadata:Metadata={
-  title:'Editorial Studio | The Redditrepreneur',
+  title:{absolute:'Editorial Studio | The Redditrepreneur'},
   description:'The editorial publishing workspace for The Redditrepreneur Research.',
   robots:{index:false,follow:false},
 }
