@@ -2,7 +2,7 @@ import {defineArrayMember,defineField} from 'sanity'
 
 export const bodyField=defineField({name:'body',title:'Body',type:'array',of:[
   defineArrayMember({type:'block'}),defineArrayMember({type:'image',options:{hotspot:true},fields:[defineField({name:'alt',type:'string',validation:r=>r.required()}),defineField({name:'caption',type:'string'})]}),
-  defineArrayMember({type:'tableBlock'}),defineArrayMember({type:'videoEmbed'}),defineArrayMember({type:'callToAction'}),defineArrayMember({type:'legacyHtml'}),
+  defineArrayMember({type:'tableBlock'}),defineArrayMember({type:'videoEmbed'}),defineArrayMember({type:'reference',to:[{type:'callToAction'}]}),defineArrayMember({type:'legacyHtml'}),
 ]})
 
 export const commonFields=[

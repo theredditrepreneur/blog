@@ -1,0 +1,7 @@
+.root {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  min-height: 100dvh;
+  background: #fff;
+}
