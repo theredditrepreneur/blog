@@ -1,4 +1,5 @@
 import {client} from '@/sanity/lib/client'
+import {defineQuery} from 'next-sanity'
 
 export type EditorialSettings={
   publicationName?:string
@@ -12,14 +13,20 @@ export type EditorialSettings={
   auditUrl?:string
 }
 
+const editorialSettingsQuery=defineQuery(`*[_id == "siteSettings"][0]{
+  "publicationName":title,description,footerStatement,navigation,
+  "featuredSlug":featuredContent->slug.current,
+  "homepageCollectionSlugs":homepageCollections[]->slug.current,
+  newsletterUrl,platformUrl,auditUrl
+}`)
+
 export async function getEditorialSettings():Promise<EditorialSettings> {
   try {
-    return await client.fetch<EditorialSettings|null>(`*[_id == "siteSettings"][0]{
-      "publicationName":title,description,footerStatement,navigation,
-      "featuredSlug":featuredContent->slug.current,
-      "homepageCollectionSlugs":homepageCollections[]->slug.current,
-      newsletterUrl,platformUrl,auditUrl
-    }`,{},{next:{revalidate:300}})||{}
+    return await client.withConfig({useCdn:false}).fetch<EditorialSettings|null>(
+      editorialSettingsQuery,
+      {},
+      {next:{revalidate:30,tags:['site-settings']}},
+    )||{}
   } catch(error) {
     console.error('Sanity site settings query failed',error)
     return {}

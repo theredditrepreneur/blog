@@ -42,6 +42,7 @@ import {fortniteAiCharactersCommunityArticle} from '@/lib/articles/fortnite-ai-c
 import {site} from '@/lib/site'
 import {getIndustry} from '@/lib/industries'
 import {getSanityArticle,getSanityArticles,mergeContent} from '@/lib/sanity-content'
+import {getEditorialSettings} from '@/lib/sanity-settings'
 
 export function generateStaticParams(){return allContent.map(({slug})=>({slug}))}
 
@@ -73,6 +74,8 @@ export default async function Page({params}:{params:Promise<{slug:string}>}){
   const directCms=await getSanityArticle(slug)
   const item=directCms?.item||localItem
   if(!item)notFound()
+  const settings=await getEditorialSettings()
+  const publicationName=settings.publicationName||'The Redditrepreneur Research'
 
   const cmsSlug=slug===previousWeeklySlug?latestWeeklyLegacySlug:slug
   const cmsSlugs=slug===cmsSlug?[slug]:[slug,cmsSlug]
@@ -124,7 +127,7 @@ export default async function Page({params}:{params:Promise<{slug:string}>}){
     datePublished:item.date,
     dateModified:cms?.updatedAt||item.date,
     author:{'@type':'Person',name:'Tonte Bo Douglas',url:`${site.url}/authors/tonte-bo-douglas`},
-    publisher:{'@type':'Organization',name:'The Redditrepreneur',url:site.main,logo:{'@type':'ImageObject',url:`${site.url}/redditrepreneur-logo.png`}},
+    publisher:{'@type':'Organization',name:publicationName,url:site.url,logo:{'@type':'ImageObject',url:`${site.url}/redditrepreneur-logo.png`}},
     mainEntityOfPage:{'@type':'WebPage','@id':`${site.url}/${slug}`},
     image:schemaImage,
     articleSection:industry.name,
