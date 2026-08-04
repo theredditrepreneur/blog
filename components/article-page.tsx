@@ -55,10 +55,19 @@ import {SharePost} from './share-post'
 import {ArticleDeskLink,FrameworkCard} from './publication'
 import {getIndustry} from '@/lib/industries'
 import {PortableText} from '@portabletext/react'
+import type {PortableTextComponents} from '@portabletext/react'
 import type {SanityBody} from '@/lib/sanity-content'
+import {preparePortableHeadings} from '@/lib/article-headings'
+import {ArticleOutline} from './article-outline'
 
 export function ArticlePage({item,embedded=false,bodyHtml,coverImageUrl,portableBody,allItems=content}:{item:ContentItem,embedded?:boolean,bodyHtml?:string,coverImageUrl?:string,portableBody?:SanityBody,allItems?:ContentItem[]}){
   const prepared=bodyHtml?prepareImportedHtml(bodyHtml):null
+  const portableOutline=preparePortableHeadings(portableBody)
+  const outlineHeadings=prepared?.headings.length?prepared.headings:portableOutline.headings
+  const portableComponents:Partial<PortableTextComponents>={block:{
+    h2:({children,value})=><h2 id={portableOutline.idsByKey[String(value._key)]}>{children}</h2>,
+    h3:({children,value})=><h3 id={portableOutline.idsByKey[String(value._key)]}>{children}</h3>,
+  }}
   const manualRelated:Record<string,string[]>={
     'the-ai-authority-formula':['the-community-intelligence-convergence-of-meta-reddit-and-google','the-community-intelligence-stack-turning-conversations-into-competitive-advantage','google-just-brought-communities-into-ai-search-heres-why-it-matters'],
     [headOfCommunityIntelligenceDraft.slug]:headOfCommunityIntelligenceRelated,
@@ -117,7 +126,6 @@ export function ArticlePage({item,embedded=false,bodyHtml,coverImageUrl,portable
   const isNikeScorecard=item.slug===nikeCommunityScorecardDraft.slug
   const isEarlyWarning=item.slug===communityIntelligenceEarlyWarningArticle.slug
   const isRedditAiSlop=item.slug===playstationCommunityValueArticle.slug||item.slug===redditAiSlopArticle.slug||item.slug===aiEvidenceLayerArticle.slug||item.slug===franceSpainFrameworkDraft.slug||item.slug===englandCommunityCourtroomDraft.slug||item.slug===communityIntelligenceWeeklyPlatformLiveDraft.slug||item.slug===bbcRadioCommunityDraft.slug||item.slug===hubspotRedditPerformanceArticle.slug||item.slug===restIsFootballCommunitySuccessArticle.slug||item.slug===xMen97Season2Article.slug||item.slug===squarespacePriceIncreaseArticle.slug||item.slug===hubspotCommunityGovernanceArticle.slug||item.slug===worldCupCommercialisationArticle.slug||item.slug===facebookTikTokArticle.slug||item.slug===metaGlassesOwnershipArticle.slug||item.slug===amazonPrimeVideoGamesArticle.slug||item.slug===xboxGamePassArticle.slug||item.slug===openAiAgentOversightArticle.slug||item.slug===youtubeAiThumbnailArticle.slug||item.slug===patreonPlatformChangeArticle.slug||item.slug===tripComAiTravelAgentArticle.slug||item.slug===adobeAiPhotoCritiqueArticle.slug||item.slug===christopherNolanOdysseyArticle.slug||item.slug===saudiEaCommunityTrustArticle.slug||item.slug===communityIntelligenceWeeklyTrustArticle.slug||item.slug===playstationBlackoutArticle.slug||item.slug===metaSmartGlassesBystanderTrustArticle.slug||item.slug===fanaticsSportsSuperAppArticle.slug||item.slug===haloPlaystationCommunityIntelligenceArticle.slug||item.slug===londonRobotaxiCommunityTrustArticle.slug||item.slug===xMoneySocialReputationArticle.slug||item.slug===appleLeasingOwnershipArticle.slug||item.slug===redditGoogleKnowledgeStructureArticle.slug||item.slug===robloxAiGameCreationDiscoveryArticle.slug||item.slug===cyeraInvisibleAiWorkforceArticle.slug||item.slug===netflixBritainDefaultTvChannelArticle.slug||item.slug===xboxGameDiscInternetPermissionArticle.slug||item.slug===gtaViGamingEcosystemArticle.slug||item.slug===davidOrnsteinCommunityTrustArticle.slug||item.slug===fortniteAiCharactersCommunityArticle.slug||item.slug===jakePaulCulturalLegitimacyArticle.slug||item.slug===robloxSafetyRevenueArticle.slug||isNikeScorecard||isEarlyWarning
-  const tocLimit=isBookingScorecard||isNikeScorecard?24:12
   const publicationIndex=allItems.findIndex(candidate=>candidate.slug===item.slug)
   const newerArticle=publicationIndex>0?allItems[publicationIndex-1]:undefined
   const olderArticle=publicationIndex>=0&&publicationIndex<allItems.length-1?allItems[publicationIndex+1]:undefined
@@ -137,9 +145,9 @@ export function ArticlePage({item,embedded=false,bodyHtml,coverImageUrl,portable
     </>}
 
     <div className="article-layout shell">
-      <aside><strong>On this page</strong>{prepared?.headings.filter(heading=>heading.level===2).slice(0,tocLimit).map(heading=><a href={`#${heading.id}`} key={heading.id}>{heading.label}</a>)}<a className="back-top" href="#top">Back to top</a></aside>
+      <ArticleOutline headings={outlineHeadings}/>
       <div id="article-content" className="prose">
-        {prepared?<div className="legacy-content" dangerouslySetInnerHTML={{__html:prepared.html}}/>:portableBody?.length?<div className="sanity-content"><PortableText value={portableBody as never}/></div>:<><h2>Overview</h2><p>{item.excerpt}</p><p>This item is awaiting final editorial conversion from the migration source.</p></>}
+        {prepared?<div className="legacy-content" dangerouslySetInnerHTML={{__html:prepared.html}}/>:portableBody?.length?<div className="sanity-content"><PortableText value={portableBody as never} components={portableComponents}/></div>:<><h2>Overview</h2><p>{item.excerpt}</p><p>This item is awaiting final editorial conversion from the migration source.</p></>}
         {isRedditAiSlop?null:isBookingScorecard?<div className="inline-cta booking-scorecard-cta"><h3>Understand What Your Customers Recommend When You Are Not in the Room</h3><p>The Redditrepreneur helps organisations turn online community conversations into customer insight, competitor intelligence and better strategic decisions.</p><div className="actions"><a className="button" href={site.audit}>Learn About the Community Intelligence Audit</a><a className="text-link" href={site.app}>Explore the Community Intelligence Platform</a></div></div>:isHeadOfCommunityIntelligence?<div className="inline-cta"><h3>Bring Community Intelligence Into the Leadership Team</h3><p>Work with The Redditrepreneur as your external Head of Community Intelligence and turn community conversations into executive insight, competitive advantage and better strategic decisions.</p><div className="actions"><a className="button" href="https://www.theredditrepreneur.com/services/fractional-chief-community-intelligence-officer">Explore the Fractional CCI Officer Engagement</a><a className="text-link" href={site.app}>Explore the Community Intelligence Platform</a></div></div>:isAiAuthority?<div className="inline-cta ai-authority-cta"><h3>Discover What AI Believes About Your Brand</h3><p>The AI Authority Audit analyses AI generated recommendations, community conversations, competitor authority and the evidence shaping how your brand is represented before customers ever visit your website.</p><a className="button" href={site.aiAuthorityAudit}>Explore the AI Authority Audit</a></div>:<div className="inline-cta"><h3>Turn conversations into clarity</h3><p>{item.type==='Scorecard'?'Learn how a focused Community Intelligence Audit can reveal the forces shaping your brand.':'Explore the Community Intelligence platform or commission a focused audit of your brand, competitors and market.'}</p><div className="actions"><a className="button" href={item.type==='Scorecard'?site.audit:site.app}>{item.type==='Scorecard'?'Learn About a Community Intelligence Audit':'Explore the Community Intelligence Platform'}</a><a className="text-link" href={item.type==='Scorecard'?'/the-redditrepreneur-community-intelligence-scorecard':site.audit}>{item.type==='Scorecard'?'Read the methodology':'Learn About the Audit'}</a></div></div>}
       </div>
     </div>
