@@ -20,6 +20,7 @@ export type ContentItem = {
   socialTitle?: string
   socialDescription?: string
   tags?: string[]
+  frameworks?: string[]
   draft?: boolean
   featured?: boolean
   readingMinutes?: number

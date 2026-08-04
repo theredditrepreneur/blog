@@ -27,6 +27,7 @@ type SanityRecord = {
   imageHeight?:number
   authorName?:string
   tags?:string[]
+  frameworks?:string[]
   seoTitle?:string
   metaDescription?:string
   body?:SanityBody
@@ -41,7 +42,7 @@ const projection=`{
   "image":coverImage.asset->url,"imageAlt":coverImage.alt,
   "imageWidth":coverImage.asset->metadata.dimensions.width,
   "imageHeight":coverImage.asset->metadata.dimensions.height,
-  "authorName":author->name,"tags":topics[]->title,
+  "authorName":author->name,"tags":topics[]->title,"frameworks":frameworks[]->title,
   "seoTitle":seo.title,"metaDescription":seo.description,
   body,"bodyHtml":body[_type == "legacyHtml"][0].html
 }`
@@ -62,6 +63,7 @@ function mapRecord(record:SanityRecord):SanityArticle {
       industry:record.industry,
       topic:record.tags?.[0]||'Community Intelligence',
       tags:record.tags,
+      frameworks:record.frameworks,
       featured:record.featured,
       image:record.image,
       imageAlt:record.imageAlt,
